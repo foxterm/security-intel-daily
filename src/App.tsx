@@ -5,6 +5,7 @@ import { useI18n } from './i18n';
 import MarkdownReport from './MarkdownReport';
 import { ReportProvider, useReport } from './ReportContext';
 import { EMPTY_REPORT, normalizeReport } from './reportModel';
+import { useTheme } from './ThemeContext';
 import type { AnalystCategoryEvent, AnalystDeepDiveEvent, ItemPhase, PipelineEvent, TrendItem, TrendReport } from './types';
 import styles from './App.module.css';
 
@@ -165,6 +166,23 @@ const IconChevronLeft = (p: IconProps) => (
 );
 const IconChevronRight = (p: IconProps) => (
   <Icon {...p}><polyline points="9 18 15 12 9 6" /></Icon>
+);
+const IconSun = (p: IconProps) => (
+  <Icon {...p}><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" /></Icon>
+);
+const IconMoon = (p: IconProps) => (
+  <Icon {...p}><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" /></Icon>
+);
+const IconFoxTerm = (p: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={p.size ?? 16} height={p.size ?? 16} viewBox="0 0 1024 1024" aria-hidden="true" {...p}>
+    <path d="M69.19 0l221.41 387.46L0 691.89z" fill="#FF7700" />
+    <path d="M69.19 0l442.81 387.46h-221.41z" fill="#FF5500" />
+    <path d="M954.81 0l69.19 691.89-290.59-304.43z" fill="#FF8800" />
+    <path d="M954.81 0l-221.41 387.46h-221.4z" fill="#E63500" />
+    <path d="M290.59 387.46h221.41v636.54z" fill="#D62B00" />
+    <path d="M512 387.46h221.41l290.59 304.43-512 332.11z" fill="#FF5500" />
+    <path d="M290.59 387.46L0 691.89l512 332.11z" fill="#FF4500" />
+  </svg>
 );
 
 function TriggerBadge({ trigger }: { trigger?: string }) {
@@ -445,6 +463,7 @@ function OnboardingHero({ loading }: { loading: boolean }) {
    ==================================== */
 function AppContent() {
   const { t } = useI18n();
+  const { theme, toggleTheme } = useTheme();
   const { report, availableDates, currentDate, loading, bootstrapping, loadReportByDate, refresh, updateReport } = useReport();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [generating, setGenerating] = useState(false);
@@ -746,8 +765,16 @@ function AppContent() {
     <main className={styles.shell}>
       <div className={styles.topCorner}>
         <a className={styles.deployButton} href={getDeployUrl()} target="_blank" rel="noreferrer">
-          <IconRocket size={13} /> {t('deployButton')}
+          <IconFoxTerm size={14} /> {t('deployButton')}
         </a>
+        <button
+          type="button"
+          className={styles.topCornerIcon}
+          onClick={toggleTheme}
+          title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+        >
+          {theme === 'light' ? <IconMoon size={16} /> : <IconSun size={16} />}
+        </button>
         <a className={styles.topCornerIcon} href="https://github.com/foxterm" target="_blank" rel="noreferrer" title="GitHub">
           <IconGitHub size={16} />
         </a>

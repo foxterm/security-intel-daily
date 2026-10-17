@@ -8,14 +8,113 @@
     BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
   --font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
 
-  color: #0f172a;
-  background: #f8fafc;
+  /* Light theme colors */
+  --color-bg: #f8fafc;
+  --color-bg-gradient: radial-gradient(circle at 8% 0%, rgba(255, 128, 0, 0.10), transparent 28rem),
+    linear-gradient(180deg, #f8fafc 0%, #fef6f0 100%);
+  --color-surface: #ffffff;
+  --color-surface-alt: #f8fafc;
+  --color-surface-warm: #fbfdff;
+  --color-border: #e2e8f0;
+  --color-border-light: #f1f5f9;
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+  --color-text-faint: #94a3b8;
+  --color-accent: #ff5e00;
+  --color-accent-hover: #e03e00;
+  --color-accent-bg: #fff7ed;
+  --color-accent-border: #fed7aa;
+  --color-primary: #1d4ed8;
+  --color-primary-bg: #eff6ff;
+  --color-primary-border: #dbeafe;
+  --color-danger: #dc2626;
+  --color-danger-bg: #fee2e2;
+  --color-warning: #d97706;
+  --color-warning-bg: #fef3c7;
+  --color-warning-border: #fcd34d;
+  --color-success-bg: #fff7ed;
+  --color-tag-bg: #f1f5f9;
+  --color-tag-text: #475569;
+  --color-link: #2563eb;
+  --color-link-border: rgba(37, 99, 235, 0.28);
+  --color-overlay: rgba(15, 23, 42, 0.4);
+  --color-shadow: rgba(15, 23, 42, 0.06);
+  --color-shadow-lg: rgba(15, 23, 42, 0.12);
+  --color-skeleton: rgba(226, 232, 240, 0.6);
+  --color-skeleton-mid: rgba(226, 232, 240, 1);
+  --color-live-gradient: linear-gradient(90deg, #fff7ed, #ffedd5);
+  --color-typing-gradient: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  --color-report-gradient: linear-gradient(135deg, #fff7ed, #ffedd5);
+  --color-onboard-bg: radial-gradient(circle at 50% 0%, rgba(255, 128, 0, 0.08), transparent 60%), #ffffff;
+  --color-onboard-icon-bg: linear-gradient(135deg, #fff7ed, #ffedd5);
+  --color-topbar-bg: rgba(255, 255, 255, 0.92);
+  --color-btn-bg: #ffffff;
+  --color-btn-hover: #f8fafc;
+  --color-new-badge: #ef4444;
+  --color-purple: #7c3aed;
+  --color-purple-bg: #ede9fe;
+  --color-blue-dark: #0369a1;
+  --color-blue-dark-bg: #e0f2fe;
+
+  color: var(--color-text);
+  background: var(--color-bg);
   font-family: var(--font-sans);
   font-feature-settings: 'cv11', 'ss01', 'ss03';
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+[data-theme="dark"] {
+  --color-bg: #0f1117;
+  --color-bg-gradient: radial-gradient(circle at 8% 0%, rgba(255, 128, 0, 0.06), transparent 28rem),
+    linear-gradient(180deg, #0f1117 0%, #161922 100%);
+  --color-surface: #1a1d27;
+  --color-surface-alt: #1e2130;
+  --color-surface-warm: #1a1d27;
+  --color-border: #2a2d3a;
+  --color-border-light: #252836;
+  --color-text: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-text-faint: #475569;
+  --color-accent: #ff7a2e;
+  --color-accent-hover: #ff9a5c;
+  --color-accent-bg: #2a1f14;
+  --color-accent-border: #4a3520;
+  --color-primary: #5b8def;
+  --color-primary-bg: #141e35;
+  --color-primary-border: #1e3055;
+  --color-danger: #f87171;
+  --color-danger-bg: #2d1515;
+  --color-warning: #fbbf24;
+  --color-warning-bg: #2d2510;
+  --color-warning-border: #4a3d18;
+  --color-success-bg: #2a1f14;
+  --color-tag-bg: #1e2130;
+  --color-tag-text: #94a3b8;
+  --color-link: #60a5fa;
+  --color-link-border: rgba(96, 165, 250, 0.28);
+  --color-overlay: rgba(0, 0, 0, 0.6);
+  --color-shadow: rgba(0, 0, 0, 0.2);
+  --color-shadow-lg: rgba(0, 0, 0, 0.4);
+  --color-skeleton: rgba(42, 45, 58, 0.6);
+  --color-skeleton-mid: rgba(42, 45, 58, 1);
+  --color-live-gradient: linear-gradient(90deg, #2a1f14, #352518);
+  --color-typing-gradient: linear-gradient(135deg, #2d2510 0%, #352d18 100%);
+  --color-report-gradient: linear-gradient(135deg, #2a1f14, #352518);
+  --color-onboard-bg: radial-gradient(circle at 50% 0%, rgba(255, 128, 0, 0.06), transparent 60%), #1a1d27;
+  --color-onboard-icon-bg: linear-gradient(135deg, #2a1f14, #352518);
+  --color-topbar-bg: rgba(26, 29, 39, 0.92);
+  --color-btn-bg: #1a1d27;
+  --color-btn-hover: #252836;
+  --color-new-badge: #f87171;
+  --color-purple: #a78bfa;
+  --color-purple-bg: #1e1535;
+  --color-blue-dark: #38bdf8;
+  --color-blue-dark-bg: #0c2035;
 }
 
 * {
@@ -26,9 +125,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 8% 0%, rgba(255, 128, 0, 0.10), transparent 28rem),
-    linear-gradient(180deg, #f8fafc 0%, #fef6f0 100%);
+  background: var(--color-bg-gradient);
 }
 
 button,
