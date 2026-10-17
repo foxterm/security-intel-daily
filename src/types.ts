@@ -7,12 +7,15 @@ export interface TrendItem {
   category?: string;
   summary?: string;
   aiSummary?: string;
+  aiSummaryZh?: string;
+  aiSummaryEn?: string;
   publishedAt?: string;
   fingerprint?: string;
   firstSeenAt?: string;
   lastSeenAt?: string;
   seenCount?: number;
   isNew?: boolean;
+  lang?: 'zh' | 'en';
 }
 
 export interface TrendGroup {
@@ -33,8 +36,14 @@ export interface TrendReport {
   reusedItemCount?: number;
   itemIds?: string[];
   summary?: string;
+  summaryZh?: string;
+  summaryEn?: string;
   reportMarkdown: string;
+  reportMarkdownZh?: string;
+  reportMarkdownEn?: string;
   trends: TrendGroup[];
+  trendsZh?: TrendGroup[];
+  trendsEn?: TrendGroup[];
   items: TrendItem[];
   error?: string;
   agentWarning?: string;
@@ -51,6 +60,8 @@ export interface HistoryEntry {
   newItemCount?: number;
   reusedItemCount?: number;
   summary?: string;
+  summaryZh?: string;
+  summaryEn?: string;
   error?: string;
   storage?: 'memory' | 'file-fallback' | 'empty';
 }
@@ -62,9 +73,6 @@ export interface PipelineEvent {
   detail?: string;
   report?: TrendReport;
 }
-
-// ── Streaming Event Schema ────────────────────────────────────────
-// Mirrors `agents/ai-trends/_types.ts → StreamEvent`.
 
 export type StageKey = 'fetch' | 'curator' | 'summarizer' | 'analyst' | 'writer';
 export type StageStatus = 'running' | 'done' | 'failed' | 'skipped';

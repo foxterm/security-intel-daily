@@ -1,15 +1,15 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode, SVGProps } from 'react';
-import { fetchHistory, fetchLatest, fetchReportDetail, runReportSSE, stopReport, deleteReport } from './api';
+import { fetchHistory, fetchLatest, fetchReportDetail, runReportSSE, stopReport } from './api';
 import { useI18n } from './i18n';
 import MarkdownReport from './MarkdownReport';
 import { EMPTY_REPORT, normalizeReport } from './reportModel';
 import type { AnalystCategoryEvent, AnalystDeepDiveEvent, HistoryEntry, ItemPhase, PipelineEvent, TrendItem, TrendReport } from './types';
 import styles from './App.module.css';
 
-function formatTime(value?: string, locale = 'zh-CN'): string {
+function formatTime(value?: string): string {
   if (!value) return '';
-  return new Intl.DateTimeFormat(locale === 'zh' ? 'zh-CN' : 'en-US', {
+  return new Intl.DateTimeFormat('en-US', {
     month: '2-digit',
     day: '2-digit',
     hour: '2-digit',
@@ -31,7 +31,12 @@ function StatusPill({ status }: { status?: string }) {
 
 function itemSummary(item?: TrendItem, fallbackLabel = 'update'): string {
   if (!item) return '';
-  return item.aiSummary?.trim() || item.summary?.trim() || `${item.category || 'AI'} ${fallbackLabel}: ${item.title}`;
+  const summary = item.aiSummary || item.summary;
+  return summary?.trim() || `${item.category || 'Security'} ${fallbackLabel}: ${item.title}`;
+}
+
+function getItemTitle(item: TrendItem): string {
+  return item.title;
 }
 
 function formatItemTime(value?: string, fallbackLabel = 'Unknown'): string {
@@ -39,8 +44,11 @@ function formatItemTime(value?: string, fallbackLabel = 'Unknown'): string {
   return formatTime(value);
 }
 
-const TOPICS = ['AI Agent', 'LLM', 'Multimodal', 'Open Source Model', 'AI Infra'];
-const DEFAULT_SOURCES = ['Hacker News', 'Dev.to'];
+function getTopics(): string[] {
+  return ['Vulnerability', 'Server Security', 'Network Security', 'Malware', 'Cloud & Infra', 'Data Breach'];
+}
+
+const DEFAULT_SOURCES = ['Hacker News', 'BleepingComputer', 'The Hacker News', 'GitHub Advisory'];
 
 const PIPELINE_STAGES = [
   { key: 'fetch', i18nKey: 'stageFetch' as const, parallel: undefined },
@@ -307,16 +315,16 @@ function LiveItemCard({ item, showScore }: { item: LiveItem; showScore: boolean 
           {item._phase === 'summarized' && <span className={styles.livePhaseTagSummarized}>{t('phaseTagSummarized')}</span>}
           {item._categoryStatus === 'new' && <span className={styles.newBadge}>NEW</span>}
         </div>
-        <strong>{item.title}</strong>
-        {item._phase === 'summarized' && item.aiSummary && (
-          <p className={styles.liveSummaryFadeIn}>{item.aiSummary}</p>
+        <strong>{getItemTitle(item)}</strong>
+        {item._phase === 'summarized' && item.aiSummaryEn && (
+          <p className={styles.liveSummaryFadeIn}>{item.aiSummaryEn}</p>
         )}
         {item._phase !== 'summarized' && item.summary && (
           <p style={{ opacity: 0.55 }}>{item.summary}</p>
         )}
       </div>
       <div className={styles.newsSideMeta}>
-        <span>{item._categoryAssigned || item.category || 'AI'}</span>
+        <span>{item._categoryAssigned || item.category || 'Security'}</span>
         {showScore && item.score != null && <span>score {item.score}</span>}
       </div>
     </div>
@@ -350,16 +358,11 @@ function MiniTypingCard({ text, onClick }: { text: string; onClick: () => void }
 }
 
 /* ====================================
-   Deploy URL helper (international vs domestic)
+   Deploy URL helper
    ==================================== */
-const TEMPLATE_NAME = 'ai-trends-scheduled-summary';
 
 function getDeployUrl(): string {
-  if (typeof window === 'undefined') return '#';
-  const domain = window.location.hostname.split('.').slice(1).join('.');
-  return domain === 'edgeone.dev'
-    ? `https://edgeone.ai/makers/new?template=${TEMPLATE_NAME}&from=within&fromAgent=1&agentLang=typescript`
-    : `https://console.cloud.tencent.com/edgeone/makers/new?template=${TEMPLATE_NAME}&from=within&fromAgent=1&agentLang=typescript`;
+  return 'https://foxterm.app';
 }
 
 /* ====================================
@@ -408,7 +411,7 @@ function SkeletonReportItem() {
 /* ====================================
    Empty State – Onboarding Hero
    ==================================== */
-function OnboardingHero({ onStart, loading }: { onStart: () => void; loading: boolean }) {
+function OnboardingHero({ loading }: { loading: boolean }) {
   const { t } = useI18n();
   return (
     <div className={styles.onboardCard}>
@@ -428,13 +431,6 @@ function OnboardingHero({ onStart, loading }: { onStart: () => void; loading: bo
           <IconTrendingUp size={13} /> {t('onboardingFeature3')}
         </span>
       </div>
-      <button className={styles.onboardCta} onClick={onStart} disabled={loading}>
-        {loading ? (
-          <><span className={styles.btnSpinner} /> {t('onboardingGenerating')}</>
-        ) : (
-          <><IconPlay size={16} /> {t('onboardingCta')}</>
-        )}
-      </button>
     </div>
   );
 }
@@ -443,7 +439,7 @@ function OnboardingHero({ onStart, loading }: { onStart: () => void; loading: bo
    Main App
    ==================================== */
 export default function App() {
-  const { t, locale, toggleLocale } = useI18n();
+  const { t } = useI18n();
   const [report, setReport] = useState<TrendReport>(EMPTY_REPORT);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [loading, setLoading] = useState(false);
@@ -657,6 +653,7 @@ export default function App() {
     setDrawerLoading(true);
     setDrawerReport(null);
     setDrawerOpen(true);
+    setStreamingDrawerOpen(false);
     try {
       const data = await fetchReportDetail(runId);
       setDrawerReport(normalizeReport(data));
@@ -672,6 +669,7 @@ export default function App() {
     if (report.status === 'success') {
       setDrawerReport(report);
       setDrawerOpen(true);
+      setStreamingDrawerOpen(false);
       requestAnimationFrame(() => drawerBodyRef.current?.scrollTo(0, 0));
     }
   }, [report]);
@@ -680,17 +678,6 @@ export default function App() {
     setDrawerOpen(false);
     setStreamingDrawerOpen(false);
   }, []);
-
-  const handleDelete = useCallback(async (runId?: string) => {
-    if (!runId) return;
-    if (!confirm(t('confirmDelete'))) return;
-    const success = await deleteReport(runId);
-    if (success) {
-      setHistory(prev => prev.filter(item => item.runId !== runId));
-      if (report.runId === runId) setReport(EMPTY_REPORT);
-      if (drawerReport?.runId === runId) setDrawerOpen(false);
-    }
-  }, [report.runId, drawerReport?.runId]);
 
   // Close drawer on Escape key
   useEffect(() => {
@@ -726,7 +713,7 @@ export default function App() {
   const newItems = useMemo(() => newsItems.filter(item => item.isNew), [newsItems]);
   const recurringItems = useMemo(() => newsItems.filter(item => !item.isNew), [newsItems]);
   const trendCount = safeReport.trends.length;
-  const sourceNames = useMemo(() => Array.from(new Set(newsItems.map(item => item.source))).join(' / ') || 'Hacker News / Dev.to', [newsItems]);
+  const sourceNames = useMemo(() => Array.from(new Set(newsItems.map(item => item.source))).join(' / ') || 'Hacker News / BleepingComputer / The Hacker News', [newsItems]);
 
   // After bootstrapping: do we have any content (latest report OR any history)?
   const hasAnyContent = safeReport.status === 'success' || history.length > 0 || newsItems.length > 0;
@@ -738,12 +725,9 @@ export default function App() {
         <a className={styles.deployButton} href={getDeployUrl()} target="_blank" rel="noreferrer">
           <IconRocket size={13} /> {t('deployButton')}
         </a>
-        <a className={styles.topCornerIcon} href="https://github.com/TencentEdgeOne/ai-trends-agent" target="_blank" rel="noreferrer" title="GitHub">
+        <a className={styles.topCornerIcon} href="https://github.com/foxterm" target="_blank" rel="noreferrer" title="GitHub">
           <IconGitHub size={16} />
         </a>
-        <button className={styles.langToggle} onClick={toggleLocale} title={locale === 'zh' ? 'Switch to English' : '切换为中文'}>
-          {locale === 'zh' ? 'EN' : '中'}
-        </button>
       </div>
       <header className={styles.topbar}>
         <div className={styles.brandBlock}>
@@ -752,27 +736,13 @@ export default function App() {
           <p>{t('subtitle')}</p>
           <p className={styles.scheduleHint}><IconClock size={12} /> {t('scheduleHint')}</p>
         </div>
-        <div className={styles.topActions}>
-          <button className={styles.primaryButton} onClick={run} disabled={loading}>
-            {loading ? (
-              <><span className={styles.btnSpinner} /> {t('generating')}</>
-            ) : (
-              <><IconPlay className={styles.btnIcon} /> {t('generate')}</>
-            )}
-          </button>
-          {loading && (
-            <button className={styles.secondaryButton} onClick={stop}>
-              <IconStop className={styles.btnIcon} /> {t('stop')}
-            </button>
-          )}
-        </div>
       </header>
 
       <PipelineBar stages={pipelineStages} />
 
       {!bootstrapping && (
         <div className={styles.statsBar}>
-          <span className={styles.statItem}>{t('lastGenerated')} <strong>{formatTime(safeReport.generatedAt, locale) || t('noTime')}</strong></span>
+          <span className={styles.statItem}>{t('lastGenerated')} <strong>{formatTime(safeReport.generatedAt) || t('noTime')}</strong></span>
           <span className={styles.statDot}>·</span>
           <span className={styles.statItem}><strong>{safeReport.itemCount ?? newsItems.length}</strong> {t('items')}</span>
           <span className={styles.statDot}>·</span>
@@ -790,9 +760,6 @@ export default function App() {
               <p className={styles.panelLabel}>{t('feedLabel')}</p>
               <h2 className={styles.feedTitle}>{t('feedTitle')}</h2>
             </div>
-            <button className={styles.ghostButton} onClick={refresh}>
-              <IconRefresh className={styles.btnIcon} /> {t('refresh')}
-            </button>
           </div>
 
           <div className={styles.filterRow}>
@@ -800,7 +767,7 @@ export default function App() {
               {(sourceNames.split(' / ')).map(source => <span key={source}>{source}</span>)}
             </div>
             <div className={styles.topicGrid}>
-              {TOPICS.map(topic => <span key={topic}>{topic}</span>)}
+              {getTopics().map(topic => <span key={topic}>{topic}</span>)}
             </div>
           </div>
 
@@ -813,7 +780,7 @@ export default function App() {
             // something move within the first 30s before Fetch completes.
             <SkeletonNewsList />
           ) : showOnboarding ? (
-            <OnboardingHero onStart={run} loading={loading} />
+            <OnboardingHero loading={loading} />
           ) : (
             <div className={styles.newsList}>
               {safeReport.newItemCount === 0 && safeReport.status === 'success' && (
@@ -843,11 +810,11 @@ export default function App() {
                           <span>{formatItemTime(item.publishedAt, t('unknownTimeLabel'))}</span>
                           {item.isNew && <span className={styles.newBadge}>NEW</span>}
                         </div>
-                        <strong>{item.title}</strong>
+                        <strong>{getItemTitle(item)}</strong>
                         <p>{itemSummary(item, t('fallbackSummary'))}</p>
                       </div>
                       <div className={styles.newsSideMeta}>
-                        <span>{item.category || 'AI'}</span>
+                        <span>{item.category || 'Security'}</span>
                         <span>score {item.score ?? 0}</span>
                         <span>
                           {t('sourceLabel')} <IconExternal size={11} style={{ verticalAlign: '-1px', marginLeft: 2 }} />
@@ -879,11 +846,11 @@ export default function App() {
                           <span>{formatItemTime(item.publishedAt, t('unknownTimeLabel'))}</span>
                           {item.isNew && <span className={styles.newBadge}>NEW</span>}
                         </div>
-                        <strong>{item.title}</strong>
+                        <strong>{getItemTitle(item)}</strong>
                         <p>{itemSummary(item, t('fallbackSummary'))}</p>
                       </div>
                       <div className={styles.newsSideMeta}>
-                        <span>{item.category || 'AI'}</span>
+                        <span>{item.category || 'Security'}</span>
                         <span>score {item.score ?? 0}</span>
                         <span>
                           {t('sourceLabel')} <IconExternal size={11} style={{ verticalAlign: '-1px', marginLeft: 2 }} />
@@ -938,7 +905,7 @@ export default function App() {
                   <div className={styles.latestReportHeader}>
                     <span className={styles.latestBadge}>{t('latest')}</span>
                     <TriggerBadge trigger={safeReport.trigger} />
-                    <span>{formatTime(safeReport.generatedAt, locale)}</span>
+                    <span>{formatTime(safeReport.generatedAt)}</span>
                   </div>
                   <strong>{safeReport.summary || `${trendCount} ${t('topics')} · ${newsItems.length} ${t('items')}`}</strong>
                   <span className={styles.viewReportLink}>
@@ -957,24 +924,15 @@ export default function App() {
                       onClick={() => openReport(item.runId)}
                     >
                       <div className={styles.reportItemTop}>
-                        <strong>{formatTime(item.generatedAt, locale)}</strong>
+                        <strong>{formatTime(item.generatedAt)}</strong>
                         <TriggerBadge trigger={item.trigger} />
                         {item.status === 'failed' && <StatusPill status={item.status} />}
                       </div>
-                      <p>{item.summary || item.error || t('noSummary')}</p>
+                      <p>{item.aiSummary || item.summary || item.error || t('noSummary')}</p>
                       <div className={styles.reportItemMeta}>
                         {item.itemCount != null && <span>{item.itemCount} {t('items')}</span>}
                         {item.newItemCount != null && <span>{item.newItemCount} {t('reportNew')}</span>}
                       </div>
-                    </button>
-                    <button
-                      type="button"
-                      className={styles.deleteButton}
-                      title={t('deleteReport')}
-                      aria-label={t('deleteReport')}
-                      onClick={(e) => { e.stopPropagation(); handleDelete(item.runId); }}
-                    >
-                      <IconX size={13} />
                     </button>
                   </div>
                 ))}
@@ -1009,7 +967,7 @@ export default function App() {
             <h2 className={styles.drawerTitle}>
               {streamingDrawerOpen
                 ? t('writingTitle')
-                : drawerReport?.generatedAt ? formatTime(drawerReport.generatedAt, locale) : t('reportTitle')}
+                : drawerReport?.generatedAt ? formatTime(drawerReport.generatedAt) : t('reportTitle')}
             </h2>
           </div>
           <button type="button" className={styles.drawerClose} onClick={closeDrawer} aria-label={t('close')}>
