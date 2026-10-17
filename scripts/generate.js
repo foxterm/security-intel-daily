@@ -142,7 +142,7 @@ async function collectGitHub(limit = 20) {
       id: `ghsa_${adv.ghsa_id || i}`,
       source: 'GitHub Advisory',
       title: adv.summary || adv.cve_id || 'Security Advisory',
-      url: adv.html_url || `https://github.com/advisories/${adv.ghsa_id}`,
+      link: adv.html_url || `https://github.com/advisories/${adv.ghsa_id}`,
       score: 0,
       publishedAt: adv.published_at || new Date().toISOString(),
       description: adv.description || adv.summary || '',
