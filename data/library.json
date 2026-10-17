@@ -741,7 +741,7 @@
     "lastSeenAt": "2026-10-17T19:13:16.417Z"
   },
   {
-    "id": "item_QXJjYW5lOiBEZWxlZ2F0ZWQgdXNlcnM6dXBkYXRlIHBlcm1pc3Npb24gYWxsb3dzIGFkbWluIGFjY291bnQgdGFrZW92ZXIgdmlhIHBhc3N3b3JkIHJlc2V0IChubyBwcml2aWxlZ2UtaGllcmFyY2h5IGNoZWNrKQ",
+    "id": "ghsa_GHSA_pw5q_rjx4_7f7p",
     "source": "GitHub Advisory",
     "title": "Arcane: Delegated users:update permission allows admin account takeover via password reset (no privilege-hierarchy check)",
     "score": 0,
@@ -751,10 +751,11 @@
     "isNew": true,
     "seenCount": 1,
     "firstSeenAt": "2026-10-17T19:13:16.417Z",
-    "lastSeenAt": "2026-10-17T19:13:16.417Z"
+    "lastSeenAt": "2026-10-17T19:13:16.417Z",
+    "url": "https://github.com/advisories/GHSA-pw5q-rjx4-7f7p"
   },
   {
-    "id": "item_QXJjYW5lOiBFbnZpcm9ubWVudCBhY2Nlc3MgdG9rZW4gYnlwYXNzZXMgdGhlIGFkbWluLXJlcXVpcmVkIGF1dGhvcml6YXRpb24gZ2F0ZSBvbiBgL2FwaS9kZWJ1Zy9wcHJvZmA",
+    "id": "ghsa_GHSA_mp22_58ff_6fhr",
     "source": "GitHub Advisory",
     "title": "Arcane: Environment access token bypasses the admin-required authorization gate on `/api/debug/pprof`",
     "score": 0,
@@ -764,10 +765,11 @@
     "isNew": true,
     "seenCount": 1,
     "firstSeenAt": "2026-10-17T19:13:16.417Z",
-    "lastSeenAt": "2026-10-17T19:13:16.417Z"
+    "lastSeenAt": "2026-10-17T19:13:16.417Z",
+    "url": "https://github.com/advisories/GHSA-mp22-58ff-6fhr"
   },
   {
-    "id": "item_TE1DYWNoZTogUmVtb3RlIGNvZGUgZXhlY3V0aW9uIHZpYSB1bnNhZmUgZGVzZXJpYWxpemF0aW9uIGluIG11bHRpcHJvY2VzcyBtb2RlIHRyYW5zcG9ydA",
+    "id": "ghsa_GHSA_w5f2_9q9c_ff4h",
     "source": "GitHub Advisory",
     "title": "LMCache: Remote code execution via unsafe deserialization in multiprocess mode transport",
     "score": 0,
@@ -777,10 +779,11 @@
     "isNew": true,
     "seenCount": 1,
     "firstSeenAt": "2026-10-17T19:13:16.417Z",
-    "lastSeenAt": "2026-10-17T19:13:16.417Z"
+    "lastSeenAt": "2026-10-17T19:13:16.417Z",
+    "url": "https://github.com/advisories/GHSA-w5f2-9q9c-ff4h"
   },
   {
-    "id": "item_bG9wZGYgaGFzIGEgc3RhY2sgb3ZlcmZsb3cgdmlhIGRlZXBseSBuZXN0ZWQgUERGIG9iamVjdHM",
+    "id": "ghsa_GHSA_6fj4_rcr3_r7rr",
     "source": "GitHub Advisory",
     "title": "lopdf has a stack overflow via deeply nested PDF objects",
     "score": 0,
@@ -790,10 +793,11 @@
     "isNew": true,
     "seenCount": 1,
     "firstSeenAt": "2026-10-17T19:13:16.417Z",
-    "lastSeenAt": "2026-10-17T19:13:16.417Z"
+    "lastSeenAt": "2026-10-17T19:13:16.417Z",
+    "url": "https://github.com/advisories/GHSA-6fj4-rcr3-r7rr"
   },
   {
-    "id": "item_SmF2YUNWOiBJbnRlZ2VyIE92ZXJmbG93IGluIElQQ2FtZXJhRnJhbWVHcmFiYmVyIENhdXNlcyBJbmZpbml0ZS1Mb29wIERvUw",
+    "id": "ghsa_GHSA_rxjv_24xq_76wc",
     "source": "GitHub Advisory",
     "title": "JavaCV: Integer Overflow in IPCameraFrameGrabber Causes Infinite-Loop DoS",
     "score": 0,
@@ -803,10 +807,11 @@
     "isNew": true,
     "seenCount": 1,
     "firstSeenAt": "2026-10-17T19:13:16.417Z",
-    "lastSeenAt": "2026-10-17T19:13:16.417Z"
+    "lastSeenAt": "2026-10-17T19:13:16.417Z",
+    "url": "https://github.com/advisories/GHSA-rxjv-24xq-76wc"
   },
   {
-    "id": "item_Q2xhdWRlIEFnZW50IFNESzogQXJndW1lbnQgSW5qZWN0aW9uIHZpYSByZXN1bWUgT3B0aW9uIEFsbG93cyBBcmJpdHJhcnkgQ29tbWFuZCBFeGVjdXRpb24",
+    "id": "ghsa_GHSA_h4mw_j7qp_8mwm",
     "source": "GitHub Advisory",
     "title": "Claude Agent SDK: Argument Injection via resume Option Allows Arbitrary Command Execution",
     "score": 0,
@@ -816,10 +821,11 @@
     "isNew": true,
     "seenCount": 1,
     "firstSeenAt": "2026-10-17T19:13:16.417Z",
-    "lastSeenAt": "2026-10-17T19:13:16.417Z"
+    "lastSeenAt": "2026-10-17T19:13:16.417Z",
+    "url": "https://github.com/advisories/GHSA-h4mw-j7qp-8mwm"
   },
   {
-    "id": "item_Y2thbi1tY3Atc2VydmVyOiBEYXRhU3RvcmUgVGFibGUgVUkgcmVzb3VyY2UgZG9lcyBub3QgdmFsaWRhdGUgcG9zdE1lc3NhZ2Ugb3JpZ2luIChpbikgYW5kIHBvc3RzIHRvIHRhcmdldE9yaWdpbiAiKiIgKG91dCk",
+    "id": "ghsa_GHSA_vqff_r82h_9crc",
     "source": "GitHub Advisory",
     "title": "ckan-mcp-server: DataStore Table UI resource does not validate postMessage origin (in) and posts to targetOrigin \"*\" (out)",
     "score": 0,
@@ -829,10 +835,11 @@
     "isNew": true,
     "seenCount": 1,
     "firstSeenAt": "2026-10-17T19:13:16.417Z",
-    "lastSeenAt": "2026-10-17T19:13:16.417Z"
+    "lastSeenAt": "2026-10-17T19:13:16.417Z",
+    "url": "https://github.com/advisories/GHSA-vqff-r82h-9crc"
   },
   {
-    "id": "item_c3dvb3NoIGhhcyBlbWFpbC1kZXJpdmVkIFVSTCBwYXRoIGluamVjdGlvbiBpbiBNaWNyb3NvZnQgR3JhcGggZW5kcG9pbnQ",
+    "id": "ghsa_GHSA_754j_98wh_57rf",
     "source": "GitHub Advisory",
     "title": "swoosh has email-derived URL path injection in Microsoft Graph endpoint",
     "score": 0,
@@ -842,10 +849,11 @@
     "isNew": true,
     "seenCount": 1,
     "firstSeenAt": "2026-10-17T19:13:16.417Z",
-    "lastSeenAt": "2026-10-17T19:13:16.417Z"
+    "lastSeenAt": "2026-10-17T19:13:16.417Z",
+    "url": "https://github.com/advisories/GHSA-754j-98wh-57rf"
   },
   {
-    "id": "item_Q2xpY2tNaWdyYXRlIGhhcyBQYXRoIFRyYXZlcnNhbCBpbiAicmV2aXNpb24gLW0iIGFyZ3VtZW50",
+    "id": "ghsa_GHSA_vgf9_9mxx_hq54",
     "source": "GitHub Advisory",
     "title": "ClickMigrate has Path Traversal in \"revision -m\" argument",
     "score": 0,
@@ -855,10 +863,11 @@
     "isNew": true,
     "seenCount": 1,
     "firstSeenAt": "2026-10-17T19:13:16.417Z",
-    "lastSeenAt": "2026-10-17T19:13:16.417Z"
+    "lastSeenAt": "2026-10-17T19:13:16.417Z",
+    "url": "https://github.com/advisories/GHSA-vgf9-9mxx-hq54"
   },
   {
-    "id": "item_Z29tYXJrZG93bi9tYXJrZG93biBJc1NhZmVVUkwgcGFuaWNzIG9uIHNob3J0IFVSTHM",
+    "id": "ghsa_GHSA_cv23_7vc5_jfh7",
     "source": "GitHub Advisory",
     "title": "gomarkdown/markdown IsSafeURL panics on short URLs",
     "score": 0,
@@ -868,10 +877,11 @@
     "isNew": true,
     "seenCount": 1,
     "firstSeenAt": "2026-10-17T19:13:16.417Z",
-    "lastSeenAt": "2026-10-17T19:13:16.417Z"
+    "lastSeenAt": "2026-10-17T19:13:16.417Z",
+    "url": "https://github.com/advisories/GHSA-cv23-7vc5-jfh7"
   },
   {
-    "id": "item_Q3Jvc3Mtc2l0ZSBTY3JpcHRpbmcgKFhTUykgaW4gc2VyaWFsaXplLWphdmFzY3JpcHQ",
+    "id": "ghsa_GHSA_76p7_773f_r4q5",
     "source": "GitHub Advisory",
     "title": "Cross-site Scripting (XSS) in serialize-javascript",
     "score": 0,
@@ -881,10 +891,11 @@
     "isNew": true,
     "seenCount": 1,
     "firstSeenAt": "2026-10-17T19:13:16.417Z",
-    "lastSeenAt": "2026-10-17T19:13:16.417Z"
+    "lastSeenAt": "2026-10-17T19:13:16.417Z",
+    "url": "https://github.com/advisories/GHSA-76p7-773f-r4q5"
   },
   {
-    "id": "item_VGFuU3RhY2sgUm91dGVyOiBVbmF1dGhlbnRpY2F0ZWQgcmVmbGVjdGVkIFhTUyBpbiBUYW5TdGFjayBTdGFydCBzZXJ2ZXItZnVuY3Rpb24gcmVzcG9uc2Vz",
+    "id": "ghsa_GHSA_qx66_fv34_fjm8",
     "source": "GitHub Advisory",
     "title": "TanStack Router: Unauthenticated reflected XSS in TanStack Start server-function responses",
     "score": 0,
@@ -894,10 +905,11 @@
     "isNew": true,
     "seenCount": 1,
     "firstSeenAt": "2026-10-17T19:13:16.417Z",
-    "lastSeenAt": "2026-10-17T19:13:16.417Z"
+    "lastSeenAt": "2026-10-17T19:13:16.417Z",
+    "url": "https://github.com/advisories/GHSA-qx66-fv34-fjm8"
   },
   {
-    "id": "item_UGlwZWNhdDogUHVibGljIGV4cG9zdXJlIG9mIFBpcGVjYXTigJlzIGRldmVsb3BtZW50IHJ1bm5lciBjYW4gYWxsb3cgdW5hdXRoZW50aWNhdGVkIGJvdCBzZXNzaW9uIGNyZWF0aW9u",
+    "id": "ghsa_GHSA_hqm2_cfx2_2vgh",
     "source": "GitHub Advisory",
     "title": "Pipecat: Public exposure of Pipecat’s development runner can allow unauthenticated bot session creation",
     "score": 0,
@@ -907,10 +919,11 @@
     "isNew": true,
     "seenCount": 1,
     "firstSeenAt": "2026-10-17T19:13:16.417Z",
-    "lastSeenAt": "2026-10-17T19:13:16.417Z"
+    "lastSeenAt": "2026-10-17T19:13:16.417Z",
+    "url": "https://github.com/advisories/GHSA-hqm2-cfx2-2vgh"
   },
   {
-    "id": "item_UG9kbWFuOiBUaGUgYHBvZG1hbiBydW5gIGNvbW1hbmQgY2FuIGJlIGluc3RydWN0ZWQgdG8gZGlzYWJsZSBhbG1vc3QgYWxsIHNhbmRib3hpbmcgYnkgaW1hZ2UgYW5ub3RhdGlvbg",
+    "id": "ghsa_GHSA_2cvf_wqm6_wr9g",
     "source": "GitHub Advisory",
     "title": "Podman: The `podman run` command can be instructed to disable almost all sandboxing by image annotation",
     "score": 0,
@@ -920,10 +933,11 @@
     "isNew": true,
     "seenCount": 1,
     "firstSeenAt": "2026-10-17T19:13:16.417Z",
-    "lastSeenAt": "2026-10-17T19:13:16.417Z"
+    "lastSeenAt": "2026-10-17T19:13:16.417Z",
+    "url": "https://github.com/advisories/GHSA-2cvf-wqm6-wr9g"
   },
   {
-    "id": "item_SnVweXRlckxhYjogQ29tbWFuZCBsaW5rIHRydXN0IHByb21wdCBpbiBKdXB5dGVyTGFiIGNhbiB0cnVzdCBhIGRvY3VtZW50IG90aGVyIHRoYW4gdGhlIG9uZSBjbGlja2Vk",
+    "id": "ghsa_GHSA_jwrc_gm9j_263p",
     "source": "GitHub Advisory",
     "title": "JupyterLab: Command link trust prompt in JupyterLab can trust a document other than the one clicked",
     "score": 0,
@@ -933,6 +947,7 @@
     "isNew": true,
     "seenCount": 1,
     "firstSeenAt": "2026-10-17T19:13:16.417Z",
-    "lastSeenAt": "2026-10-17T19:13:16.417Z"
+    "lastSeenAt": "2026-10-17T19:13:16.417Z",
+    "url": "https://github.com/advisories/GHSA-jwrc-gm9j-263p"
   }
 ]
