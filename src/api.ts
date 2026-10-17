@@ -51,7 +51,6 @@ export interface SSECallbacks {
 
 export async function runReportSSE(
   callbacks: SSECallbacks,
-  _signal?: AbortSignal,
 ): Promise<{ date: string; report: TrendReport } | null> {
   callbacks.onStage?.({ stage: 'fetch', status: 'running' });
   await new Promise(resolve => setTimeout(resolve, 300));

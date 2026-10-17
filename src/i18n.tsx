@@ -7,11 +7,10 @@ const translations = {
   subtitle: 'Automated aggregation of public security sources into traceable intelligence reports.',
   scheduleHint: 'Automated collection every 12 hours',
   generate: 'Generate',
-  generating: 'Generating...',
-  stop: 'Stop',
 
   // Stats bar
   lastGenerated: 'Last generated',
+  noTime: 'Not generated',
   items: 'items',
   topics: 'topics',
   source: 'Sources',
@@ -34,43 +33,24 @@ const translations = {
   // Feed
   feedLabel: 'Security Feed',
   feedTitle: 'Security Feed',
-  refresh: 'Refresh',
   newItems: 'New Items',
   recurring: 'Ongoing',
   emptyFeed: 'No items yet. Click "Generate" to start.',
   noNewBanner: 'No new security trends found. Here are recent items still worth noting.',
   sourceLabel: 'Source',
-  score: 'score',
   clearFilters: 'Clear filters',
   noResults: 'No items match the current filters.',
-  selectDate: 'Date',
 
   // Sidebar
   reportsLabel: 'Security Reports',
   reportsTitle: 'Reports',
-  reportCount: '',
-  latest: 'Latest',
-  viewReport: 'View full report',
   viewFullReport: 'View full report',
-  noSummary: 'No summary',
-  noHistory: 'No report history',
-  noHistoryHint: 'Reports will appear here after generation',
-  deleteReport: 'Delete report',
-  confirmDelete: 'Delete this report?',
-
-  // Trigger badge
-  triggerSchedule: 'Scheduled',
-  triggerManual: 'Manual',
 
   // Status
   statusEmpty: 'Pending',
   statusRunning: 'Running',
   statusSuccess: 'Done',
   statusFailed: 'Failed',
-
-  // Time
-  noTime: 'Not generated',
-  unknownTime: 'Unknown',
 
   // Mini typing card
   writingReport: 'Writing report',
@@ -89,9 +69,6 @@ const translations = {
   onboardingFeature1: 'Multi-source',
   onboardingFeature2: 'Smart Analysis',
   onboardingFeature3: 'Twice Daily Updates',
-  onboardingCta: 'Generate first report',
-  onboardingGenerating: 'Generating...',
-
   // Drawer extras
   liveTag: 'Live generating',
   drawerLoading: 'Loading report...',
@@ -110,8 +87,6 @@ const translations = {
 
   // Deploy FAB
   deployButton: 'FoxTerm',
-  deployDesc: 'Visit {link} for server management tools.',
-  deployLink: 'foxterm.app',
 } as const;
 
 export type TranslationKey = keyof typeof translations;

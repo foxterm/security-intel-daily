@@ -52,21 +52,6 @@ export interface TrendReport {
   storage?: 'memory' | 'file-fallback' | 'empty';
 }
 
-export interface HistoryEntry {
-  runId?: string;
-  status?: string;
-  trigger?: string;
-  generatedAt?: string;
-  itemCount?: number;
-  newItemCount?: number;
-  reusedItemCount?: number;
-  summary?: string;
-  summaryZh?: string;
-  summaryEn?: string;
-  error?: string;
-  storage?: 'memory' | 'file-fallback' | 'empty';
-}
-
 export interface PipelineEvent {
   stage: 'fetch' | 'curator' | 'summarizer' | 'analyst' | 'writer' | 'complete' | 'error';
   status: 'running' | 'done' | 'failed' | 'skipped';

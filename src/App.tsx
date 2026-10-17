@@ -4,9 +4,9 @@ import { runReportSSE, stopReport } from './api';
 import { useI18n } from './i18n';
 import MarkdownReport from './MarkdownReport';
 import { ReportProvider, useReport } from './ReportContext';
-import { EMPTY_REPORT, normalizeReport } from './reportModel';
+import { normalizeReport } from './reportModel';
 import { useTheme } from './ThemeContext';
-import type { AnalystCategoryEvent, AnalystDeepDiveEvent, ItemPhase, PipelineEvent, TrendItem, TrendReport } from './types';
+import type { AnalystCategoryEvent, AnalystDeepDiveEvent, ItemPhase, PipelineEvent, TrendItem } from './types';
 import styles from './App.module.css';
 
 function formatTime(value?: string): string {
@@ -48,8 +48,6 @@ function formatItemTime(value?: string, fallbackLabel = 'Unknown'): string {
 function getTopics(): string[] {
   return ['Vulnerability', 'Server Security', 'Network Security', 'Malware', 'Cloud & Infra', 'Data Breach'];
 }
-
-const DEFAULT_SOURCES = ['Hacker News', 'BleepingComputer', 'The Hacker News', 'GitHub Advisory'];
 
 const PIPELINE_STAGES = [
   { key: 'fetch', i18nKey: 'stageFetch' as const, parallel: undefined },
@@ -128,9 +126,6 @@ const IconPlay = (p: IconProps) => (
 const IconStop = (p: IconProps) => (
   <Icon {...p}><rect x="6" y="6" width="12" height="12" rx="2" /></Icon>
 );
-const IconBookmark = (p: IconProps) => (
-  <Icon {...p}><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" /></Icon>
-);
 const IconArrowRight = (p: IconProps) => (
   <Icon {...p}><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></Icon>
 );
@@ -184,17 +179,6 @@ const IconFoxTerm = (p: IconProps) => (
     <path d="M290.59 387.46L0 691.89l512 332.11z" fill="#FF4500" />
   </svg>
 );
-
-function TriggerBadge({ trigger }: { trigger?: string }) {
-  const { t } = useI18n();
-  if (trigger === 'schedule') {
-    return <span className={styles.triggerBadge} data-trigger="schedule"><IconClock size={11} /> {t('triggerSchedule')}</span>;
-  }
-  if (trigger === 'manual') {
-    return <span className={styles.triggerBadge} data-trigger="manual"><IconPlay size={11} /> {t('triggerManual')}</span>;
-  }
-  return null;
-}
 
 /* ====================================
    Pipeline Bar
@@ -434,7 +418,7 @@ function SkeletonReportItem() {
 /* ====================================
    Empty State – Onboarding Hero
    ==================================== */
-function OnboardingHero({ loading }: { loading: boolean }) {
+function OnboardingHero() {
   const { t } = useI18n();
   return (
     <div className={styles.onboardCard}>
@@ -599,7 +583,7 @@ function AppContent() {
         onToken: (event) => {
           setLiveWriterText(prev => prev + event.delta);
         },
-      }, controller.signal);
+      });
 
       if (result) {
         updateReport(result.date, result.report);
@@ -705,7 +689,6 @@ function AppContent() {
   }, [newsItems]);
   const trendCount = safeReport.trends.length;
   const allSources = useMemo(() => Array.from(new Set(newsItems.map(item => item.source))), [newsItems]);
-  const sourceNames = allSources.join(' / ') || 'Hacker News / BleepingComputer / The Hacker News';
 
   const sourceCounts = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -797,8 +780,6 @@ function AppContent() {
           <span className={styles.statItem}><strong>{safeReport.itemCount ?? newsItems.length}</strong> {t('items')}</span>
           <span className={styles.statDot}>·</span>
           <span className={styles.statItem}><strong>{trendCount}</strong> {t('topics')}</span>
-          {/*<span className={styles.statDot}>·</span>
-          <span className={styles.statItem}>{t('source')} {sourceNames}</span>*/}
         </div>
       )}
 
@@ -891,7 +872,7 @@ function AppContent() {
           ) : generating && !liveItems.length ? (
             <SkeletonNewsList />
           ) : showOnboarding ? (
-            <OnboardingHero loading={generating} />
+            <OnboardingHero />
           ) : (
             <div className={styles.newsList}>
               {newsItems.length === 0 && safeReport.status === 'success' && !activeSource && !activeTopic && (
