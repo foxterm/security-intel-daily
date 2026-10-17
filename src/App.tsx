@@ -871,7 +871,7 @@ function AppContent() {
                       </div>
                       <div className={styles.newsSideMeta}>
                         <span>{item.category || 'Security'}</span>
-                        {/*<span>score {item.score ?? 0}</span>*/}
+                        <span>score {item.score ?? 0}</span>
                         <span>
                           {t('sourceLabel')} <IconExternal size={11} style={{ verticalAlign: '-1px', marginLeft: 2 }} />
                         </span>
