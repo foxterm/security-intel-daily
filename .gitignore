@@ -4,7 +4,6 @@
 dist/
 build/
 *.tsbuildinfo
-.edgeone/
 .venv/
 venv/
 __pycache__/
