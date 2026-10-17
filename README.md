@@ -1,16 +1,16 @@
-# FoxTerm Security Intel Daily
+# FoxTerm Security Intel
 
-> Automated security intelligence daily report — collects from public security sources and generates traceable intelligence reports.
+> Automated security intelligence — collects from public security sources and generates traceable intelligence reports.
 
 **Category:** Security Intelligence · **Language:** English · **No AI Required**
 
 ## Overview
 
-FoxTerm Security Intel Daily automatically collects security intelligence from multiple public sources (The Hacker News, CISA, BleepingComputer, Hacker News, GitHub Advisory) and generates a structured daily report in Markdown format.
+FoxTerm Security Intel automatically collects security intelligence from multiple public sources (The Hacker News, CISA, BleepingComputer, Hacker News, GitHub Advisory) and generates structured reports in Markdown format.
 
 - **Multi-source collection** — RSS feeds, Hacker News API, GitHub Advisory API
 - **No AI/LLM required** — template-based report generation, zero API costs
-- **Automated daily reports** — GitHub Actions runs daily at 01:00 UTC (09:00 CST)
+- **Automated updates** — GitHub Actions runs every 12 hours
 - **Categorized intelligence** — Vulnerability, Server Security, Network Security, Malware, Cloud & Infra, Data Breach
 - **Historical tracking** — cross-run deduplication with seenCount, firstSeenAt, lastSeenAt
 
@@ -26,13 +26,13 @@ FoxTerm Security Intel Daily automatically collects security intelligence from m
 - **Template-based**: No LLM API calls, instant generation
 - **English-only**: All content in English
 - **Markdown format**: Structured by category with item counts
-- **Bilingual metadata**: Summary and report in English
+- **Date-based archival**: Reports organized by date in `data/YYYY-MM-DD/report.json`
 
 ### Automation
-- **Daily schedule**: GitHub Actions cron job at 01:00 UTC
+- **Schedule**: GitHub Actions runs every 12 hours
 - **Manual trigger**: Can be triggered manually via workflow_dispatch
-- **Data-only commits**: Only `data/*.json` files are committed, no build artifacts
-- **Historical data**: Maintains library.json for deduplication and history.json for report history
+- **Data-only commits**: Only `data/` files are committed, no build artifacts
+- **Date index**: `data/index.json` maintains sorted list of available dates
 
 ## Local Development
 
@@ -61,15 +61,16 @@ trends-security/
 ├── src/                      # Frontend (React + Vite)
 │   ├── App.tsx               # Main UI: SecurityFeed, ReportSidebar, Drawer
 │   ├── App.module.css        # Orange-red gradient color scheme
-│   ├── api.ts                # REST API helpers
+│   ├── ReportContext.tsx      # Centralized data management
+│   ├── api.ts                # API helpers
 │   ├── i18n.tsx              # English-only translations
 │   ├── MarkdownReport.tsx    # Markdown renderer
 │   ├── reportModel.ts        # Report normalization
 │   └── types.ts              # TypeScript type definitions
 ├── data/
-│   ├── latest.json           # Latest report data
-│   ├── history.json          # Report history
-│   └── library.json          # Item library for deduplication
+│   ├── index.json            # Sorted array of available dates
+│   └── YYYY-MM-DD/
+│       └── report.json       # Daily report data
 ├── .github/
 │   └── workflows/
 │       └── daily-report.yml  # GitHub Actions workflow
@@ -79,7 +80,13 @@ trends-security/
 
 ## Data Structure
 
-### latest.json
+### data/index.json
+Simple array of available dates, sorted descending:
+```json
+["2026-10-18", "2026-10-17", "2026-10-16"]
+```
+
+### data/YYYY-MM-DD/report.json
 ```json
 {
   "runId": "run_1234567890",
@@ -88,13 +95,13 @@ trends-security/
   "itemCount": 40,
   "newItemCount": 5,
   "summary": "40 security intelligence items",
-  "reportMarkdown": "# FoxTerm Security Intel Daily\n\n...",
+  "reportMarkdown": "# FoxTerm Security Intel\n\n...",
   "trends": [
     {
       "category": "Vulnerability",
       "summary": "Item1; Item2; Item3",
       "count": 3,
-      "items": [...]
+      "itemIds": ["id1", "id2", "id3"]
     }
   ],
   "items": [...]
@@ -111,15 +118,13 @@ trends-security/
 
 ## GitHub Actions Workflow
 
-The daily workflow runs automatically:
+The workflow runs automatically:
 
 1. **Checkout** repository
-2. **Setup** Node.js 20
-3. **Install** dependencies
-4. **Generate** security report (collects data, generates markdown)
-5. **Commit** data changes (`data/*.json` only)
+2. **Generate** security report (collects data, generates markdown)
+3. **Commit** data changes (`data/` only)
 
-**Schedule:** Daily at 01:00 UTC (09:00 CST)  
+**Schedule:** Every 12 hours  
 **Manual trigger:** Available via `workflow_dispatch`
 
 ## Color Scheme
@@ -143,7 +148,7 @@ npm run build
 ```
 
 ### Automated Data Updates
-GitHub Actions automatically commits updated data files daily. Your static site can read from `data/latest.json` to display the latest report.
+GitHub Actions automatically commits updated data files every 12 hours. The frontend reads from `data/index.json` to list available dates and `data/YYYY-MM-DD/report.json` for report content.
 
 ## Resources
 
