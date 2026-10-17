@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "runId": "run_1792264396415",
+    "status": "success",
+    "trigger": "schedule",
+    "generatedAt": "2026-10-17T19:13:16.415Z",
+    "itemCount": 68,
+    "newItemCount": 68,
+    "summary": "68 security intelligence items"
+  }
+]
