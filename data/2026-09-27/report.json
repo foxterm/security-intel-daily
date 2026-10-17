@@ -1,0 +1,280 @@
+{
+  "runId": "run_1792270196685_20",
+  "status": "success",
+  "trigger": "schedule",
+  "generatedAt": "2026-09-27T20:49:56.675Z",
+  "itemCount": 16,
+  "newItemCount": 4,
+  "summary": "16 security intelligence items",
+  "reportMarkdown": "# FoxTerm Security Intel\n\n**2026-09-27**\n\n---\n\n## Vulnerability (1)\n\n- **SSH brute force campaign detected #14**\n\n## Server Security (1)\n\n- **Zero-day exploit disclosed in widely-used framework #13**\n\n## Network Security (4)\n\n- **New phishing campaign targets enterprise users #1**\n- **DDoS attack reaches record bandwidth #3**\n- **Botnet infrastructure taken down by law enforcement #9**\n- **XSS vulnerability in admin panel #16**\n\n## Malware (5)\n\n- **Zero-day exploit disclosed in widely-used framework #2**\n- **XSS vulnerability in admin panel #6**\n- **Critical RCE vulnerability found in popular library #10**\n- **API key leakage in public repository #11**\n- **API key leakage in public repository #15**\n\n## Cloud & Infra (2)\n\n- **SSH brute force campaign detected #4**\n- **XSS vulnerability in admin panel #5**\n\n## Data Breach (3)\n\n- **Botnet infrastructure taken down by law enforcement #7**\n- **SQL injection in legacy application #8**\n- **SSH brute force campaign detected #12**\n\n---\n\n*Total 16 items*",
+  "trends": [
+    {
+      "category": "Vulnerability",
+      "summary": "SSH brute force campaign detected #14",
+      "count": 1,
+      "itemIds": [
+        "item_2026-09-27_13"
+      ]
+    },
+    {
+      "category": "Server Security",
+      "summary": "Zero-day exploit disclosed in widely-used framework #13",
+      "count": 1,
+      "itemIds": [
+        "item_2026-09-27_12"
+      ]
+    },
+    {
+      "category": "Network Security",
+      "summary": "New phishing campaign targets enterprise users #1; DDoS attack reaches record bandwidth #3; Botnet infrastructure taken down by law enforcement #9; XSS vulnerability in admin panel #16",
+      "count": 4,
+      "itemIds": [
+        "item_2026-09-27_0",
+        "item_2026-09-27_2",
+        "item_2026-09-27_8",
+        "item_2026-09-27_15"
+      ]
+    },
+    {
+      "category": "Malware",
+      "summary": "Zero-day exploit disclosed in widely-used framework #2; XSS vulnerability in admin panel #6; Critical RCE vulnerability found in popular library #10; API key leakage in public repository #11; API key leakage in public repository #15",
+      "count": 5,
+      "itemIds": [
+        "item_2026-09-27_1",
+        "item_2026-09-27_5",
+        "item_2026-09-27_9",
+        "item_2026-09-27_10",
+        "item_2026-09-27_14"
+      ]
+    },
+    {
+      "category": "Cloud & Infra",
+      "summary": "SSH brute force campaign detected #4; XSS vulnerability in admin panel #5",
+      "count": 2,
+      "itemIds": [
+        "item_2026-09-27_3",
+        "item_2026-09-27_4"
+      ]
+    },
+    {
+      "category": "Data Breach",
+      "summary": "Botnet infrastructure taken down by law enforcement #7; SQL injection in legacy application #8; SSH brute force campaign detected #12",
+      "count": 3,
+      "itemIds": [
+        "item_2026-09-27_6",
+        "item_2026-09-27_7",
+        "item_2026-09-27_11"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item_2026-09-27_0",
+      "source": "GitHub Advisory",
+      "title": "New phishing campaign targets enterprise users #1",
+      "url": "https://example.com/2026-09-27/0",
+      "score": 7,
+      "category": "Network Security",
+      "summary": "Security update regarding new phishing campaign targets enterprise users",
+      "publishedAt": "2026-09-28T07:22:56.675Z",
+      "firstSeenAt": "2026-09-28T07:22:56.675Z",
+      "lastSeenAt": "2026-09-28T07:22:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-27_1",
+      "source": "Hacker News",
+      "title": "Zero-day exploit disclosed in widely-used framework #2",
+      "url": "https://example.com/2026-09-27/1",
+      "score": 8,
+      "category": "Malware",
+      "summary": "Security update regarding zero-day exploit disclosed in widely-used framework",
+      "publishedAt": "2026-09-28T05:34:56.675Z",
+      "firstSeenAt": "2026-09-28T05:34:56.675Z",
+      "lastSeenAt": "2026-09-28T05:34:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-27_2",
+      "source": "BleepingComputer",
+      "title": "DDoS attack reaches record bandwidth #3",
+      "url": "https://example.com/2026-09-27/2",
+      "score": 4,
+      "category": "Network Security",
+      "summary": "Security update regarding ddos attack reaches record bandwidth",
+      "publishedAt": "2026-09-28T03:16:56.675Z",
+      "firstSeenAt": "2026-09-28T03:16:56.675Z",
+      "lastSeenAt": "2026-09-28T03:16:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-27_3",
+      "source": "The Hacker News",
+      "title": "SSH brute force campaign detected #4",
+      "url": "https://example.com/2026-09-27/3",
+      "score": 3,
+      "category": "Cloud & Infra",
+      "summary": "Security update regarding ssh brute force campaign detected",
+      "publishedAt": "2026-09-28T09:04:56.675Z",
+      "firstSeenAt": "2026-09-28T09:04:56.675Z",
+      "lastSeenAt": "2026-09-28T09:04:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-27_4",
+      "source": "The Hacker News",
+      "title": "XSS vulnerability in admin panel #5",
+      "url": "https://example.com/2026-09-27/4",
+      "score": 7,
+      "category": "Cloud & Infra",
+      "summary": "Security update regarding xss vulnerability in admin panel",
+      "publishedAt": "2026-09-28T09:20:56.675Z",
+      "firstSeenAt": "2026-09-28T09:20:56.675Z",
+      "lastSeenAt": "2026-09-28T09:20:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-27_5",
+      "source": "GitHub Advisory",
+      "title": "XSS vulnerability in admin panel #6",
+      "url": "https://example.com/2026-09-27/5",
+      "score": 9,
+      "category": "Malware",
+      "summary": "Security update regarding xss vulnerability in admin panel",
+      "publishedAt": "2026-09-27T17:45:56.675Z",
+      "firstSeenAt": "2026-09-27T17:45:56.675Z",
+      "lastSeenAt": "2026-09-27T17:45:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-27_6",
+      "source": "GitHub Advisory",
+      "title": "Botnet infrastructure taken down by law enforcement #7",
+      "url": "https://example.com/2026-09-27/6",
+      "score": 9,
+      "category": "Data Breach",
+      "summary": "Security update regarding botnet infrastructure taken down by law enforcement",
+      "publishedAt": "2026-09-28T12:06:56.675Z",
+      "firstSeenAt": "2026-09-28T12:06:56.675Z",
+      "lastSeenAt": "2026-09-28T12:06:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-27_7",
+      "source": "BleepingComputer",
+      "title": "SQL injection in legacy application #8",
+      "url": "https://example.com/2026-09-27/7",
+      "score": 3,
+      "category": "Data Breach",
+      "summary": "Security update regarding sql injection in legacy application",
+      "publishedAt": "2026-09-28T04:01:56.675Z",
+      "firstSeenAt": "2026-09-28T04:01:56.675Z",
+      "lastSeenAt": "2026-09-28T04:01:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-27_8",
+      "source": "The Hacker News",
+      "title": "Botnet infrastructure taken down by law enforcement #9",
+      "url": "https://example.com/2026-09-27/8",
+      "score": 6,
+      "category": "Network Security",
+      "summary": "Security update regarding botnet infrastructure taken down by law enforcement",
+      "publishedAt": "2026-09-27T18:35:56.675Z",
+      "firstSeenAt": "2026-09-27T18:35:56.675Z",
+      "lastSeenAt": "2026-09-27T18:35:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-27_9",
+      "source": "BleepingComputer",
+      "title": "Critical RCE vulnerability found in popular library #10",
+      "url": "https://example.com/2026-09-27/9",
+      "score": 4,
+      "category": "Malware",
+      "summary": "Security update regarding critical rce vulnerability found in popular library",
+      "publishedAt": "2026-09-28T10:59:56.675Z",
+      "firstSeenAt": "2026-09-28T10:59:56.675Z",
+      "lastSeenAt": "2026-09-28T10:59:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-27_10",
+      "source": "The Hacker News",
+      "title": "API key leakage in public repository #11",
+      "url": "https://example.com/2026-09-27/10",
+      "score": 8,
+      "category": "Malware",
+      "summary": "Security update regarding api key leakage in public repository",
+      "publishedAt": "2026-09-28T08:36:56.675Z",
+      "firstSeenAt": "2026-09-28T08:36:56.675Z",
+      "lastSeenAt": "2026-09-28T08:36:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-27_11",
+      "source": "BleepingComputer",
+      "title": "SSH brute force campaign detected #12",
+      "url": "https://example.com/2026-09-27/11",
+      "score": 6,
+      "category": "Data Breach",
+      "summary": "Security update regarding ssh brute force campaign detected",
+      "publishedAt": "2026-09-27T20:19:56.675Z",
+      "firstSeenAt": "2026-09-27T20:19:56.675Z",
+      "lastSeenAt": "2026-09-27T20:19:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-27_12",
+      "source": "Hacker News",
+      "title": "Zero-day exploit disclosed in widely-used framework #13",
+      "url": "https://example.com/2026-09-27/12",
+      "score": 2,
+      "category": "Server Security",
+      "summary": "Security update regarding zero-day exploit disclosed in widely-used framework",
+      "publishedAt": "2026-09-28T02:37:56.675Z",
+      "firstSeenAt": "2026-09-28T02:37:56.675Z",
+      "lastSeenAt": "2026-09-28T02:37:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-27_13",
+      "source": "BleepingComputer",
+      "title": "SSH brute force campaign detected #14",
+      "url": "https://example.com/2026-09-27/13",
+      "score": 3,
+      "category": "Vulnerability",
+      "summary": "Security update regarding ssh brute force campaign detected",
+      "publishedAt": "2026-09-27T18:33:56.675Z",
+      "firstSeenAt": "2026-09-27T18:33:56.675Z",
+      "lastSeenAt": "2026-09-27T18:33:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-27_14",
+      "source": "BleepingComputer",
+      "title": "API key leakage in public repository #15",
+      "url": "https://example.com/2026-09-27/14",
+      "score": 9,
+      "category": "Malware",
+      "summary": "Security update regarding api key leakage in public repository",
+      "publishedAt": "2026-09-27T23:23:56.675Z",
+      "firstSeenAt": "2026-09-27T23:23:56.675Z",
+      "lastSeenAt": "2026-09-27T23:23:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-27_15",
+      "source": "Hacker News",
+      "title": "XSS vulnerability in admin panel #16",
+      "url": "https://example.com/2026-09-27/15",
+      "score": 7,
+      "category": "Network Security",
+      "summary": "Security update regarding xss vulnerability in admin panel",
+      "publishedAt": "2026-09-28T00:27:56.675Z",
+      "firstSeenAt": "2026-09-28T00:27:56.675Z",
+      "lastSeenAt": "2026-09-28T00:27:56.675Z",
+      "seenCount": 1
+    }
+  ]
+}

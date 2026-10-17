@@ -1,0 +1,91 @@
+{
+  "runId": "run_1792270196685_23",
+  "status": "success",
+  "trigger": "schedule",
+  "generatedAt": "2026-09-24T20:49:56.675Z",
+  "itemCount": 4,
+  "newItemCount": 1,
+  "summary": "4 security intelligence items",
+  "reportMarkdown": "# FoxTerm Security Intel\n\n**2026-09-24**\n\n---\n\n## Server Security (1)\n\n- **API key leakage in public repository #2**\n\n## Network Security (2)\n\n- **SSH brute force campaign detected #3**\n- **Major data breach affects millions of records #4**\n\n## Malware (1)\n\n- **Botnet infrastructure taken down by law enforcement #1**\n\n---\n\n*Total 4 items*",
+  "trends": [
+    {
+      "category": "Server Security",
+      "summary": "API key leakage in public repository #2",
+      "count": 1,
+      "itemIds": [
+        "item_2026-09-24_1"
+      ]
+    },
+    {
+      "category": "Network Security",
+      "summary": "SSH brute force campaign detected #3; Major data breach affects millions of records #4",
+      "count": 2,
+      "itemIds": [
+        "item_2026-09-24_2",
+        "item_2026-09-24_3"
+      ]
+    },
+    {
+      "category": "Malware",
+      "summary": "Botnet infrastructure taken down by law enforcement #1",
+      "count": 1,
+      "itemIds": [
+        "item_2026-09-24_0"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item_2026-09-24_0",
+      "source": "Hacker News",
+      "title": "Botnet infrastructure taken down by law enforcement #1",
+      "url": "https://example.com/2026-09-24/0",
+      "score": 4,
+      "category": "Malware",
+      "summary": "Security update regarding botnet infrastructure taken down by law enforcement",
+      "publishedAt": "2026-09-25T05:44:56.675Z",
+      "firstSeenAt": "2026-09-25T05:44:56.675Z",
+      "lastSeenAt": "2026-09-25T05:44:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-24_1",
+      "source": "Hacker News",
+      "title": "API key leakage in public repository #2",
+      "url": "https://example.com/2026-09-24/1",
+      "score": 3,
+      "category": "Server Security",
+      "summary": "Security update regarding api key leakage in public repository",
+      "publishedAt": "2026-09-24T17:43:56.675Z",
+      "firstSeenAt": "2026-09-24T17:43:56.675Z",
+      "lastSeenAt": "2026-09-24T17:43:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-24_2",
+      "source": "BleepingComputer",
+      "title": "SSH brute force campaign detected #3",
+      "url": "https://example.com/2026-09-24/2",
+      "score": 1,
+      "category": "Network Security",
+      "summary": "Security update regarding ssh brute force campaign detected",
+      "publishedAt": "2026-09-25T14:07:56.675Z",
+      "firstSeenAt": "2026-09-25T14:07:56.675Z",
+      "lastSeenAt": "2026-09-25T14:07:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-24_3",
+      "source": "Hacker News",
+      "title": "Major data breach affects millions of records #4",
+      "url": "https://example.com/2026-09-24/3",
+      "score": 9,
+      "category": "Network Security",
+      "summary": "Security update regarding major data breach affects millions of records",
+      "publishedAt": "2026-09-25T02:25:56.675Z",
+      "firstSeenAt": "2026-09-25T02:25:56.675Z",
+      "lastSeenAt": "2026-09-25T02:25:56.675Z",
+      "seenCount": 1
+    }
+  ]
+}

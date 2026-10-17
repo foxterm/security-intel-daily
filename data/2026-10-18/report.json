@@ -1,8 +1,8 @@
 {
-  "runId": "run_1792268915734",
+  "runId": "run_1792270048784",
   "status": "success",
   "trigger": "schedule",
-  "generatedAt": "2026-10-17T20:28:35.734Z",
+  "generatedAt": "2026-10-17T20:47:28.784Z",
   "itemCount": 16,
   "newItemCount": 0,
   "summary": "16 security intelligence items",
@@ -56,7 +56,9 @@
       "summary": "",
       "category": "Network Security",
       "isNew": true,
-      "seenCount": 1
+      "seenCount": 1,
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     },
     {
       "id": "ghsa_GHSA_pw5q_rjx4_7f7p",
@@ -68,7 +70,9 @@
       "category": "Security Industry",
       "isNew": true,
       "seenCount": 1,
-      "url": "https://github.com/advisories/GHSA-pw5q-rjx4-7f7p"
+      "url": "https://github.com/advisories/GHSA-pw5q-rjx4-7f7p",
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     },
     {
       "id": "ghsa_GHSA_mp22_58ff_6fhr",
@@ -80,7 +84,9 @@
       "category": "Vulnerability",
       "isNew": true,
       "seenCount": 1,
-      "url": "https://github.com/advisories/GHSA-mp22-58ff-6fhr"
+      "url": "https://github.com/advisories/GHSA-mp22-58ff-6fhr",
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     },
     {
       "id": "ghsa_GHSA_w5f2_9q9c_ff4h",
@@ -92,7 +98,9 @@
       "category": "Vulnerability",
       "isNew": true,
       "seenCount": 1,
-      "url": "https://github.com/advisories/GHSA-w5f2-9q9c-ff4h"
+      "url": "https://github.com/advisories/GHSA-w5f2-9q9c-ff4h",
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     },
     {
       "id": "ghsa_GHSA_6fj4_rcr3_r7rr",
@@ -104,7 +112,9 @@
       "category": "Network Security",
       "isNew": true,
       "seenCount": 1,
-      "url": "https://github.com/advisories/GHSA-6fj4-rcr3-r7rr"
+      "url": "https://github.com/advisories/GHSA-6fj4-rcr3-r7rr",
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     },
     {
       "id": "ghsa_GHSA_rxjv_24xq_76wc",
@@ -116,7 +126,9 @@
       "category": "Vulnerability",
       "isNew": true,
       "seenCount": 1,
-      "url": "https://github.com/advisories/GHSA-rxjv-24xq-76wc"
+      "url": "https://github.com/advisories/GHSA-rxjv-24xq-76wc",
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     },
     {
       "id": "ghsa_GHSA_h4mw_j7qp_8mwm",
@@ -128,7 +140,9 @@
       "category": "Vulnerability",
       "isNew": true,
       "seenCount": 1,
-      "url": "https://github.com/advisories/GHSA-h4mw-j7qp-8mwm"
+      "url": "https://github.com/advisories/GHSA-h4mw-j7qp-8mwm",
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     },
     {
       "id": "ghsa_GHSA_vqff_r82h_9crc",
@@ -140,7 +154,9 @@
       "category": "Vulnerability",
       "isNew": true,
       "seenCount": 1,
-      "url": "https://github.com/advisories/GHSA-vqff-r82h-9crc"
+      "url": "https://github.com/advisories/GHSA-vqff-r82h-9crc",
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     },
     {
       "id": "ghsa_GHSA_754j_98wh_57rf",
@@ -152,7 +168,9 @@
       "category": "Vulnerability",
       "isNew": true,
       "seenCount": 1,
-      "url": "https://github.com/advisories/GHSA-754j-98wh-57rf"
+      "url": "https://github.com/advisories/GHSA-754j-98wh-57rf",
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     },
     {
       "id": "ghsa_GHSA_vgf9_9mxx_hq54",
@@ -164,7 +182,9 @@
       "category": "Vulnerability",
       "isNew": true,
       "seenCount": 1,
-      "url": "https://github.com/advisories/GHSA-vgf9-9mxx-hq54"
+      "url": "https://github.com/advisories/GHSA-vgf9-9mxx-hq54",
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     },
     {
       "id": "ghsa_GHSA_cv23_7vc5_jfh7",
@@ -176,7 +196,9 @@
       "category": "Vulnerability",
       "isNew": true,
       "seenCount": 1,
-      "url": "https://github.com/advisories/GHSA-cv23-7vc5-jfh7"
+      "url": "https://github.com/advisories/GHSA-cv23-7vc5-jfh7",
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     },
     {
       "id": "ghsa_GHSA_76p7_773f_r4q5",
@@ -188,7 +210,9 @@
       "category": "Vulnerability",
       "isNew": true,
       "seenCount": 1,
-      "url": "https://github.com/advisories/GHSA-76p7-773f-r4q5"
+      "url": "https://github.com/advisories/GHSA-76p7-773f-r4q5",
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     },
     {
       "id": "ghsa_GHSA_qx66_fv34_fjm8",
@@ -200,7 +224,9 @@
       "category": "Vulnerability",
       "isNew": true,
       "seenCount": 1,
-      "url": "https://github.com/advisories/GHSA-qx66-fv34-fjm8"
+      "url": "https://github.com/advisories/GHSA-qx66-fv34-fjm8",
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     },
     {
       "id": "ghsa_GHSA_hqm2_cfx2_2vgh",
@@ -212,7 +238,9 @@
       "category": "Vulnerability",
       "isNew": true,
       "seenCount": 1,
-      "url": "https://github.com/advisories/GHSA-hqm2-cfx2-2vgh"
+      "url": "https://github.com/advisories/GHSA-hqm2-cfx2-2vgh",
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     },
     {
       "id": "ghsa_GHSA_2cvf_wqm6_wr9g",
@@ -224,7 +252,9 @@
       "category": "Vulnerability",
       "isNew": true,
       "seenCount": 1,
-      "url": "https://github.com/advisories/GHSA-2cvf-wqm6-wr9g"
+      "url": "https://github.com/advisories/GHSA-2cvf-wqm6-wr9g",
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     },
     {
       "id": "ghsa_GHSA_jwrc_gm9j_263p",
@@ -236,7 +266,9 @@
       "category": "Vulnerability",
       "isNew": true,
       "seenCount": 1,
-      "url": "https://github.com/advisories/GHSA-jwrc-gm9j-263p"
+      "url": "https://github.com/advisories/GHSA-jwrc-gm9j-263p",
+      "firstSeenAt": "2026-10-17T20:46:06.905Z",
+      "lastSeenAt": "2026-10-17T20:46:06.905Z"
     }
   ]
 }

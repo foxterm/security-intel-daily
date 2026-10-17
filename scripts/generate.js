@@ -308,10 +308,14 @@ async function main() {
 
   // Merge: keep existing items, add new ones
   let newCount = 0;
+  const now = new Date().toISOString();
   for (const item of candidates) {
     if (!existingById.has(item.id)) {
-      existingById.set(item.id, item);
+      existingById.set(item.id, { ...item, firstSeenAt: now, lastSeenAt: now, seenCount: 1 });
       newCount++;
+    } else {
+      const existing = existingById.get(item.id);
+      existingById.set(item.id, { ...existing, lastSeenAt: now, seenCount: (existing.seenCount || 0) + 1 });
     }
   }
 

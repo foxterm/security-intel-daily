@@ -1,0 +1,196 @@
+{
+  "runId": "run_1792270196685_21",
+  "status": "success",
+  "trigger": "schedule",
+  "generatedAt": "2026-09-26T20:49:56.675Z",
+  "itemCount": 10,
+  "newItemCount": 3,
+  "summary": "10 security intelligence items",
+  "reportMarkdown": "# FoxTerm Security Intel\n\n**2026-09-26**\n\n---\n\n## Vulnerability (3)\n\n- **Zero-day exploit disclosed in widely-used framework #1**\n- **Major data breach affects millions of records #6**\n- **CVE published for authentication bypass #8**\n\n## Server Security (2)\n\n- **SQL injection in legacy application #7**\n- **Container escape vulnerability reported #10**\n\n## Network Security (1)\n\n- **Container escape vulnerability reported #4**\n\n## Malware (1)\n\n- **Critical RCE vulnerability found in popular library #5**\n\n## Cloud & Infra (1)\n\n- **Botnet infrastructure taken down by law enforcement #9**\n\n## Data Breach (2)\n\n- **Supply chain attack discovered in npm package #2**\n- **Zero-day exploit disclosed in widely-used framework #3**\n\n---\n\n*Total 10 items*",
+  "trends": [
+    {
+      "category": "Vulnerability",
+      "summary": "Zero-day exploit disclosed in widely-used framework #1; Major data breach affects millions of records #6; CVE published for authentication bypass #8",
+      "count": 3,
+      "itemIds": [
+        "item_2026-09-26_0",
+        "item_2026-09-26_5",
+        "item_2026-09-26_7"
+      ]
+    },
+    {
+      "category": "Server Security",
+      "summary": "SQL injection in legacy application #7; Container escape vulnerability reported #10",
+      "count": 2,
+      "itemIds": [
+        "item_2026-09-26_6",
+        "item_2026-09-26_9"
+      ]
+    },
+    {
+      "category": "Network Security",
+      "summary": "Container escape vulnerability reported #4",
+      "count": 1,
+      "itemIds": [
+        "item_2026-09-26_3"
+      ]
+    },
+    {
+      "category": "Malware",
+      "summary": "Critical RCE vulnerability found in popular library #5",
+      "count": 1,
+      "itemIds": [
+        "item_2026-09-26_4"
+      ]
+    },
+    {
+      "category": "Cloud & Infra",
+      "summary": "Botnet infrastructure taken down by law enforcement #9",
+      "count": 1,
+      "itemIds": [
+        "item_2026-09-26_8"
+      ]
+    },
+    {
+      "category": "Data Breach",
+      "summary": "Supply chain attack discovered in npm package #2; Zero-day exploit disclosed in widely-used framework #3",
+      "count": 2,
+      "itemIds": [
+        "item_2026-09-26_1",
+        "item_2026-09-26_2"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item_2026-09-26_0",
+      "source": "GitHub Advisory",
+      "title": "Zero-day exploit disclosed in widely-used framework #1",
+      "url": "https://example.com/2026-09-26/0",
+      "score": 5,
+      "category": "Vulnerability",
+      "summary": "Security update regarding zero-day exploit disclosed in widely-used framework",
+      "publishedAt": "2026-09-26T18:21:56.675Z",
+      "firstSeenAt": "2026-09-26T18:21:56.675Z",
+      "lastSeenAt": "2026-09-26T18:21:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-26_1",
+      "source": "BleepingComputer",
+      "title": "Supply chain attack discovered in npm package #2",
+      "url": "https://example.com/2026-09-26/1",
+      "score": 5,
+      "category": "Data Breach",
+      "summary": "Security update regarding supply chain attack discovered in npm package",
+      "publishedAt": "2026-09-26T19:06:56.675Z",
+      "firstSeenAt": "2026-09-26T19:06:56.675Z",
+      "lastSeenAt": "2026-09-26T19:06:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-26_2",
+      "source": "GitHub Advisory",
+      "title": "Zero-day exploit disclosed in widely-used framework #3",
+      "url": "https://example.com/2026-09-26/2",
+      "score": 1,
+      "category": "Data Breach",
+      "summary": "Security update regarding zero-day exploit disclosed in widely-used framework",
+      "publishedAt": "2026-09-27T04:52:56.675Z",
+      "firstSeenAt": "2026-09-27T04:52:56.675Z",
+      "lastSeenAt": "2026-09-27T04:52:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-26_3",
+      "source": "GitHub Advisory",
+      "title": "Container escape vulnerability reported #4",
+      "url": "https://example.com/2026-09-26/3",
+      "score": 7,
+      "category": "Network Security",
+      "summary": "Security update regarding container escape vulnerability reported",
+      "publishedAt": "2026-09-27T01:38:56.675Z",
+      "firstSeenAt": "2026-09-27T01:38:56.675Z",
+      "lastSeenAt": "2026-09-27T01:38:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-26_4",
+      "source": "BleepingComputer",
+      "title": "Critical RCE vulnerability found in popular library #5",
+      "url": "https://example.com/2026-09-26/4",
+      "score": 8,
+      "category": "Malware",
+      "summary": "Security update regarding critical rce vulnerability found in popular library",
+      "publishedAt": "2026-09-26T19:05:56.675Z",
+      "firstSeenAt": "2026-09-26T19:05:56.675Z",
+      "lastSeenAt": "2026-09-26T19:05:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-26_5",
+      "source": "BleepingComputer",
+      "title": "Major data breach affects millions of records #6",
+      "url": "https://example.com/2026-09-26/5",
+      "score": 9,
+      "category": "Vulnerability",
+      "summary": "Security update regarding major data breach affects millions of records",
+      "publishedAt": "2026-09-26T20:47:56.675Z",
+      "firstSeenAt": "2026-09-26T20:47:56.675Z",
+      "lastSeenAt": "2026-09-26T20:47:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-26_6",
+      "source": "BleepingComputer",
+      "title": "SQL injection in legacy application #7",
+      "url": "https://example.com/2026-09-26/6",
+      "score": 1,
+      "category": "Server Security",
+      "summary": "Security update regarding sql injection in legacy application",
+      "publishedAt": "2026-09-27T00:37:56.675Z",
+      "firstSeenAt": "2026-09-27T00:37:56.675Z",
+      "lastSeenAt": "2026-09-27T00:37:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-26_7",
+      "source": "The Hacker News",
+      "title": "CVE published for authentication bypass #8",
+      "url": "https://example.com/2026-09-26/7",
+      "score": 1,
+      "category": "Vulnerability",
+      "summary": "Security update regarding cve published for authentication bypass",
+      "publishedAt": "2026-09-27T14:29:56.675Z",
+      "firstSeenAt": "2026-09-27T14:29:56.675Z",
+      "lastSeenAt": "2026-09-27T14:29:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-26_8",
+      "source": "Hacker News",
+      "title": "Botnet infrastructure taken down by law enforcement #9",
+      "url": "https://example.com/2026-09-26/8",
+      "score": 4,
+      "category": "Cloud & Infra",
+      "summary": "Security update regarding botnet infrastructure taken down by law enforcement",
+      "publishedAt": "2026-09-26T22:43:56.675Z",
+      "firstSeenAt": "2026-09-26T22:43:56.675Z",
+      "lastSeenAt": "2026-09-26T22:43:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-26_9",
+      "source": "Hacker News",
+      "title": "Container escape vulnerability reported #10",
+      "url": "https://example.com/2026-09-26/9",
+      "score": 7,
+      "category": "Server Security",
+      "summary": "Security update regarding container escape vulnerability reported",
+      "publishedAt": "2026-09-26T18:28:56.675Z",
+      "firstSeenAt": "2026-09-26T18:28:56.675Z",
+      "lastSeenAt": "2026-09-26T18:28:56.675Z",
+      "seenCount": 1
+    }
+  ]
+}

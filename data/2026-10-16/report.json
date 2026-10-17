@@ -1,263 +1,202 @@
 {
-  "runId": "run_2026-10-16",
+  "runId": "run_1792270196677_1",
   "status": "success",
   "trigger": "schedule",
-  "generatedAt": "2026-10-17T20:00:07.849Z",
-  "itemCount": 16,
-  "newItemCount": 16,
-  "summary": "16 security intelligence items",
-  "reportMarkdown": "# FoxTerm Security Intel\n\n**October 18, 2026**\n\n---\n\n## Network Security (1)\n\n- [AI Decision Models and Their Impact on AI SOC Platforms](https://thehackernews.com/2026/10/ai-decision-models-and-their-impact-on.html) — In the space of a month, a new category of AI model went from nonexistent to everywhere. TypeSafe AI released Jev on September 15 and called it a Syst\n\n## Vulnerability (8)\n\n- [China-Linked Hackers Exploited BeyondTrust Zero-Day to Take Over Remote Support Servers](https://thehackernews.com/2026/10/china-linked-hackers-exploited.html) — The China-nexus cyber espionage group tracked as Armory Castle (previously UNC5221 or Warp Panda) exploited a newly disclosed security flaw in BeyondT\n- [PEERSTITCH Malware Deployed via FortiOS Flaw Bypasses Checks on Tagged VPN Sessions](https://thehackernews.com/2026/10/attackers-exploit-fortios-flaw-to.html) — A suspected advanced threat actor has been observed exploiting a security flaw in Fortinet FortiOS to deliver a previously unreported memory-resident \n- [Critical PwnEscape Linux Kernel Vulnerability Lets Guest VMs Read Host Memory](https://thehackernews.com/2026/10/critical-pwnescape-linux-kernel.html) — A newly disclosed critical flaw in the Linux kernel allows code inside a virtual machine to read memory on the host computer it runs on. A researcher \n- [Silent Lynx Exploits WinRAR Flaw to Deploy Reverse Shell in CIS Government Attacks](https://thehackernews.com/2026/10/silent-lynx-exploits-winrar-flaw-to.html) — The threat actor known as Silent Lynx has been attributed to a fresh set of attacks targeting government organizations across the Commonwealth of Inde\n- [CISA Urges Patching Critical Vulnerability in BeyondTrust Remote Support](https://www.cisa.gov/news-events/alerts/2026/10/16/cisa-urges-patching-critical-vulnerability-beyondtrust-remote-support) — CISA is aware of critical authentication bypass vulnerability CVE-2026-102764 , affecting BeyondTrust Remote Support (formerly Bomgar) versions 26.2.3\n- [CISA Adds Two Known Exploited Vulnerabilities to Catalog](https://www.cisa.gov/news-events/alerts/2026/10/16/cisa-adds-two-known-exploited-vulnerabilities-catalog) — CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2025-61624\n- [BeyondTrust patches zero-day exploited in attacks since August](https://www.bleepingcomputer.com/news/security/beyondtrust-patches-zero-day-exploited-in-attacks-since-august/) — BeyondTrust warned customers on Thursday to patch a critical flaw in its Remote Support (RS) that has been exploited in zero-day attacks since late Au\n- [Hackers exploit Collabora RCE flaw to backdoor Nextcloud servers](https://www.bleepingcomputer.com/news/security/hackers-exploit-collabora-rce-flaw-to-backdoor-nextcloud-servers/) — Threat actors are exploiting a critical command execution flaw, now tracked as CVE-2026-110447, in the Collabora Online - Built-in CODE Server app (ri\n\n## Malware (2)\n\n- [ThreatsDay: Adobe RCE, DNS Wallet Theft, NVIDIA Container Escape, Self-Healing Backdoor + 23 More](https://thehackernews.com/2026/10/threatsday-adobe-rce-dns-wallet-theft.html) — Someone built a tool to steal data, then decided it should scare the victim for fun. Yes, that’s an actual feature. And somehow, it fits right in with\n- [Cyber Threat Actors Use a Variety of Techniques to Target Election and Campaign Officials](https://www.cisa.gov/resources-tools/resources/cyber-threat-actors-use-variety-techniques-target-election-and-campaign-officials) — CISA and the Federal Bureau of Investigation (FBI) released a Public Service Announcement (PSA) warning election and campaign officials about cyber th\n\n## Cloud & Infra (1)\n\n- [Key Practices for Incident Readiness and Response in Super Intelligence Training and Evaluation](https://www.cisa.gov/resources-tools/resources/key-practices-incident-readiness-and-response-super-intelligence-training-and-evaluation) — The National Institute of Standards and Technology (NIST), National Security Agency’s Super Intelligence Security Center (NSA SISC) and Cybersecurity \n\n## Server Security (2)\n\n- [Burger King Japan data breach exposes 11 million customer records](https://www.bleepingcomputer.com/news/security/burger-king-japan-data-breach-exposes-11-million-customer-records/) — Burger King Japan, the Japanese subsidiary of global fast-food giant Burger King, disclosed a major data breach after attackers accessed a server cont\n- [Fake Arch Linux packages push malware with root privileges](https://www.bleepingcomputer.com/news/security/fake-arch-linux-packages-push-malware-with-root-privileges/) — A threat actor uploaded malicious packages to the Arch User Repository (AUR) that impersonated two popular helper tools, yay and paru. [...]\n\n## Security Industry (2)\n\n- [Microsoft: October Windows update may break Smart App Control](https://www.bleepingcomputer.com/news/microsoft/kb5127648-windows-security-update-may-break-smart-app-control/) — Microsoft says some users may have trouble turning on Smart App Control after installing this month's KB5127648 Windows 11 security update. [...]\n- [BAE Systems cyberattack disrupts US federal court operations](https://www.bleepingcomputer.com/news/security/bae-systems-cyberattack-disrupts-us-federal-court-operations/) — The Administrative Office of the US Courts says a cyberattack on government contractor BAE Systems has taken down the notice system used by federal ba\n\n---\n\n*Total 16 security intelligence items, auto-collected by FoxTerm*\n",
+  "generatedAt": "2026-10-16T20:49:56.675Z",
+  "itemCount": 11,
+  "newItemCount": 3,
+  "summary": "11 security intelligence items",
+  "reportMarkdown": "# FoxTerm Security Intel\n\n**2026-10-16**\n\n---\n\n## Vulnerability (3)\n\n- **SQL injection in legacy application #1**\n- **CVE published for authentication bypass #6**\n- **SQL injection in legacy application #11**\n\n## Server Security (2)\n\n- **SSH brute force campaign detected #3**\n- **SQL injection in legacy application #4**\n\n## Network Security (4)\n\n- **XSS vulnerability in admin panel #7**\n- **XSS vulnerability in admin panel #8**\n- **API key leakage in public repository #9**\n- **Container escape vulnerability reported #10**\n\n## Malware (1)\n\n- **Botnet infrastructure taken down by law enforcement #2**\n\n## Data Breach (1)\n\n- **Cloud misconfiguration exposes sensitive data #5**\n\n---\n\n*Total 11 items*",
   "trends": [
     {
-      "category": "Network Security",
-      "summary": "AI Decision Models and Their Impact on AI SOC Platforms",
-      "count": 1,
-      "itemIds": [
-        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2FpLWRlY2lzaW9uLW1vZGVscy1hbmQtdGhlaXItaW1wYWN0LW9uLmh0bWw"
-      ]
-    },
-    {
       "category": "Vulnerability",
-      "summary": "China-Linked Hackers Exploited BeyondTrust Zero-Day to Take Over Remote Support Servers; PEERSTITCH Malware Deployed via FortiOS Flaw Bypasses Checks on Tagged VPN Sessions; Critical PwnEscape Linux Kernel Vulnerability Lets Guest VMs Read Host Memory; Silent Lynx Exploits WinRAR Flaw to Deploy Reverse Shell in CIS Government Attacks; CISA Urges Patching Critical Vulnerability in BeyondTrust Remote Support; CISA Adds Two Known Exploited Vulnerabilities to Catalog; BeyondTrust patches zero-day exploited in attacks since August; Hackers exploit Collabora RCE flaw to backdoor Nextcloud servers",
-      "count": 8,
+      "summary": "SQL injection in legacy application #1; CVE published for authentication bypass #6; SQL injection in legacy application #11",
+      "count": 3,
       "itemIds": [
-        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2NoaW5hLWxpbmtlZC1oYWNrZXJzLWV4cGxvaXRlZC5odG1s",
-        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2F0dGFja2Vycy1leHBsb2l0LWZvcnRpb3MtZmxhdy10by5odG1s",
-        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2NyaXRpY2FsLXB3bmVzY2FwZS1saW51eC1rZXJuZWwuaHRtbA",
-        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL3NpbGVudC1seW54LWV4cGxvaXRzLXdpbnJhci1mbGF3LXRvLmh0bWw",
-        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvYWxlcnRzLzIwMjYvMTAvMTYvY2lzYS11cmdlcy1wYXRjaGluZy1jcml0aWNhbC12dWxuZXJhYmlsaXR5LWJleW9uZHRydXN0LXJlbW90ZS1zdXBwb3J0",
-        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvYWxlcnRzLzIwMjYvMTAvMTYvY2lzYS1hZGRzLXR3by1rbm93bi1leHBsb2l0ZWQtdnVsbmVyYWJpbGl0aWVzLWNhdGFsb2c",
-        "item_aHR0cHM6Ly93d3cuYmxlZXBpbmdjb21wdXRlci5jb20vbmV3cy9zZWN1cml0eS9iZXlvbmR0cnVzdC1wYXRjaGVzLXplcm8tZGF5LWV4cGxvaXRlZC1pbi1hdHRhY2tzLXNpbmNlLWF1Z3VzdC8",
-        "item_aHR0cHM6Ly93d3cuYmxlZXBpbmdjb21wdXRlci5jb20vbmV3cy9zZWN1cml0eS9oYWNrZXJzLWV4cGxvaXQtY29sbGFib3JhLXJjZS1mbGF3LXRvLWJhY2tkb29yLW5leHRjbG91ZC1zZXJ2ZXJzLw"
-      ]
-    },
-    {
-      "category": "Malware",
-      "summary": "ThreatsDay: Adobe RCE, DNS Wallet Theft, NVIDIA Container Escape, Self-Healing Backdoor + 23 More; Cyber Threat Actors Use a Variety of Techniques to Target Election and Campaign Officials",
-      "count": 2,
-      "itemIds": [
-        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL3RocmVhdHNkYXktYWRvYmUtcmNlLWRucy13YWxsZXQtdGhlZnQuaHRtbA",
-        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvcmVzb3VyY2VzLXRvb2xzL3Jlc291cmNlcy9jeWJlci10aHJlYXQtYWN0b3JzLXVzZS12YXJpZXR5LXRlY2huaXF1ZXMtdGFyZ2V0LWVsZWN0aW9uLWFuZC1jYW1wYWlnbi1vZmZpY2lhbHM"
-      ]
-    },
-    {
-      "category": "Cloud & Infra",
-      "summary": "Key Practices for Incident Readiness and Response in Super Intelligence Training and Evaluation",
-      "count": 1,
-      "itemIds": [
-        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvcmVzb3VyY2VzLXRvb2xzL3Jlc291cmNlcy9rZXktcHJhY3RpY2VzLWluY2lkZW50LXJlYWRpbmVzcy1hbmQtcmVzcG9uc2Utc3VwZXItaW50ZWxsaWdlbmNlLXRyYWluaW5nLWFuZC1ldmFsdWF0aW9u"
+        "item_2026-10-16_0",
+        "item_2026-10-16_5",
+        "item_2026-10-16_10"
       ]
     },
     {
       "category": "Server Security",
-      "summary": "Burger King Japan data breach exposes 11 million customer records; Fake Arch Linux packages push malware with root privileges",
+      "summary": "SSH brute force campaign detected #3; SQL injection in legacy application #4",
       "count": 2,
       "itemIds": [
-        "item_aHR0cHM6Ly93d3cuYmxlZXBpbmdjb21wdXRlci5jb20vbmV3cy9zZWN1cml0eS9idXJnZXIta2luZy1qYXBhbi1kYXRhLWJyZWFjaC1leHBvc2VzLTExLW1pbGxpb24tY3VzdG9tZXItcmVjb3Jkcy8",
-        "item_aHR0cHM6Ly93d3cuYmxlZXBpbmdjb21wdXRlci5jb20vbmV3cy9zZWN1cml0eS9mYWtlLWFyY2gtbGludXgtcGFja2FnZXMtcHVzaC1tYWx3YXJlLXdpdGgtcm9vdC1wcml2aWxlZ2VzLw"
+        "item_2026-10-16_2",
+        "item_2026-10-16_3"
       ]
     },
     {
-      "category": "Security Industry",
-      "summary": "Microsoft: October Windows update may break Smart App Control; BAE Systems cyberattack disrupts US federal court operations",
-      "count": 2,
+      "category": "Network Security",
+      "summary": "XSS vulnerability in admin panel #7; XSS vulnerability in admin panel #8; API key leakage in public repository #9; Container escape vulnerability reported #10",
+      "count": 4,
       "itemIds": [
-        "item_aHR0cHM6Ly93d3cuYmxlZXBpbmdjb21wdXRlci5jb20vbmV3cy9taWNyb3NvZnQva2I1MTI3NjQ4LXdpbmRvd3Mtc2VjdXJpdHktdXBkYXRlLW1heS1icmVhay1zbWFydC1hcHAtY29udHJvbC8",
-        "item_aHR0cHM6Ly93d3cuYmxlZXBpbmdjb21wdXRlci5jb20vbmV3cy9zZWN1cml0eS9iYWUtc3lzdGVtcy1jeWJlcmF0dGFjay1kaXNydXB0cy11cy1mZWRlcmFsLWNvdXJ0LW9wZXJhdGlvbnMv"
+        "item_2026-10-16_6",
+        "item_2026-10-16_7",
+        "item_2026-10-16_8",
+        "item_2026-10-16_9"
+      ]
+    },
+    {
+      "category": "Malware",
+      "summary": "Botnet infrastructure taken down by law enforcement #2",
+      "count": 1,
+      "itemIds": [
+        "item_2026-10-16_1"
+      ]
+    },
+    {
+      "category": "Data Breach",
+      "summary": "Cloud misconfiguration exposes sensitive data #5",
+      "count": 1,
+      "itemIds": [
+        "item_2026-10-16_4"
       ]
     }
   ],
   "items": [
     {
-      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2FpLWRlY2lzaW9uLW1vZGVscy1hbmQtdGhlaXItaW1wYWN0LW9uLmh0bWw",
+      "id": "item_2026-10-16_0",
+      "source": "BleepingComputer",
+      "title": "SQL injection in legacy application #1",
+      "url": "https://example.com/2026-10-16/0",
+      "score": 5,
+      "category": "Vulnerability",
+      "summary": "Security update regarding sql injection in legacy application",
+      "publishedAt": "2026-10-17T15:44:56.675Z",
+      "firstSeenAt": "2026-10-17T15:44:56.675Z",
+      "lastSeenAt": "2026-10-17T15:44:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-16_1",
       "source": "The Hacker News",
-      "title": "AI Decision Models and Their Impact on AI SOC Platforms",
-      "url": "https://thehackernews.com/2026/10/ai-decision-models-and-their-impact-on.html",
-      "score": 0,
-      "publishedAt": "2026-10-16T11:30:00.000Z",
-      "summary": "In the space of a month, a new category of AI model went from nonexistent to everywhere. TypeSafe AI released Jev on September 15 and called it a System One model, a nod to Kahneman's fast, intuitive thinking. OpenAI announced its own Decisions API at DevDay and opened a public beta on October 6. Cribl published cribl-decision, an open LoRA adapter you can run locally. Others, like Laya, are",
+      "title": "Botnet infrastructure taken down by law enforcement #2",
+      "url": "https://example.com/2026-10-16/1",
+      "score": 3,
+      "category": "Malware",
+      "summary": "Security update regarding botnet infrastructure taken down by law enforcement",
+      "publishedAt": "2026-10-16T19:42:56.675Z",
+      "firstSeenAt": "2026-10-16T19:42:56.675Z",
+      "lastSeenAt": "2026-10-16T19:42:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-16_2",
+      "source": "The Hacker News",
+      "title": "SSH brute force campaign detected #3",
+      "url": "https://example.com/2026-10-16/2",
+      "score": 10,
+      "category": "Server Security",
+      "summary": "Security update regarding ssh brute force campaign detected",
+      "publishedAt": "2026-10-17T15:12:56.675Z",
+      "firstSeenAt": "2026-10-17T15:12:56.675Z",
+      "lastSeenAt": "2026-10-17T15:12:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-16_3",
+      "source": "BleepingComputer",
+      "title": "SQL injection in legacy application #4",
+      "url": "https://example.com/2026-10-16/3",
+      "score": 1,
+      "category": "Server Security",
+      "summary": "Security update regarding sql injection in legacy application",
+      "publishedAt": "2026-10-17T03:03:56.675Z",
+      "firstSeenAt": "2026-10-17T03:03:56.675Z",
+      "lastSeenAt": "2026-10-17T03:03:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-16_4",
+      "source": "Hacker News",
+      "title": "Cloud misconfiguration exposes sensitive data #5",
+      "url": "https://example.com/2026-10-16/4",
+      "score": 10,
+      "category": "Data Breach",
+      "summary": "Security update regarding cloud misconfiguration exposes sensitive data",
+      "publishedAt": "2026-10-16T21:34:56.675Z",
+      "firstSeenAt": "2026-10-16T21:34:56.675Z",
+      "lastSeenAt": "2026-10-16T21:34:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-16_5",
+      "source": "Hacker News",
+      "title": "CVE published for authentication bypass #6",
+      "url": "https://example.com/2026-10-16/5",
+      "score": 10,
+      "category": "Vulnerability",
+      "summary": "Security update regarding cve published for authentication bypass",
+      "publishedAt": "2026-10-16T23:03:56.675Z",
+      "firstSeenAt": "2026-10-16T23:03:56.675Z",
+      "lastSeenAt": "2026-10-16T23:03:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-16_6",
+      "source": "BleepingComputer",
+      "title": "XSS vulnerability in admin panel #7",
+      "url": "https://example.com/2026-10-16/6",
+      "score": 8,
       "category": "Network Security",
-      "isNew": true,
+      "summary": "Security update regarding xss vulnerability in admin panel",
+      "publishedAt": "2026-10-17T04:27:56.675Z",
+      "firstSeenAt": "2026-10-17T04:27:56.675Z",
+      "lastSeenAt": "2026-10-17T04:27:56.675Z",
       "seenCount": 1
     },
     {
-      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2NoaW5hLWxpbmtlZC1oYWNrZXJzLWV4cGxvaXRlZC5odG1s",
-      "source": "The Hacker News",
-      "title": "China-Linked Hackers Exploited BeyondTrust Zero-Day to Take Over Remote Support Servers",
-      "url": "https://thehackernews.com/2026/10/china-linked-hackers-exploited.html",
-      "score": 0,
-      "publishedAt": "2026-10-16T06:55:55.000Z",
-      "summary": "The China-nexus cyber espionage group tracked as Armory Castle (previously UNC5221 or Warp Panda) exploited a newly disclosed security flaw in BeyondTrust Remote Support (formerly Bomgar) as a zero-day in late August 2026. The vulnerability, tracked as CVE-2026-102764 (CVSS score: 9.3), is a case of improper origin validation in an internal messaging component that could be exploited by a",
-      "category": "Vulnerability",
-      "isNew": true,
+      "id": "item_2026-10-16_7",
+      "source": "GitHub Advisory",
+      "title": "XSS vulnerability in admin panel #8",
+      "url": "https://example.com/2026-10-16/7",
+      "score": 10,
+      "category": "Network Security",
+      "summary": "Security update regarding xss vulnerability in admin panel",
+      "publishedAt": "2026-10-17T11:28:56.675Z",
+      "firstSeenAt": "2026-10-17T11:28:56.675Z",
+      "lastSeenAt": "2026-10-17T11:28:56.675Z",
       "seenCount": 1
     },
     {
-      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2F0dGFja2Vycy1leHBsb2l0LWZvcnRpb3MtZmxhdy10by5odG1s",
-      "source": "The Hacker News",
-      "title": "PEERSTITCH Malware Deployed via FortiOS Flaw Bypasses Checks on Tagged VPN Sessions",
-      "url": "https://thehackernews.com/2026/10/attackers-exploit-fortios-flaw-to.html",
-      "score": 0,
-      "publishedAt": "2026-10-16T04:59:36.000Z",
-      "summary": "A suspected advanced threat actor has been observed exploiting a security flaw in Fortinet FortiOS to deliver a previously unreported memory-resident ARM64 malware known as PEERSTITCH. The attack involves the exploitation of CVE-2025-61624 (CVSS score: 5.4), a path traversal flaw in the command line interpreter of FortiOS, FortiPAM, FortiProxy, and FortiSwitchManager that could allow a",
-      "category": "Vulnerability",
-      "isNew": true,
-      "seenCount": 1
-    },
-    {
-      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2NyaXRpY2FsLXB3bmVzY2FwZS1saW51eC1rZXJuZWwuaHRtbA",
-      "source": "The Hacker News",
-      "title": "Critical PwnEscape Linux Kernel Vulnerability Lets Guest VMs Read Host Memory",
-      "url": "https://thehackernews.com/2026/10/critical-pwnescape-linux-kernel.html",
-      "score": 0,
-      "publishedAt": "2026-10-15T20:24:36.000Z",
-      "summary": "A newly disclosed critical flaw in the Linux kernel allows code inside a virtual machine to read memory on the host computer it runs on. A researcher demonstrated the leak against Vercel's live cloud sandboxes, and Vercel confirmed it. The flaw, now tracked as CVE-2026-99999 and nicknamed PwnEscape, is in the Linux kernel's networking code, not in any one cloud's setup, so it reaches the shared",
-      "category": "Vulnerability",
-      "isNew": true,
-      "seenCount": 1
-    },
-    {
-      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL3RocmVhdHNkYXktYWRvYmUtcmNlLWRucy13YWxsZXQtdGhlZnQuaHRtbA",
-      "source": "The Hacker News",
-      "title": "ThreatsDay: Adobe RCE, DNS Wallet Theft, NVIDIA Container Escape, Self-Healing Backdoor + 23 More",
-      "url": "https://thehackernews.com/2026/10/threatsday-adobe-rce-dns-wallet-theft.html",
-      "score": 0,
-      "publishedAt": "2026-10-15T18:49:33.000Z",
-      "summary": "Someone built a tool to steal data, then decided it should scare the victim for fun. Yes, that’s an actual feature. And somehow, it fits right in with this week's security stories. The rest gets interesting in different ways. A small permission can lead to a big theft. A trusted login can hide the wrong person. Old bugs are finding new victims, familiar tools are being put to strange uses, and",
-      "category": "Malware",
-      "isNew": true,
-      "seenCount": 1
-    },
-    {
-      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL3NpbGVudC1seW54LWV4cGxvaXRzLXdpbnJhci1mbGF3LXRvLmh0bWw",
-      "source": "The Hacker News",
-      "title": "Silent Lynx Exploits WinRAR Flaw to Deploy Reverse Shell in CIS Government Attacks",
-      "url": "https://thehackernews.com/2026/10/silent-lynx-exploits-winrar-flaw-to.html",
-      "score": 0,
-      "publishedAt": "2026-10-15T16:00:26.000Z",
-      "summary": "The threat actor known as Silent Lynx has been attributed to a fresh set of attacks targeting government organizations across the Commonwealth of Independent States (CIS). The activity, observed from June 2025 through August 2026, involves four different infection chains that make use of macro-enabled documents, PS2EXE downloaders, GitHub-hosted PowerShell, and crafted WinRAR archives",
-      "category": "Vulnerability",
-      "isNew": true,
-      "seenCount": 1
-    },
-    {
-      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvcmVzb3VyY2VzLXRvb2xzL3Jlc291cmNlcy9rZXktcHJhY3RpY2VzLWluY2lkZW50LXJlYWRpbmVzcy1hbmQtcmVzcG9uc2Utc3VwZXItaW50ZWxsaWdlbmNlLXRyYWluaW5nLWFuZC1ldmFsdWF0aW9u",
-      "source": "CISA",
-      "title": "Key Practices for Incident Readiness and Response in Super Intelligence Training and Evaluation",
-      "url": "https://www.cisa.gov/resources-tools/resources/key-practices-incident-readiness-and-response-super-intelligence-training-and-evaluation",
-      "score": 0,
-      "publishedAt": "2026-10-16T12:00:00.000Z",
-      "summary": "The National Institute of Standards and Technology (NIST), National Security Agency’s Super Intelligence Security Center (NSA SISC) and Cybersecurity and Infrastructure Security Agency (CISA) published Key Practices for Incident Readiness and&nbsp;Response in Super Intelligence Training and Evaluation</em&",
-      "category": "Cloud & Infra",
-      "isNew": true,
-      "seenCount": 1
-    },
-    {
-      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvYWxlcnRzLzIwMjYvMTAvMTYvY2lzYS11cmdlcy1wYXRjaGluZy1jcml0aWNhbC12dWxuZXJhYmlsaXR5LWJleW9uZHRydXN0LXJlbW90ZS1zdXBwb3J0",
-      "source": "CISA",
-      "title": "CISA Urges Patching Critical Vulnerability in BeyondTrust Remote Support",
-      "url": "https://www.cisa.gov/news-events/alerts/2026/10/16/cisa-urges-patching-critical-vulnerability-beyondtrust-remote-support",
-      "score": 0,
-      "publishedAt": "2026-10-16T12:00:00.000Z",
-      "summary": "CISA is aware of critical authentication bypass vulnerability CVE-2026-102764 , affecting BeyondTrust Remote Support (formerly Bomgar) versions 26.2.3 and earlier. Patches are available for supported versions (24.3.1 and later); organizations using older versions must upgrade first. Cyber threat actors are actively exploiting the vulnerability to gain initial access, then establ",
-      "category": "Vulnerability",
-      "isNew": true,
-      "seenCount": 1
-    },
-    {
-      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvcmVzb3VyY2VzLXRvb2xzL3Jlc291cmNlcy9jeWJlci10aHJlYXQtYWN0b3JzLXVzZS12YXJpZXR5LXRlY2huaXF1ZXMtdGFyZ2V0LWVsZWN0aW9uLWFuZC1jYW1wYWlnbi1vZmZpY2lhbHM",
-      "source": "CISA",
-      "title": "Cyber Threat Actors Use a Variety of Techniques to Target Election and Campaign Officials",
-      "url": "https://www.cisa.gov/resources-tools/resources/cyber-threat-actors-use-variety-techniques-target-election-and-campaign-officials",
-      "score": 0,
-      "publishedAt": "2026-10-16T12:00:00.000Z",
-      "summary": "CISA and the Federal Bureau of Investigation (FBI) released a Public Service Announcement (PSA) warning election and campaign officials about cyber threats during the 2026 U.S. midterm elections. Malicious cyber actors may use phishing and smishing techniques to steal login credentials and other sensitive information or install malware on targeted devices. Election officials, candidates,",
-      "category": "Malware",
-      "isNew": true,
-      "seenCount": 1
-    },
-    {
-      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvYWxlcnRzLzIwMjYvMTAvMTYvY2lzYS1hZGRzLXR3by1rbm93bi1leHBsb2l0ZWQtdnVsbmVyYWJpbGl0aWVzLWNhdGFsb2c",
-      "source": "CISA",
-      "title": "CISA Adds Two Known Exploited Vulnerabilities to Catalog",
-      "url": "https://www.cisa.gov/news-events/alerts/2026/10/16/cisa-adds-two-known-exploited-vulnerabilities-catalog",
-      "score": 0,
-      "publishedAt": "2026-10-16T12:00:00.000Z",
-      "summary": "CISA has added two new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2025-61624 Fortinet Multiple Products Path Traversal Vulnerability <a href=\"https://w",
-      "category": "Vulnerability",
-      "isNew": true,
-      "seenCount": 1
-    },
-    {
-      "id": "item_aHR0cHM6Ly93d3cuYmxlZXBpbmdjb21wdXRlci5jb20vbmV3cy9zZWN1cml0eS9idXJnZXIta2luZy1qYXBhbi1kYXRhLWJyZWFjaC1leHBvc2VzLTExLW1pbGxpb24tY3VzdG9tZXItcmVjb3Jkcy8",
+      "id": "item_2026-10-16_8",
       "source": "BleepingComputer",
-      "title": "Burger King Japan data breach exposes 11 million customer records",
-      "url": "https://www.bleepingcomputer.com/news/security/burger-king-japan-data-breach-exposes-11-million-customer-records/",
-      "score": 0,
-      "publishedAt": "2026-10-16T12:01:29.000Z",
-      "summary": "Burger King Japan, the Japanese subsidiary of global fast-food giant Burger King, disclosed a major data breach after attackers accessed a server containing 11.18 million customer records. [...]",
-      "category": "Server Security",
-      "isNew": true,
+      "title": "API key leakage in public repository #9",
+      "url": "https://example.com/2026-10-16/8",
+      "score": 2,
+      "category": "Network Security",
+      "summary": "Security update regarding api key leakage in public repository",
+      "publishedAt": "2026-10-17T03:38:56.675Z",
+      "firstSeenAt": "2026-10-17T03:38:56.675Z",
+      "lastSeenAt": "2026-10-17T03:38:56.675Z",
       "seenCount": 1
     },
     {
-      "id": "item_aHR0cHM6Ly93d3cuYmxlZXBpbmdjb21wdXRlci5jb20vbmV3cy9taWNyb3NvZnQva2I1MTI3NjQ4LXdpbmRvd3Mtc2VjdXJpdHktdXBkYXRlLW1heS1icmVhay1zbWFydC1hcHAtY29udHJvbC8",
-      "source": "BleepingComputer",
-      "title": "Microsoft: October Windows update may break Smart App Control",
-      "url": "https://www.bleepingcomputer.com/news/microsoft/kb5127648-windows-security-update-may-break-smart-app-control/",
-      "score": 0,
-      "publishedAt": "2026-10-16T08:44:22.000Z",
-      "summary": "Microsoft says some users may have trouble turning on Smart App Control after installing this month's KB5127648 Windows 11 security update. [...]",
-      "category": "Security Industry",
-      "isNew": true,
+      "id": "item_2026-10-16_9",
+      "source": "Hacker News",
+      "title": "Container escape vulnerability reported #10",
+      "url": "https://example.com/2026-10-16/9",
+      "score": 1,
+      "category": "Network Security",
+      "summary": "Security update regarding container escape vulnerability reported",
+      "publishedAt": "2026-10-17T11:23:56.675Z",
+      "firstSeenAt": "2026-10-17T11:23:56.675Z",
+      "lastSeenAt": "2026-10-17T11:23:56.675Z",
       "seenCount": 1
     },
     {
-      "id": "item_aHR0cHM6Ly93d3cuYmxlZXBpbmdjb21wdXRlci5jb20vbmV3cy9zZWN1cml0eS9iYWUtc3lzdGVtcy1jeWJlcmF0dGFjay1kaXNydXB0cy11cy1mZWRlcmFsLWNvdXJ0LW9wZXJhdGlvbnMv",
-      "source": "BleepingComputer",
-      "title": "BAE Systems cyberattack disrupts US federal court operations",
-      "url": "https://www.bleepingcomputer.com/news/security/bae-systems-cyberattack-disrupts-us-federal-court-operations/",
-      "score": 0,
-      "publishedAt": "2026-10-16T07:37:35.000Z",
-      "summary": "The Administrative Office of the US Courts says a cyberattack on government contractor BAE Systems has taken down the notice system used by federal bankruptcy courts. [...]",
-      "category": "Security Industry",
-      "isNew": true,
-      "seenCount": 1
-    },
-    {
-      "id": "item_aHR0cHM6Ly93d3cuYmxlZXBpbmdjb21wdXRlci5jb20vbmV3cy9zZWN1cml0eS9iZXlvbmR0cnVzdC1wYXRjaGVzLXplcm8tZGF5LWV4cGxvaXRlZC1pbi1hdHRhY2tzLXNpbmNlLWF1Z3VzdC8",
-      "source": "BleepingComputer",
-      "title": "BeyondTrust patches zero-day exploited in attacks since August",
-      "url": "https://www.bleepingcomputer.com/news/security/beyondtrust-patches-zero-day-exploited-in-attacks-since-august/",
-      "score": 0,
-      "publishedAt": "2026-10-16T06:18:08.000Z",
-      "summary": "BeyondTrust warned customers on Thursday to patch a critical flaw in its Remote Support (RS) that has been exploited in zero-day attacks since late August. [...]",
+      "id": "item_2026-10-16_10",
+      "source": "Hacker News",
+      "title": "SQL injection in legacy application #11",
+      "url": "https://example.com/2026-10-16/10",
+      "score": 9,
       "category": "Vulnerability",
-      "isNew": true,
-      "seenCount": 1
-    },
-    {
-      "id": "item_aHR0cHM6Ly93d3cuYmxlZXBpbmdjb21wdXRlci5jb20vbmV3cy9zZWN1cml0eS9oYWNrZXJzLWV4cGxvaXQtY29sbGFib3JhLXJjZS1mbGF3LXRvLWJhY2tkb29yLW5leHRjbG91ZC1zZXJ2ZXJzLw",
-      "source": "BleepingComputer",
-      "title": "Hackers exploit Collabora RCE flaw to backdoor Nextcloud servers",
-      "url": "https://www.bleepingcomputer.com/news/security/hackers-exploit-collabora-rce-flaw-to-backdoor-nextcloud-servers/",
-      "score": 0,
-      "publishedAt": "2026-10-15T20:25:04.000Z",
-      "summary": "Threat actors are exploiting a critical command execution flaw, now tracked as CVE-2026-110447, in the Collabora Online - Built-in CODE Server app (richdocumentscode) for Nextcloud. [...]",
-      "category": "Vulnerability",
-      "isNew": true,
-      "seenCount": 1
-    },
-    {
-      "id": "item_aHR0cHM6Ly93d3cuYmxlZXBpbmdjb21wdXRlci5jb20vbmV3cy9zZWN1cml0eS9mYWtlLWFyY2gtbGludXgtcGFja2FnZXMtcHVzaC1tYWx3YXJlLXdpdGgtcm9vdC1wcml2aWxlZ2VzLw",
-      "source": "BleepingComputer",
-      "title": "Fake Arch Linux packages push malware with root privileges",
-      "url": "https://www.bleepingcomputer.com/news/security/fake-arch-linux-packages-push-malware-with-root-privileges/",
-      "score": 0,
-      "publishedAt": "2026-10-15T17:12:31.000Z",
-      "summary": "A threat actor uploaded malicious packages to the Arch User Repository (AUR) that impersonated two popular helper tools, yay and paru. [...]",
-      "category": "Server Security",
-      "isNew": true,
+      "summary": "Security update regarding sql injection in legacy application",
+      "publishedAt": "2026-10-17T00:02:56.675Z",
+      "firstSeenAt": "2026-10-17T00:02:56.675Z",
+      "lastSeenAt": "2026-10-17T00:02:56.675Z",
       "seenCount": 1
     }
   ]

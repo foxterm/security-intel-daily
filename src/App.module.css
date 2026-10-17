@@ -370,26 +370,24 @@
 
 /* Date bar */
 .dateBar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 22px;
-  border-bottom: 1px solid #f1f5f9;
-  background: #f8fafc;
-}
-
-.dateBarLabel {
-  font-size: 12px;
-  font-weight: 600;
-  color: #64748b;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  padding: 0;
+  margin-bottom: 16px;
 }
 
 .dateList {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dateList::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .dateButton {
@@ -397,33 +395,42 @@
   align-items: center;
   gap: 6px;
   border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  padding: 4px 10px;
+  border-radius: 8px;
+  padding: 6px 12px;
   background: #fff;
   color: #475569;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .dateButton:hover {
-  border-color: #1d4ed8;
-  color: #1d4ed8;
+  border-color: #ff5e00;
+  color: #ff5e00;
 }
 
 .dateButtonActive {
-  border-color: #1d4ed8;
-  background: #1d4ed8;
+  border-color: #ff5e00;
+  background: #ff5e00;
+  color: #fff;
+}
+
+.dateButtonActive:hover {
+  background: #e03e00;
+  border-color: #e03e00;
   color: #fff;
 }
 
 .dateBadge {
   font-size: 10px;
-  padding: 1px 5px;
+  padding: 1px 6px;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.07);
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .dateButtonActive .dateBadge {

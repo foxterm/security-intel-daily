@@ -1,46 +1,188 @@
 {
-  "runId": "run_2026-10-14",
+  "runId": "run_1792270196681_3",
   "status": "success",
   "trigger": "schedule",
-  "generatedAt": "2026-10-17T20:00:07.850Z",
-  "itemCount": 2,
-  "newItemCount": 2,
-  "summary": "2 security intelligence items",
-  "reportMarkdown": "# FoxTerm Security Intel\n\n**October 18, 2026**\n\n---\n\n## Vulnerability (2)\n\n- [CISA Urges Immediate Ivanti Connect Secure Updates as Honeypots Log 105 Exploit Attempts](https://thehackernews.com/2026/10/cisa-urges-immediate-ivanti-connect.html) — The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday urged organizations to take steps to immediately update their Ivanti Conne\n- [CISA Adds Four Known Exploited Vulnerabilities to Catalog](https://www.cisa.gov/news-events/alerts/2026/10/14/cisa-adds-four-known-exploited-vulnerabilities-catalog) — CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.&nbsp; CVE-202\n\n---\n\n*Total 2 security intelligence items, auto-collected by FoxTerm*\n",
+  "generatedAt": "2026-10-14T20:49:56.675Z",
+  "itemCount": 10,
+  "newItemCount": 3,
+  "summary": "10 security intelligence items",
+  "reportMarkdown": "# FoxTerm Security Intel\n\n**2026-10-14**\n\n---\n\n## Vulnerability (1)\n\n- **Supply chain attack discovered in npm package #1**\n\n## Server Security (2)\n\n- **XSS vulnerability in admin panel #8**\n- **Botnet infrastructure taken down by law enforcement #9**\n\n## Network Security (2)\n\n- **Cloud misconfiguration exposes sensitive data #6**\n- **SSH brute force campaign detected #7**\n\n## Malware (2)\n\n- **Critical RCE vulnerability found in popular library #2**\n- **Critical RCE vulnerability found in popular library #4**\n\n## Cloud & Infra (3)\n\n- **SQL injection in legacy application #3**\n- **Container escape vulnerability reported #5**\n- **Container escape vulnerability reported #10**\n\n---\n\n*Total 10 items*",
   "trends": [
     {
       "category": "Vulnerability",
-      "summary": "CISA Urges Immediate Ivanti Connect Secure Updates as Honeypots Log 105 Exploit Attempts; CISA Adds Four Known Exploited Vulnerabilities to Catalog",
+      "summary": "Supply chain attack discovered in npm package #1",
+      "count": 1,
+      "itemIds": [
+        "item_2026-10-14_0"
+      ]
+    },
+    {
+      "category": "Server Security",
+      "summary": "XSS vulnerability in admin panel #8; Botnet infrastructure taken down by law enforcement #9",
       "count": 2,
       "itemIds": [
-        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2Npc2EtdXJnZXMtaW1tZWRpYXRlLWl2YW50aS1jb25uZWN0Lmh0bWw",
-        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvYWxlcnRzLzIwMjYvMTAvMTQvY2lzYS1hZGRzLWZvdXIta25vd24tZXhwbG9pdGVkLXZ1bG5lcmFiaWxpdGllcy1jYXRhbG9n"
+        "item_2026-10-14_7",
+        "item_2026-10-14_8"
+      ]
+    },
+    {
+      "category": "Network Security",
+      "summary": "Cloud misconfiguration exposes sensitive data #6; SSH brute force campaign detected #7",
+      "count": 2,
+      "itemIds": [
+        "item_2026-10-14_5",
+        "item_2026-10-14_6"
+      ]
+    },
+    {
+      "category": "Malware",
+      "summary": "Critical RCE vulnerability found in popular library #2; Critical RCE vulnerability found in popular library #4",
+      "count": 2,
+      "itemIds": [
+        "item_2026-10-14_1",
+        "item_2026-10-14_3"
+      ]
+    },
+    {
+      "category": "Cloud & Infra",
+      "summary": "SQL injection in legacy application #3; Container escape vulnerability reported #5; Container escape vulnerability reported #10",
+      "count": 3,
+      "itemIds": [
+        "item_2026-10-14_2",
+        "item_2026-10-14_4",
+        "item_2026-10-14_9"
       ]
     }
   ],
   "items": [
     {
-      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2Npc2EtdXJnZXMtaW1tZWRpYXRlLWl2YW50aS1jb25uZWN0Lmh0bWw",
-      "source": "The Hacker News",
-      "title": "CISA Urges Immediate Ivanti Connect Secure Updates as Honeypots Log 105 Exploit Attempts",
-      "url": "https://thehackernews.com/2026/10/cisa-urges-immediate-ivanti-connect.html",
-      "score": 0,
-      "publishedAt": "2026-10-14T12:30:42.000Z",
-      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday urged organizations to take steps to immediately update their Ivanti Connect Secure (ICS) appliances and deployments to the latest version following the disclosure of an actively exploited vulnerability. The security flaw, tracked as CVE-2026-104935 (CVSS score: 8.6), is a case of authentication bypass impacting ICS",
+      "id": "item_2026-10-14_0",
+      "source": "Hacker News",
+      "title": "Supply chain attack discovered in npm package #1",
+      "url": "https://example.com/2026-10-14/0",
+      "score": 5,
       "category": "Vulnerability",
-      "isNew": true,
+      "summary": "Security update regarding supply chain attack discovered in npm package",
+      "publishedAt": "2026-10-15T05:23:56.675Z",
+      "firstSeenAt": "2026-10-15T05:23:56.675Z",
+      "lastSeenAt": "2026-10-15T05:23:56.675Z",
       "seenCount": 1
     },
     {
-      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvYWxlcnRzLzIwMjYvMTAvMTQvY2lzYS1hZGRzLWZvdXIta25vd24tZXhwbG9pdGVkLXZ1bG5lcmFiaWxpdGllcy1jYXRhbG9n",
-      "source": "CISA",
-      "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog",
-      "url": "https://www.cisa.gov/news-events/alerts/2026/10/14/cisa-adds-four-known-exploited-vulnerabilities-catalog",
-      "score": 0,
-      "publishedAt": "2026-10-14T12:00:00.000Z",
-      "summary": "CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.&nbsp; CVE-2026-0322</u&gt",
-      "category": "Vulnerability",
-      "isNew": true,
+      "id": "item_2026-10-14_1",
+      "source": "BleepingComputer",
+      "title": "Critical RCE vulnerability found in popular library #2",
+      "url": "https://example.com/2026-10-14/1",
+      "score": 2,
+      "category": "Malware",
+      "summary": "Security update regarding critical rce vulnerability found in popular library",
+      "publishedAt": "2026-10-15T11:11:56.675Z",
+      "firstSeenAt": "2026-10-15T11:11:56.675Z",
+      "lastSeenAt": "2026-10-15T11:11:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-14_2",
+      "source": "BleepingComputer",
+      "title": "SQL injection in legacy application #3",
+      "url": "https://example.com/2026-10-14/2",
+      "score": 2,
+      "category": "Cloud & Infra",
+      "summary": "Security update regarding sql injection in legacy application",
+      "publishedAt": "2026-10-14T17:33:56.675Z",
+      "firstSeenAt": "2026-10-14T17:33:56.675Z",
+      "lastSeenAt": "2026-10-14T17:33:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-14_3",
+      "source": "BleepingComputer",
+      "title": "Critical RCE vulnerability found in popular library #4",
+      "url": "https://example.com/2026-10-14/3",
+      "score": 6,
+      "category": "Malware",
+      "summary": "Security update regarding critical rce vulnerability found in popular library",
+      "publishedAt": "2026-10-15T11:09:56.675Z",
+      "firstSeenAt": "2026-10-15T11:09:56.675Z",
+      "lastSeenAt": "2026-10-15T11:09:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-14_4",
+      "source": "BleepingComputer",
+      "title": "Container escape vulnerability reported #5",
+      "url": "https://example.com/2026-10-14/4",
+      "score": 9,
+      "category": "Cloud & Infra",
+      "summary": "Security update regarding container escape vulnerability reported",
+      "publishedAt": "2026-10-15T15:53:56.675Z",
+      "firstSeenAt": "2026-10-15T15:53:56.675Z",
+      "lastSeenAt": "2026-10-15T15:53:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-14_5",
+      "source": "The Hacker News",
+      "title": "Cloud misconfiguration exposes sensitive data #6",
+      "url": "https://example.com/2026-10-14/5",
+      "score": 7,
+      "category": "Network Security",
+      "summary": "Security update regarding cloud misconfiguration exposes sensitive data",
+      "publishedAt": "2026-10-15T11:33:56.675Z",
+      "firstSeenAt": "2026-10-15T11:33:56.675Z",
+      "lastSeenAt": "2026-10-15T11:33:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-14_6",
+      "source": "GitHub Advisory",
+      "title": "SSH brute force campaign detected #7",
+      "url": "https://example.com/2026-10-14/6",
+      "score": 2,
+      "category": "Network Security",
+      "summary": "Security update regarding ssh brute force campaign detected",
+      "publishedAt": "2026-10-15T12:39:56.675Z",
+      "firstSeenAt": "2026-10-15T12:39:56.675Z",
+      "lastSeenAt": "2026-10-15T12:39:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-14_7",
+      "source": "The Hacker News",
+      "title": "XSS vulnerability in admin panel #8",
+      "url": "https://example.com/2026-10-14/7",
+      "score": 1,
+      "category": "Server Security",
+      "summary": "Security update regarding xss vulnerability in admin panel",
+      "publishedAt": "2026-10-15T12:38:56.675Z",
+      "firstSeenAt": "2026-10-15T12:38:56.675Z",
+      "lastSeenAt": "2026-10-15T12:38:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-14_8",
+      "source": "Hacker News",
+      "title": "Botnet infrastructure taken down by law enforcement #9",
+      "url": "https://example.com/2026-10-14/8",
+      "score": 10,
+      "category": "Server Security",
+      "summary": "Security update regarding botnet infrastructure taken down by law enforcement",
+      "publishedAt": "2026-10-15T10:09:56.675Z",
+      "firstSeenAt": "2026-10-15T10:09:56.675Z",
+      "lastSeenAt": "2026-10-15T10:09:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-14_9",
+      "source": "Hacker News",
+      "title": "Container escape vulnerability reported #10",
+      "url": "https://example.com/2026-10-14/9",
+      "score": 1,
+      "category": "Cloud & Infra",
+      "summary": "Security update regarding container escape vulnerability reported",
+      "publishedAt": "2026-10-15T10:21:56.675Z",
+      "firstSeenAt": "2026-10-15T10:21:56.675Z",
+      "lastSeenAt": "2026-10-15T10:21:56.675Z",
       "seenCount": 1
     }
   ]

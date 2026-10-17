@@ -1,0 +1,280 @@
+{
+  "runId": "run_1792270196683_10",
+  "status": "success",
+  "trigger": "schedule",
+  "generatedAt": "2026-10-07T20:49:56.675Z",
+  "itemCount": 16,
+  "newItemCount": 4,
+  "summary": "16 security intelligence items",
+  "reportMarkdown": "# FoxTerm Security Intel\n\n**2026-10-07**\n\n---\n\n## Vulnerability (3)\n\n- **Zero-day exploit disclosed in widely-used framework #4**\n- **Ransomware attack shuts down hospital systems #8**\n- **Zero-day exploit disclosed in widely-used framework #13**\n\n## Server Security (2)\n\n- **Ransomware attack shuts down hospital systems #5**\n- **DDoS attack reaches record bandwidth #16**\n\n## Network Security (1)\n\n- **Ransomware attack shuts down hospital systems #9**\n\n## Malware (5)\n\n- **CVE published for authentication bypass #1**\n- **Botnet infrastructure taken down by law enforcement #10**\n- **New phishing campaign targets enterprise users #11**\n- **DDoS attack reaches record bandwidth #12**\n- **Cloud misconfiguration exposes sensitive data #14**\n\n## Cloud & Infra (2)\n\n- **Critical RCE vulnerability found in popular library #2**\n- **Ransomware attack shuts down hospital systems #15**\n\n## Data Breach (3)\n\n- **Ransomware attack shuts down hospital systems #3**\n- **SQL injection in legacy application #6**\n- **New phishing campaign targets enterprise users #7**\n\n---\n\n*Total 16 items*",
+  "trends": [
+    {
+      "category": "Vulnerability",
+      "summary": "Zero-day exploit disclosed in widely-used framework #4; Ransomware attack shuts down hospital systems #8; Zero-day exploit disclosed in widely-used framework #13",
+      "count": 3,
+      "itemIds": [
+        "item_2026-10-07_3",
+        "item_2026-10-07_7",
+        "item_2026-10-07_12"
+      ]
+    },
+    {
+      "category": "Server Security",
+      "summary": "Ransomware attack shuts down hospital systems #5; DDoS attack reaches record bandwidth #16",
+      "count": 2,
+      "itemIds": [
+        "item_2026-10-07_4",
+        "item_2026-10-07_15"
+      ]
+    },
+    {
+      "category": "Network Security",
+      "summary": "Ransomware attack shuts down hospital systems #9",
+      "count": 1,
+      "itemIds": [
+        "item_2026-10-07_8"
+      ]
+    },
+    {
+      "category": "Malware",
+      "summary": "CVE published for authentication bypass #1; Botnet infrastructure taken down by law enforcement #10; New phishing campaign targets enterprise users #11; DDoS attack reaches record bandwidth #12; Cloud misconfiguration exposes sensitive data #14",
+      "count": 5,
+      "itemIds": [
+        "item_2026-10-07_0",
+        "item_2026-10-07_9",
+        "item_2026-10-07_10",
+        "item_2026-10-07_11",
+        "item_2026-10-07_13"
+      ]
+    },
+    {
+      "category": "Cloud & Infra",
+      "summary": "Critical RCE vulnerability found in popular library #2; Ransomware attack shuts down hospital systems #15",
+      "count": 2,
+      "itemIds": [
+        "item_2026-10-07_1",
+        "item_2026-10-07_14"
+      ]
+    },
+    {
+      "category": "Data Breach",
+      "summary": "Ransomware attack shuts down hospital systems #3; SQL injection in legacy application #6; New phishing campaign targets enterprise users #7",
+      "count": 3,
+      "itemIds": [
+        "item_2026-10-07_2",
+        "item_2026-10-07_5",
+        "item_2026-10-07_6"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item_2026-10-07_0",
+      "source": "BleepingComputer",
+      "title": "CVE published for authentication bypass #1",
+      "url": "https://example.com/2026-10-07/0",
+      "score": 1,
+      "category": "Malware",
+      "summary": "Security update regarding cve published for authentication bypass",
+      "publishedAt": "2026-10-08T00:01:56.675Z",
+      "firstSeenAt": "2026-10-08T00:01:56.675Z",
+      "lastSeenAt": "2026-10-08T00:01:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-07_1",
+      "source": "Hacker News",
+      "title": "Critical RCE vulnerability found in popular library #2",
+      "url": "https://example.com/2026-10-07/1",
+      "score": 10,
+      "category": "Cloud & Infra",
+      "summary": "Security update regarding critical rce vulnerability found in popular library",
+      "publishedAt": "2026-10-08T01:09:56.675Z",
+      "firstSeenAt": "2026-10-08T01:09:56.675Z",
+      "lastSeenAt": "2026-10-08T01:09:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-07_2",
+      "source": "BleepingComputer",
+      "title": "Ransomware attack shuts down hospital systems #3",
+      "url": "https://example.com/2026-10-07/2",
+      "score": 7,
+      "category": "Data Breach",
+      "summary": "Security update regarding ransomware attack shuts down hospital systems",
+      "publishedAt": "2026-10-08T14:59:56.675Z",
+      "firstSeenAt": "2026-10-08T14:59:56.675Z",
+      "lastSeenAt": "2026-10-08T14:59:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-07_3",
+      "source": "The Hacker News",
+      "title": "Zero-day exploit disclosed in widely-used framework #4",
+      "url": "https://example.com/2026-10-07/3",
+      "score": 3,
+      "category": "Vulnerability",
+      "summary": "Security update regarding zero-day exploit disclosed in widely-used framework",
+      "publishedAt": "2026-10-08T06:54:56.675Z",
+      "firstSeenAt": "2026-10-08T06:54:56.675Z",
+      "lastSeenAt": "2026-10-08T06:54:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-07_4",
+      "source": "Hacker News",
+      "title": "Ransomware attack shuts down hospital systems #5",
+      "url": "https://example.com/2026-10-07/4",
+      "score": 5,
+      "category": "Server Security",
+      "summary": "Security update regarding ransomware attack shuts down hospital systems",
+      "publishedAt": "2026-10-07T17:49:56.675Z",
+      "firstSeenAt": "2026-10-07T17:49:56.675Z",
+      "lastSeenAt": "2026-10-07T17:49:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-07_5",
+      "source": "The Hacker News",
+      "title": "SQL injection in legacy application #6",
+      "url": "https://example.com/2026-10-07/5",
+      "score": 1,
+      "category": "Data Breach",
+      "summary": "Security update regarding sql injection in legacy application",
+      "publishedAt": "2026-10-08T00:14:56.675Z",
+      "firstSeenAt": "2026-10-08T00:14:56.675Z",
+      "lastSeenAt": "2026-10-08T00:14:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-07_6",
+      "source": "GitHub Advisory",
+      "title": "New phishing campaign targets enterprise users #7",
+      "url": "https://example.com/2026-10-07/6",
+      "score": 8,
+      "category": "Data Breach",
+      "summary": "Security update regarding new phishing campaign targets enterprise users",
+      "publishedAt": "2026-10-07T18:18:56.675Z",
+      "firstSeenAt": "2026-10-07T18:18:56.675Z",
+      "lastSeenAt": "2026-10-07T18:18:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-07_7",
+      "source": "BleepingComputer",
+      "title": "Ransomware attack shuts down hospital systems #8",
+      "url": "https://example.com/2026-10-07/7",
+      "score": 4,
+      "category": "Vulnerability",
+      "summary": "Security update regarding ransomware attack shuts down hospital systems",
+      "publishedAt": "2026-10-07T21:54:56.675Z",
+      "firstSeenAt": "2026-10-07T21:54:56.675Z",
+      "lastSeenAt": "2026-10-07T21:54:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-07_8",
+      "source": "Hacker News",
+      "title": "Ransomware attack shuts down hospital systems #9",
+      "url": "https://example.com/2026-10-07/8",
+      "score": 7,
+      "category": "Network Security",
+      "summary": "Security update regarding ransomware attack shuts down hospital systems",
+      "publishedAt": "2026-10-07T17:13:56.675Z",
+      "firstSeenAt": "2026-10-07T17:13:56.675Z",
+      "lastSeenAt": "2026-10-07T17:13:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-07_9",
+      "source": "BleepingComputer",
+      "title": "Botnet infrastructure taken down by law enforcement #10",
+      "url": "https://example.com/2026-10-07/9",
+      "score": 3,
+      "category": "Malware",
+      "summary": "Security update regarding botnet infrastructure taken down by law enforcement",
+      "publishedAt": "2026-10-07T23:08:56.675Z",
+      "firstSeenAt": "2026-10-07T23:08:56.675Z",
+      "lastSeenAt": "2026-10-07T23:08:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-07_10",
+      "source": "GitHub Advisory",
+      "title": "New phishing campaign targets enterprise users #11",
+      "url": "https://example.com/2026-10-07/10",
+      "score": 4,
+      "category": "Malware",
+      "summary": "Security update regarding new phishing campaign targets enterprise users",
+      "publishedAt": "2026-10-08T01:53:56.675Z",
+      "firstSeenAt": "2026-10-08T01:53:56.675Z",
+      "lastSeenAt": "2026-10-08T01:53:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-07_11",
+      "source": "Hacker News",
+      "title": "DDoS attack reaches record bandwidth #12",
+      "url": "https://example.com/2026-10-07/11",
+      "score": 3,
+      "category": "Malware",
+      "summary": "Security update regarding ddos attack reaches record bandwidth",
+      "publishedAt": "2026-10-08T00:46:56.675Z",
+      "firstSeenAt": "2026-10-08T00:46:56.675Z",
+      "lastSeenAt": "2026-10-08T00:46:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-07_12",
+      "source": "Hacker News",
+      "title": "Zero-day exploit disclosed in widely-used framework #13",
+      "url": "https://example.com/2026-10-07/12",
+      "score": 4,
+      "category": "Vulnerability",
+      "summary": "Security update regarding zero-day exploit disclosed in widely-used framework",
+      "publishedAt": "2026-10-08T00:25:56.675Z",
+      "firstSeenAt": "2026-10-08T00:25:56.675Z",
+      "lastSeenAt": "2026-10-08T00:25:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-07_13",
+      "source": "Hacker News",
+      "title": "Cloud misconfiguration exposes sensitive data #14",
+      "url": "https://example.com/2026-10-07/13",
+      "score": 7,
+      "category": "Malware",
+      "summary": "Security update regarding cloud misconfiguration exposes sensitive data",
+      "publishedAt": "2026-10-08T11:03:56.675Z",
+      "firstSeenAt": "2026-10-08T11:03:56.675Z",
+      "lastSeenAt": "2026-10-08T11:03:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-07_14",
+      "source": "BleepingComputer",
+      "title": "Ransomware attack shuts down hospital systems #15",
+      "url": "https://example.com/2026-10-07/14",
+      "score": 10,
+      "category": "Cloud & Infra",
+      "summary": "Security update regarding ransomware attack shuts down hospital systems",
+      "publishedAt": "2026-10-08T03:40:56.675Z",
+      "firstSeenAt": "2026-10-08T03:40:56.675Z",
+      "lastSeenAt": "2026-10-08T03:40:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-10-07_15",
+      "source": "The Hacker News",
+      "title": "DDoS attack reaches record bandwidth #16",
+      "url": "https://example.com/2026-10-07/15",
+      "score": 5,
+      "category": "Server Security",
+      "summary": "Security update regarding ddos attack reaches record bandwidth",
+      "publishedAt": "2026-10-07T17:49:56.675Z",
+      "firstSeenAt": "2026-10-07T17:49:56.675Z",
+      "lastSeenAt": "2026-10-07T17:49:56.675Z",
+      "seenCount": 1
+    }
+  ]
+}

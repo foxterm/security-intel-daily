@@ -1,0 +1,252 @@
+{
+  "runId": "run_1792270196685_22",
+  "status": "success",
+  "trigger": "schedule",
+  "generatedAt": "2026-09-25T20:49:56.675Z",
+  "itemCount": 14,
+  "newItemCount": 4,
+  "summary": "14 security intelligence items",
+  "reportMarkdown": "# FoxTerm Security Intel\n\n**2026-09-25**\n\n---\n\n## Vulnerability (4)\n\n- **New phishing campaign targets enterprise users #1**\n- **XSS vulnerability in admin panel #2**\n- **XSS vulnerability in admin panel #3**\n- **Ransomware attack shuts down hospital systems #6**\n\n## Server Security (3)\n\n- **Major data breach affects millions of records #9**\n- **Ransomware attack shuts down hospital systems #13**\n- **Container escape vulnerability reported #14**\n\n## Network Security (1)\n\n- **API key leakage in public repository #5**\n\n## Malware (1)\n\n- **Ransomware attack shuts down hospital systems #8**\n\n## Cloud & Infra (2)\n\n- **Botnet infrastructure taken down by law enforcement #7**\n- **Cloud misconfiguration exposes sensitive data #12**\n\n## Data Breach (3)\n\n- **Ransomware attack shuts down hospital systems #4**\n- **Major data breach affects millions of records #10**\n- **Zero-day exploit disclosed in widely-used framework #11**\n\n---\n\n*Total 14 items*",
+  "trends": [
+    {
+      "category": "Vulnerability",
+      "summary": "New phishing campaign targets enterprise users #1; XSS vulnerability in admin panel #2; XSS vulnerability in admin panel #3; Ransomware attack shuts down hospital systems #6",
+      "count": 4,
+      "itemIds": [
+        "item_2026-09-25_0",
+        "item_2026-09-25_1",
+        "item_2026-09-25_2",
+        "item_2026-09-25_5"
+      ]
+    },
+    {
+      "category": "Server Security",
+      "summary": "Major data breach affects millions of records #9; Ransomware attack shuts down hospital systems #13; Container escape vulnerability reported #14",
+      "count": 3,
+      "itemIds": [
+        "item_2026-09-25_8",
+        "item_2026-09-25_12",
+        "item_2026-09-25_13"
+      ]
+    },
+    {
+      "category": "Network Security",
+      "summary": "API key leakage in public repository #5",
+      "count": 1,
+      "itemIds": [
+        "item_2026-09-25_4"
+      ]
+    },
+    {
+      "category": "Malware",
+      "summary": "Ransomware attack shuts down hospital systems #8",
+      "count": 1,
+      "itemIds": [
+        "item_2026-09-25_7"
+      ]
+    },
+    {
+      "category": "Cloud & Infra",
+      "summary": "Botnet infrastructure taken down by law enforcement #7; Cloud misconfiguration exposes sensitive data #12",
+      "count": 2,
+      "itemIds": [
+        "item_2026-09-25_6",
+        "item_2026-09-25_11"
+      ]
+    },
+    {
+      "category": "Data Breach",
+      "summary": "Ransomware attack shuts down hospital systems #4; Major data breach affects millions of records #10; Zero-day exploit disclosed in widely-used framework #11",
+      "count": 3,
+      "itemIds": [
+        "item_2026-09-25_3",
+        "item_2026-09-25_9",
+        "item_2026-09-25_10"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item_2026-09-25_0",
+      "source": "Hacker News",
+      "title": "New phishing campaign targets enterprise users #1",
+      "url": "https://example.com/2026-09-25/0",
+      "score": 6,
+      "category": "Vulnerability",
+      "summary": "Security update regarding new phishing campaign targets enterprise users",
+      "publishedAt": "2026-09-26T03:32:56.675Z",
+      "firstSeenAt": "2026-09-26T03:32:56.675Z",
+      "lastSeenAt": "2026-09-26T03:32:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-25_1",
+      "source": "Hacker News",
+      "title": "XSS vulnerability in admin panel #2",
+      "url": "https://example.com/2026-09-25/1",
+      "score": 9,
+      "category": "Vulnerability",
+      "summary": "Security update regarding xss vulnerability in admin panel",
+      "publishedAt": "2026-09-26T12:05:56.675Z",
+      "firstSeenAt": "2026-09-26T12:05:56.675Z",
+      "lastSeenAt": "2026-09-26T12:05:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-25_2",
+      "source": "BleepingComputer",
+      "title": "XSS vulnerability in admin panel #3",
+      "url": "https://example.com/2026-09-25/2",
+      "score": 7,
+      "category": "Vulnerability",
+      "summary": "Security update regarding xss vulnerability in admin panel",
+      "publishedAt": "2026-09-25T18:12:56.675Z",
+      "firstSeenAt": "2026-09-25T18:12:56.675Z",
+      "lastSeenAt": "2026-09-25T18:12:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-25_3",
+      "source": "Hacker News",
+      "title": "Ransomware attack shuts down hospital systems #4",
+      "url": "https://example.com/2026-09-25/3",
+      "score": 10,
+      "category": "Data Breach",
+      "summary": "Security update regarding ransomware attack shuts down hospital systems",
+      "publishedAt": "2026-09-26T06:37:56.675Z",
+      "firstSeenAt": "2026-09-26T06:37:56.675Z",
+      "lastSeenAt": "2026-09-26T06:37:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-25_4",
+      "source": "The Hacker News",
+      "title": "API key leakage in public repository #5",
+      "url": "https://example.com/2026-09-25/4",
+      "score": 8,
+      "category": "Network Security",
+      "summary": "Security update regarding api key leakage in public repository",
+      "publishedAt": "2026-09-26T05:49:56.675Z",
+      "firstSeenAt": "2026-09-26T05:49:56.675Z",
+      "lastSeenAt": "2026-09-26T05:49:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-25_5",
+      "source": "GitHub Advisory",
+      "title": "Ransomware attack shuts down hospital systems #6",
+      "url": "https://example.com/2026-09-25/5",
+      "score": 6,
+      "category": "Vulnerability",
+      "summary": "Security update regarding ransomware attack shuts down hospital systems",
+      "publishedAt": "2026-09-26T12:07:56.675Z",
+      "firstSeenAt": "2026-09-26T12:07:56.675Z",
+      "lastSeenAt": "2026-09-26T12:07:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-25_6",
+      "source": "BleepingComputer",
+      "title": "Botnet infrastructure taken down by law enforcement #7",
+      "url": "https://example.com/2026-09-25/6",
+      "score": 3,
+      "category": "Cloud & Infra",
+      "summary": "Security update regarding botnet infrastructure taken down by law enforcement",
+      "publishedAt": "2026-09-25T21:15:56.675Z",
+      "firstSeenAt": "2026-09-25T21:15:56.675Z",
+      "lastSeenAt": "2026-09-25T21:15:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-25_7",
+      "source": "BleepingComputer",
+      "title": "Ransomware attack shuts down hospital systems #8",
+      "url": "https://example.com/2026-09-25/7",
+      "score": 8,
+      "category": "Malware",
+      "summary": "Security update regarding ransomware attack shuts down hospital systems",
+      "publishedAt": "2026-09-26T15:34:56.675Z",
+      "firstSeenAt": "2026-09-26T15:34:56.675Z",
+      "lastSeenAt": "2026-09-26T15:34:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-25_8",
+      "source": "GitHub Advisory",
+      "title": "Major data breach affects millions of records #9",
+      "url": "https://example.com/2026-09-25/8",
+      "score": 7,
+      "category": "Server Security",
+      "summary": "Security update regarding major data breach affects millions of records",
+      "publishedAt": "2026-09-26T05:39:56.675Z",
+      "firstSeenAt": "2026-09-26T05:39:56.675Z",
+      "lastSeenAt": "2026-09-26T05:39:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-25_9",
+      "source": "BleepingComputer",
+      "title": "Major data breach affects millions of records #10",
+      "url": "https://example.com/2026-09-25/9",
+      "score": 7,
+      "category": "Data Breach",
+      "summary": "Security update regarding major data breach affects millions of records",
+      "publishedAt": "2026-09-26T01:44:56.675Z",
+      "firstSeenAt": "2026-09-26T01:44:56.675Z",
+      "lastSeenAt": "2026-09-26T01:44:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-25_10",
+      "source": "The Hacker News",
+      "title": "Zero-day exploit disclosed in widely-used framework #11",
+      "url": "https://example.com/2026-09-25/10",
+      "score": 8,
+      "category": "Data Breach",
+      "summary": "Security update regarding zero-day exploit disclosed in widely-used framework",
+      "publishedAt": "2026-09-25T16:24:56.675Z",
+      "firstSeenAt": "2026-09-25T16:24:56.675Z",
+      "lastSeenAt": "2026-09-25T16:24:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-25_11",
+      "source": "Hacker News",
+      "title": "Cloud misconfiguration exposes sensitive data #12",
+      "url": "https://example.com/2026-09-25/11",
+      "score": 10,
+      "category": "Cloud & Infra",
+      "summary": "Security update regarding cloud misconfiguration exposes sensitive data",
+      "publishedAt": "2026-09-25T17:20:56.675Z",
+      "firstSeenAt": "2026-09-25T17:20:56.675Z",
+      "lastSeenAt": "2026-09-25T17:20:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-25_12",
+      "source": "GitHub Advisory",
+      "title": "Ransomware attack shuts down hospital systems #13",
+      "url": "https://example.com/2026-09-25/12",
+      "score": 7,
+      "category": "Server Security",
+      "summary": "Security update regarding ransomware attack shuts down hospital systems",
+      "publishedAt": "2026-09-25T20:14:56.675Z",
+      "firstSeenAt": "2026-09-25T20:14:56.675Z",
+      "lastSeenAt": "2026-09-25T20:14:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-25_13",
+      "source": "The Hacker News",
+      "title": "Container escape vulnerability reported #14",
+      "url": "https://example.com/2026-09-25/13",
+      "score": 10,
+      "category": "Server Security",
+      "summary": "Security update regarding container escape vulnerability reported",
+      "publishedAt": "2026-09-25T20:28:56.675Z",
+      "firstSeenAt": "2026-09-25T20:28:56.675Z",
+      "lastSeenAt": "2026-09-25T20:28:56.675Z",
+      "seenCount": 1
+    }
+  ]
+}

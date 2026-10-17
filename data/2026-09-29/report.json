@@ -1,0 +1,182 @@
+{
+  "runId": "run_1792270196684_18",
+  "status": "success",
+  "trigger": "schedule",
+  "generatedAt": "2026-09-29T20:49:56.675Z",
+  "itemCount": 9,
+  "newItemCount": 2,
+  "summary": "9 security intelligence items",
+  "reportMarkdown": "# FoxTerm Security Intel\n\n**2026-09-29**\n\n---\n\n## Vulnerability (1)\n\n- **Ransomware attack shuts down hospital systems #1**\n\n## Server Security (1)\n\n- **XSS vulnerability in admin panel #5**\n\n## Network Security (2)\n\n- **SQL injection in legacy application #3**\n- **Botnet infrastructure taken down by law enforcement #6**\n\n## Malware (2)\n\n- **DDoS attack reaches record bandwidth #8**\n- **Zero-day exploit disclosed in widely-used framework #9**\n\n## Cloud & Infra (1)\n\n- **DDoS attack reaches record bandwidth #7**\n\n## Data Breach (2)\n\n- **CVE published for authentication bypass #2**\n- **New phishing campaign targets enterprise users #4**\n\n---\n\n*Total 9 items*",
+  "trends": [
+    {
+      "category": "Vulnerability",
+      "summary": "Ransomware attack shuts down hospital systems #1",
+      "count": 1,
+      "itemIds": [
+        "item_2026-09-29_0"
+      ]
+    },
+    {
+      "category": "Server Security",
+      "summary": "XSS vulnerability in admin panel #5",
+      "count": 1,
+      "itemIds": [
+        "item_2026-09-29_4"
+      ]
+    },
+    {
+      "category": "Network Security",
+      "summary": "SQL injection in legacy application #3; Botnet infrastructure taken down by law enforcement #6",
+      "count": 2,
+      "itemIds": [
+        "item_2026-09-29_2",
+        "item_2026-09-29_5"
+      ]
+    },
+    {
+      "category": "Malware",
+      "summary": "DDoS attack reaches record bandwidth #8; Zero-day exploit disclosed in widely-used framework #9",
+      "count": 2,
+      "itemIds": [
+        "item_2026-09-29_7",
+        "item_2026-09-29_8"
+      ]
+    },
+    {
+      "category": "Cloud & Infra",
+      "summary": "DDoS attack reaches record bandwidth #7",
+      "count": 1,
+      "itemIds": [
+        "item_2026-09-29_6"
+      ]
+    },
+    {
+      "category": "Data Breach",
+      "summary": "CVE published for authentication bypass #2; New phishing campaign targets enterprise users #4",
+      "count": 2,
+      "itemIds": [
+        "item_2026-09-29_1",
+        "item_2026-09-29_3"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item_2026-09-29_0",
+      "source": "Hacker News",
+      "title": "Ransomware attack shuts down hospital systems #1",
+      "url": "https://example.com/2026-09-29/0",
+      "score": 1,
+      "category": "Vulnerability",
+      "summary": "Security update regarding ransomware attack shuts down hospital systems",
+      "publishedAt": "2026-09-29T18:19:56.675Z",
+      "firstSeenAt": "2026-09-29T18:19:56.675Z",
+      "lastSeenAt": "2026-09-29T18:19:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-29_1",
+      "source": "The Hacker News",
+      "title": "CVE published for authentication bypass #2",
+      "url": "https://example.com/2026-09-29/1",
+      "score": 9,
+      "category": "Data Breach",
+      "summary": "Security update regarding cve published for authentication bypass",
+      "publishedAt": "2026-09-30T12:38:56.675Z",
+      "firstSeenAt": "2026-09-30T12:38:56.675Z",
+      "lastSeenAt": "2026-09-30T12:38:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-29_2",
+      "source": "GitHub Advisory",
+      "title": "SQL injection in legacy application #3",
+      "url": "https://example.com/2026-09-29/2",
+      "score": 9,
+      "category": "Network Security",
+      "summary": "Security update regarding sql injection in legacy application",
+      "publishedAt": "2026-09-30T15:36:56.675Z",
+      "firstSeenAt": "2026-09-30T15:36:56.675Z",
+      "lastSeenAt": "2026-09-30T15:36:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-29_3",
+      "source": "GitHub Advisory",
+      "title": "New phishing campaign targets enterprise users #4",
+      "url": "https://example.com/2026-09-29/3",
+      "score": 10,
+      "category": "Data Breach",
+      "summary": "Security update regarding new phishing campaign targets enterprise users",
+      "publishedAt": "2026-09-30T06:45:56.675Z",
+      "firstSeenAt": "2026-09-30T06:45:56.675Z",
+      "lastSeenAt": "2026-09-30T06:45:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-29_4",
+      "source": "Hacker News",
+      "title": "XSS vulnerability in admin panel #5",
+      "url": "https://example.com/2026-09-29/4",
+      "score": 5,
+      "category": "Server Security",
+      "summary": "Security update regarding xss vulnerability in admin panel",
+      "publishedAt": "2026-09-30T05:15:56.675Z",
+      "firstSeenAt": "2026-09-30T05:15:56.675Z",
+      "lastSeenAt": "2026-09-30T05:15:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-29_5",
+      "source": "BleepingComputer",
+      "title": "Botnet infrastructure taken down by law enforcement #6",
+      "url": "https://example.com/2026-09-29/5",
+      "score": 1,
+      "category": "Network Security",
+      "summary": "Security update regarding botnet infrastructure taken down by law enforcement",
+      "publishedAt": "2026-09-30T05:13:56.675Z",
+      "firstSeenAt": "2026-09-30T05:13:56.675Z",
+      "lastSeenAt": "2026-09-30T05:13:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-29_6",
+      "source": "The Hacker News",
+      "title": "DDoS attack reaches record bandwidth #7",
+      "url": "https://example.com/2026-09-29/6",
+      "score": 5,
+      "category": "Cloud & Infra",
+      "summary": "Security update regarding ddos attack reaches record bandwidth",
+      "publishedAt": "2026-09-29T16:48:56.675Z",
+      "firstSeenAt": "2026-09-29T16:48:56.675Z",
+      "lastSeenAt": "2026-09-29T16:48:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-29_7",
+      "source": "The Hacker News",
+      "title": "DDoS attack reaches record bandwidth #8",
+      "url": "https://example.com/2026-09-29/7",
+      "score": 10,
+      "category": "Malware",
+      "summary": "Security update regarding ddos attack reaches record bandwidth",
+      "publishedAt": "2026-09-29T20:31:56.675Z",
+      "firstSeenAt": "2026-09-29T20:31:56.675Z",
+      "lastSeenAt": "2026-09-29T20:31:56.675Z",
+      "seenCount": 1
+    },
+    {
+      "id": "item_2026-09-29_8",
+      "source": "GitHub Advisory",
+      "title": "Zero-day exploit disclosed in widely-used framework #9",
+      "url": "https://example.com/2026-09-29/8",
+      "score": 2,
+      "category": "Malware",
+      "summary": "Security update regarding zero-day exploit disclosed in widely-used framework",
+      "publishedAt": "2026-09-30T12:41:56.675Z",
+      "firstSeenAt": "2026-09-30T12:41:56.675Z",
+      "lastSeenAt": "2026-09-30T12:41:56.675Z",
+      "seenCount": 1
+    }
+  ]
+}

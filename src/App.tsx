@@ -464,6 +464,7 @@ function AppContent() {
   useEffect(() => { streamingDrawerOpenRef.current = streamingDrawerOpen; }, [streamingDrawerOpen]);
 
   const drawerBodyRef = useRef<HTMLDivElement | null>(null);
+  const dateListRef = useRef<HTMLDivElement | null>(null);
   const activeRunRef = useRef<AbortController | null>(null);
   const droppingTimersRef = useRef<Set<ReturnType<typeof setTimeout>>>(new Set());
 
@@ -659,20 +660,30 @@ function AppContent() {
     el.scrollTop = el.scrollHeight;
   }, [streamingDrawerOpen, liveWriterText]);
 
+  useEffect(() => {
+    if (!currentDate || !dateListRef.current) return;
+    const active = dateListRef.current.querySelector(`[data-date="${currentDate}"]`) as HTMLElement;
+    if (active) {
+      active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  }, [currentDate]);
+
   const safeReport = normalizeReport(report);
   const newsItems = safeReport.items;
   const newItems = useMemo(() => {
     const cutoff = Date.now() - 24 * 60 * 60 * 1000;
     return newsItems.filter(item => {
-      if (!item.firstSeenAt) return false;
-      return new Date(item.firstSeenAt).getTime() >= cutoff;
+      const ts = item.publishedAt || item.firstSeenAt;
+      if (!ts) return false;
+      return new Date(ts).getTime() >= cutoff;
     });
   }, [newsItems]);
   const recurringItems = useMemo(() => {
     const cutoff = Date.now() - 24 * 60 * 60 * 1000;
     return newsItems.filter(item => {
-      if (!item.firstSeenAt) return true;
-      return new Date(item.firstSeenAt).getTime() < cutoff;
+      const ts = item.publishedAt || item.firstSeenAt;
+      if (!ts) return true;
+      return new Date(ts).getTime() < cutoff;
     });
   }, [newsItems]);
   const trendCount = safeReport.trends.length;
@@ -739,17 +750,17 @@ function AppContent() {
 
       {!bootstrapping && availableDates.length > 1 && (
         <div className={styles.dateBar}>
-          <span className={styles.dateBarLabel}>{t('selectDate')}</span>
-          <div className={styles.dateList}>
+          <div className={styles.dateList} ref={dateListRef}>
             {availableDates.map(entry => (
               <button
                 key={entry.date}
                 type="button"
+                data-date={entry.date}
                 className={`${styles.dateButton} ${currentDate === entry.date ? styles.dateButtonActive : ''}`}
                 onClick={() => loadReportByDate(entry.date)}
               >
                 {entry.date}
-                {entry.count > 0 && <span className={styles.dateBadge}>{entry.count}</span>}
+                <span className={styles.dateBadge}>{entry.count}</span>
               </button>
             ))}
           </div>
@@ -1039,7 +1050,8 @@ function AppContent() {
                       const item = safeReport.items.find(i => i.id === id);
                       if (!item) return null;
                       const cutoff = Date.now() - 24 * 60 * 60 * 1000;
-                      const isNew = item.firstSeenAt && new Date(item.firstSeenAt).getTime() >= cutoff;
+                      const ts = item.publishedAt || item.firstSeenAt;
+                      const isNew = ts && new Date(ts).getTime() >= cutoff;
                       return (
                         <a
                           className={styles.newsCard}
