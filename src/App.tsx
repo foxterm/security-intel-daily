@@ -670,6 +670,11 @@ function AppContent() {
   const [activeSource, setActiveSource] = useState<string | null>(null);
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
 
+  useEffect(() => {
+    setActiveSource(null);
+    setActiveTopic(null);
+  }, [currentDate]);
+
   const filteredNewItems = useMemo(() => {
     let items = newItems;
     if (activeSource) items = items.filter(i => i.source === activeSource);
