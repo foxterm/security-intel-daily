@@ -689,6 +689,21 @@ function AppContent() {
   const allSources = useMemo(() => Array.from(new Set(newsItems.map(item => item.source))), [newsItems]);
   const sourceNames = allSources.join(' / ') || 'Hacker News / BleepingComputer / The Hacker News';
 
+  const sourceCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const item of newsItems) counts[item.source] = (counts[item.source] || 0) + 1;
+    return counts;
+  }, [newsItems]);
+
+  const topicCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const item of newsItems) {
+      const cat = item.category || 'Security';
+      counts[cat] = (counts[cat] || 0) + 1;
+    }
+    return counts;
+  }, [newsItems]);
+
   const [activeSource, setActiveSource] = useState<string | null>(null);
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
 
@@ -786,6 +801,7 @@ function AppContent() {
                   onClick={() => setActiveSource(prev => prev === source ? null : source)}
                 >
                   {source}
+                  <span className={styles.filterCount}>{sourceCounts[source] || 0}</span>
                 </button>
               ))}
             </div>
@@ -798,6 +814,7 @@ function AppContent() {
                   onClick={() => setActiveTopic(prev => prev === topic ? null : topic)}
                 >
                   {topic}
+                  <span className={styles.filterCount}>{topicCounts[topic] || 0}</span>
                 </button>
               ))}
             </div>
