@@ -258,6 +258,13 @@ function generateReportMarkdown(items) {
   return header + body + footer;
 }
 
+// Get item's UTC date string for archiving
+function getItemUTCDate(item) {
+  const ts = item.publishedAt || item.pubDate;
+  if (!ts) return getTodayCST();
+  return new Date(ts).toISOString().slice(0, 10);
+}
+
 // ── Main Pipeline ──
 async function main() {
   console.log('=== FoxTerm Security Intelligence Generator ===');
@@ -266,109 +273,103 @@ async function main() {
 
   if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
 
-  const today = getTodayCST();
-  console.log(`[1/3] Collecting sources for last 72 hours (archive: ${today})...`);
+  console.log(`[1/3] Collecting sources for last 72 hours...`);
   const [rss, hn, gh] = await Promise.all([collectRSS(), collectHN(), collectGitHub()]);
   const candidates = [...rss, ...hn, ...gh];
   console.log(`  RSS=${rss.length}, HN=${hn.length}, GH=${gh.length}, Total=${candidates.length}`);
 
-  // Build dedup set from ALL existing date reports
-  const knownIds = buildKnownIdsSet();
-  console.log(`  Known items across all dates: ${knownIds.size}`);
-
-  // Load existing report for today to merge
-  const existingReport = loadExistingReport(today);
-  const existingItems = existingReport?.items || [];
-  const existingById = new Map(existingItems.map(i => [i.id, i]));
-  console.log(`  Existing items for ${today}: ${existingItems.length}`);
-
-  if (!candidates.length && !existingItems.length) {
+  if (!candidates.length) {
     console.log('  No items collected.');
-    const dateDir = path.join(DATA_DIR, today);
-    if (!fs.existsSync(dateDir)) fs.mkdirSync(dateDir, { recursive: true });
-    const empty = {
-      runId: `run_${Date.now()}`, status: 'success', trigger: 'schedule',
-      generatedAt: new Date().toISOString(), itemCount: 0, newItemCount: 0,
-      summary: 'No security intelligence collected',
-      reportMarkdown: '# FoxTerm Security Intel\n\nNo security intelligence collected.',
-      trends: [], items: [],
-    };
-    fs.writeFileSync(path.join(dateDir, 'report.json'), JSON.stringify(empty));
-
-    // Update index
-    const entries = readIndex();
-    const existing = entries.find(e => e.date === today);
-    if (!existing) entries.push({ date: today, count: 0 });
-    writeIndex(entries);
-    console.log(`Saved: data/${today}/report.json (empty)`);
+    console.log('\n=== Done ===');
     return;
   }
 
-  // Merge: keep existing items, add new ones
-  let newCount = 0;
-  const now = new Date().toISOString();
+  // Group candidates by their publishedAt UTC date
+  const byDate = {};
   for (const item of candidates) {
-    if (!existingById.has(item.id)) {
-      existingById.set(item.id, { ...item, firstSeenAt: now, lastSeenAt: now, seenCount: 1 });
-      newCount++;
+    const date = getItemUTCDate(item);
+    if (!byDate[date]) byDate[date] = [];
+    byDate[date].push(item);
+  }
+  const dates = Object.keys(byDate).sort();
+  console.log(`  Items span ${dates.length} dates: ${dates.join(', ')}`);
+
+  const knownIds = buildKnownIdsSet();
+  console.log(`  Known items across all dates: ${knownIds.size}`);
+
+  console.log(`[2/3] Merging items by date...`);
+  const now = new Date().toISOString();
+  const affectedDates = [];
+
+  for (const date of dates) {
+    const dayCandidates = byDate[date];
+    const existingReport = loadExistingReport(date);
+    const existingItems = existingReport?.items || [];
+    const existingById = new Map(existingItems.map(i => [i.id, i]));
+
+    let newCount = 0;
+    for (const item of dayCandidates) {
+      if (!existingById.has(item.id)) {
+        existingById.set(item.id, { ...item, firstSeenAt: now, lastSeenAt: now, seenCount: 1 });
+        newCount++;
+      } else {
+        const existing = existingById.get(item.id);
+        existingById.set(item.id, { ...existing, lastSeenAt: now, seenCount: (existing.seenCount || 0) + 1 });
+      }
+    }
+
+    const allItems = Array.from(existingById.values())
+      .map(item => ({ ...item, summary: (item.summary || '').slice(0, 500) }));
+
+    console.log(`  ${date}: ${allItems.length} total, ${newCount} new`);
+
+    const grouped = {};
+    for (const item of allItems) {
+      const cat = item.category || 'Security Industry';
+      if (!grouped[cat]) grouped[cat] = [];
+      grouped[cat].push(item);
+    }
+
+    const trends = Object.entries(grouped).map(([cat, catItems]) => ({
+      category: cat,
+      summary: catItems.map(i => i.title).join('; '),
+      count: catItems.length,
+      itemIds: catItems.map(i => i.id),
+    }));
+
+    const markdown = generateReportMarkdown(allItems);
+
+    const report = {
+      runId: `run_${Date.now()}`,
+      status: 'success',
+      trigger: 'schedule',
+      generatedAt: now,
+      itemCount: allItems.length,
+      newItemCount: newCount,
+      summary: `${allItems.length} security intelligence items`,
+      reportMarkdown: markdown,
+      trends,
+      items: allItems,
+    };
+
+    const dateDir = path.join(DATA_DIR, date);
+    if (!fs.existsSync(dateDir)) fs.mkdirSync(dateDir, { recursive: true });
+    fs.writeFileSync(path.join(dateDir, 'report.json'), JSON.stringify(report));
+    affectedDates.push({ date, count: allItems.length });
+  }
+
+  console.log(`[3/3] Updating index...`);
+  const entries = readIndex();
+  for (const { date, count } of affectedDates) {
+    const existing = entries.find(e => e.date === date);
+    if (existing) {
+      existing.count = count;
     } else {
-      const existing = existingById.get(item.id);
-      existingById.set(item.id, { ...existing, lastSeenAt: now, seenCount: (existing.seenCount || 0) + 1 });
+      entries.push({ date, count });
     }
   }
-
-  const allItems = Array.from(existingById.values())
-    .map(item => ({ ...item, summary: (item.summary || '').slice(0, 500) }));
-
-  console.log(`[2/3] Merged: ${allItems.length} total, ${newCount} new items`);
-
-  console.log('[3/3] Generating report...');
-  const markdown = generateReportMarkdown(allItems);
-  console.log(`  Report: ${markdown.length} chars`);
-
-  const grouped = {};
-  for (const item of allItems) {
-    const cat = item.category || 'Security Industry';
-    if (!grouped[cat]) grouped[cat] = [];
-    grouped[cat].push(item);
-  }
-
-  const trends = Object.entries(grouped).map(([cat, catItems]) => ({
-    category: cat,
-    summary: catItems.map(i => i.title).join('; '),
-    count: catItems.length,
-    itemIds: catItems.map(i => i.id),
-  }));
-
-  const report = {
-    runId: `run_${Date.now()}`,
-    status: 'success',
-    trigger: 'schedule',
-    generatedAt: new Date().toISOString(),
-    itemCount: allItems.length,
-    newItemCount: newCount,
-    summary: `${allItems.length} security intelligence items`,
-    reportMarkdown: markdown,
-    trends,
-    items: allItems,
-  };
-
-  // Save to date directory
-  const dateDir = path.join(DATA_DIR, today);
-  if (!fs.existsSync(dateDir)) fs.mkdirSync(dateDir, { recursive: true });
-  fs.writeFileSync(path.join(dateDir, 'report.json'), JSON.stringify(report));
-  console.log(`\nSaved: data/${today}/report.json`);
-
-  // Update index.json
-  const entries = readIndex();
-  const existing = entries.find(e => e.date === today);
-  if (existing) {
-    existing.count = report.items.length;
-  } else {
-    entries.push({ date: today, count: report.items.length });
-  }
   const sorted = writeIndex(entries);
-  console.log(`Updated: data/index.json (${sorted.length} dates)`);
+  console.log(`  data/index.json: ${sorted.length} dates`);
 
   console.log('\n=== Done ===');
 }
