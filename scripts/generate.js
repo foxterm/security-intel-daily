@@ -306,7 +306,7 @@ async function main() {
   let newCount = 0;
   for (const item of candidates) {
     if (!existingById.has(item.id)) {
-      existingById.set(item.id, { ...item, isNew: !knownIds.has(item.id) });
+      existingById.set(item.id, item);
       newCount++;
     }
   }

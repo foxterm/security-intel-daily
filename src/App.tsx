@@ -661,8 +661,20 @@ function AppContent() {
 
   const safeReport = normalizeReport(report);
   const newsItems = safeReport.items;
-  const newItems = useMemo(() => newsItems.filter(item => item.isNew), [newsItems]);
-  const recurringItems = useMemo(() => newsItems.filter(item => !item.isNew), [newsItems]);
+  const newItems = useMemo(() => {
+    if (!currentDate) return [];
+    return newsItems.filter(item => {
+      if (!item.firstSeenAt) return false;
+      return item.firstSeenAt.startsWith(currentDate);
+    });
+  }, [newsItems, currentDate]);
+  const recurringItems = useMemo(() => {
+    if (!currentDate) return newsItems;
+    return newsItems.filter(item => {
+      if (!item.firstSeenAt) return true;
+      return !item.firstSeenAt.startsWith(currentDate);
+    });
+  }, [newsItems, currentDate]);
   const trendCount = safeReport.trends.length;
   const allSources = useMemo(() => Array.from(new Set(newsItems.map(item => item.source))), [newsItems]);
   const sourceNames = allSources.join(' / ') || 'Hacker News / BleepingComputer / The Hacker News';
@@ -824,7 +836,7 @@ function AppContent() {
                         <div className={styles.newsMetaTop}>
                           <span className={styles.sourceBadge}>{item.source}</span>
                           <span>{formatItemTime(item.publishedAt, t('unknownTimeLabel'))}</span>
-                          {item.isNew && <span className={styles.newBadge}>NEW</span>}
+                          <span className={styles.newBadge}>NEW</span>
                         </div>
                         <strong>{getItemTitle(item)}</strong>
                         <p>{itemSummary(item, t('fallbackSummary'))}</p>
@@ -860,7 +872,6 @@ function AppContent() {
                         <div className={styles.newsMetaTop}>
                           <span className={styles.sourceBadge}>{item.source}</span>
                           <span>{formatItemTime(item.publishedAt, t('unknownTimeLabel'))}</span>
-                          {item.isNew && <span className={styles.newBadge}>NEW</span>}
                         </div>
                         <strong>{getItemTitle(item)}</strong>
                         <p>{itemSummary(item, t('fallbackSummary'))}</p>
@@ -1026,6 +1037,7 @@ function AppContent() {
                     {(group.itemIds || []).map((id: string) => {
                       const item = safeReport.items.find(i => i.id === id);
                       if (!item) return null;
+                      const isNew = currentDate && item.firstSeenAt?.startsWith(currentDate);
                       return (
                         <a
                           className={styles.newsCard}
@@ -1038,7 +1050,7 @@ function AppContent() {
                             <div className={styles.newsMetaTop}>
                               <span className={styles.sourceBadge}>{item.source}</span>
                               <span>{item.publishedAt ? formatTime(item.publishedAt) : ''}</span>
-                              {item.isNew && <span className={styles.newBadge}>NEW</span>}
+                              {isNew && <span className={styles.newBadge}>NEW</span>}
                             </div>
                             <strong>{item.title}</strong>
                             {item.summary && <p>{item.summary.slice(0, 200)}</p>}
