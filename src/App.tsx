@@ -662,19 +662,19 @@ function AppContent() {
   const safeReport = normalizeReport(report);
   const newsItems = safeReport.items;
   const newItems = useMemo(() => {
-    if (!currentDate) return [];
+    const cutoff = Date.now() - 24 * 60 * 60 * 1000;
     return newsItems.filter(item => {
       if (!item.firstSeenAt) return false;
-      return item.firstSeenAt.startsWith(currentDate);
+      return new Date(item.firstSeenAt).getTime() >= cutoff;
     });
-  }, [newsItems, currentDate]);
+  }, [newsItems]);
   const recurringItems = useMemo(() => {
-    if (!currentDate) return newsItems;
+    const cutoff = Date.now() - 24 * 60 * 60 * 1000;
     return newsItems.filter(item => {
       if (!item.firstSeenAt) return true;
-      return !item.firstSeenAt.startsWith(currentDate);
+      return new Date(item.firstSeenAt).getTime() < cutoff;
     });
-  }, [newsItems, currentDate]);
+  }, [newsItems]);
   const trendCount = safeReport.trends.length;
   const allSources = useMemo(() => Array.from(new Set(newsItems.map(item => item.source))), [newsItems]);
   const sourceNames = allSources.join(' / ') || 'Hacker News / BleepingComputer / The Hacker News';
@@ -1038,7 +1038,8 @@ function AppContent() {
                     {(group.itemIds || []).map((id: string) => {
                       const item = safeReport.items.find(i => i.id === id);
                       if (!item) return null;
-                      const isNew = currentDate && item.firstSeenAt?.startsWith(currentDate);
+                      const cutoff = Date.now() - 24 * 60 * 60 * 1000;
+                      const isNew = item.firstSeenAt && new Date(item.firstSeenAt).getTime() >= cutoff;
                       return (
                         <a
                           className={styles.newsCard}
