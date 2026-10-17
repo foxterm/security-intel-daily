@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode, SVGProps } from 'react';
-import { fetchHistory, fetchLatest, fetchReportDetail, runReportSSE, stopReport } from './api';
+import { runReportSSE, stopReport } from './api';
 import { useI18n } from './i18n';
 import MarkdownReport from './MarkdownReport';
+import { ReportProvider, useReport } from './ReportContext';
 import { EMPTY_REPORT, normalizeReport } from './reportModel';
-import type { AnalystCategoryEvent, AnalystDeepDiveEvent, HistoryEntry, ItemPhase, PipelineEvent, TrendItem, TrendReport } from './types';
+import type { AnalystCategoryEvent, AnalystDeepDiveEvent, ItemPhase, PipelineEvent, TrendItem, TrendReport } from './types';
 import styles from './App.module.css';
 
 function formatTime(value?: string): string {
@@ -133,6 +134,9 @@ const IconBookmark = (p: IconProps) => (
 const IconArrowRight = (p: IconProps) => (
   <Icon {...p}><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></Icon>
 );
+const IconArrowLeft = (p: IconProps) => (
+  <Icon {...p}><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></Icon>
+);
 const IconExternal = (p: IconProps) => (
   <Icon {...p}><path d="M15 3h6v6" /><path d="M10 14L21 3" /><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" /></Icon>
 );
@@ -157,6 +161,12 @@ const IconRocket = (p: IconProps) => (
 const IconGitHub = (p: IconProps) => (
   <Icon {...p}><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" /><path d="M9 18c-4.51 2-5-2-7-2" /></Icon>
 );
+const IconChevronLeft = (p: IconProps) => (
+  <Icon {...p}><polyline points="15 18 9 12 15 6" /></Icon>
+);
+const IconChevronRight = (p: IconProps) => (
+  <Icon {...p}><polyline points="9 18 15 12 9 6" /></Icon>
+);
 
 function TriggerBadge({ trigger }: { trigger?: string }) {
   const { t } = useI18n();
@@ -178,7 +188,6 @@ function PipelineBar({
   stages: Record<string, StageState>;
 }) {
   const { t } = useI18n();
-  // Compute merged stage status for parallel stages (curator + summarizer → filter)
   const getStageState = (def: typeof PIPELINE_STAGES[number]): StageState => {
     if ('parallel' in def && def.parallel) {
       const subs = def.parallel.map(k => stages[k] || { status: 'pending' as StageStatus });
@@ -193,7 +202,6 @@ function PipelineBar({
     return stages[def.key] || { status: 'pending' as StageStatus };
   };
 
-  // Nothing to show
   const hasAnyActivity = Object.keys(stages).length > 0;
   if (!hasAnyActivity) return null;
 
@@ -253,7 +261,6 @@ function LiveFeed({
 }) {
   const { t } = useI18n();
   const phaseHint = t(LIVE_PHASE_KEYS[phase] as any);
-  // Group items by analyst category once analysis arrives; otherwise show flat list.
   const grouped = useMemo(() => {
     if (!analysis || !analysis.categories?.length) return null;
     const byId = new Map(items.map(i => [i.id, i]));
@@ -438,64 +445,48 @@ function OnboardingHero({ loading }: { loading: boolean }) {
 /* ====================================
    Main App
    ==================================== */
-export default function App() {
+function AppContent() {
   const { t } = useI18n();
-  const [report, setReport] = useState<TrendReport>(EMPTY_REPORT);
-  const [history, setHistory] = useState<HistoryEntry[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [bootstrapping, setBootstrapping] = useState(true);
+  const { report, availableDates, currentDate, loading, bootstrapping, loadReportByDate, refresh, updateReport } = useReport();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [drawerReport, setDrawerReport] = useState<TrendReport | null>(null);
+  const [generating, setGenerating] = useState(false);
   const [pipelineStages, setPipelineStages] = useState<Record<string, StageState>>({});
-  const [drawerLoading, setDrawerLoading] = useState(false);
 
-  // Live (during-generation) state — driven by SSE `items` / `analysis` events.
+  // Live (during-generation) state
   const [liveItems, setLiveItems] = useState<LiveItem[]>([]);
   const [livePhase, setLivePhase] = useState<LivePhase>('idle');
   const [liveAnalysis, setLiveAnalysis] = useState<
     { categories: AnalystCategoryEvent[]; deepDives?: AnalystDeepDiveEvent[]; keyInsight?: string } | null
   >(null);
-  // Writer token stream (Phase 2): accumulated markdown text + drawer toggle.
   const [liveWriterText, setLiveWriterText] = useState('');
   const [streamingDrawerOpen, setStreamingDrawerOpen] = useState(false);
-  // Ref mirrors streamingDrawerOpen so the run() closure always reads the
-  // latest value (avoids stale closure when user opens drawer mid-run).
   const streamingDrawerOpenRef = useRef(false);
   useEffect(() => { streamingDrawerOpenRef.current = streamingDrawerOpen; }, [streamingDrawerOpen]);
 
   const drawerBodyRef = useRef<HTMLDivElement | null>(null);
   const activeRunRef = useRef<AbortController | null>(null);
-  // Timers that finalize the fade-out-and-remove animation for dropped items.
   const droppingTimersRef = useRef<Set<ReturnType<typeof setTimeout>>>(new Set());
 
-  const refresh = useCallback(async () => {
-    const [latest, historyData] = await Promise.all([
-      fetchLatest().catch(() => EMPTY_REPORT),
-      fetchHistory().catch(() => []),
-    ]);
-    setReport(normalizeReport(latest));
-    setHistory(historyData);
-  }, []);
+  const currentIndex = currentDate ? availableDates.indexOf(currentDate) : -1;
+  const canGoPrev = currentIndex >= 0 && currentIndex < availableDates.length - 1;
+  const canGoNext = currentIndex > 0;
 
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      try {
-        await refresh();
-      } finally {
-        if (!cancelled) setBootstrapping(false);
-      }
-    })();
-    return () => { cancelled = true; };
-  }, [refresh]);
+  const goToPrevDate = useCallback(() => {
+    if (!canGoPrev) return;
+    loadReportByDate(availableDates[currentIndex + 1]);
+  }, [canGoPrev, availableDates, currentIndex, loadReportByDate]);
+
+  const goToNextDate = useCallback(() => {
+    if (!canGoNext) return;
+    loadReportByDate(availableDates[currentIndex - 1]);
+  }, [canGoNext, availableDates, currentIndex, loadReportByDate]);
 
   const run = useCallback(async () => {
     activeRunRef.current?.abort();
     const controller = new AbortController();
     activeRunRef.current = controller;
-    setLoading(true);
+    setGenerating(true);
     setPipelineStages({});
-    // Reset live state for the new run.
     setLiveItems([]);
     setLiveAnalysis(null);
     setLivePhase('idle');
@@ -504,7 +495,7 @@ export default function App() {
     droppingTimersRef.current.clear();
 
     try {
-      const finalReport = await runReportSSE({
+      const result = await runReportSSE({
         onStage: (event: PipelineEvent) => {
           if (event.stage === 'complete' || event.stage === 'error') return;
           setPipelineStages(prev => ({
@@ -517,8 +508,6 @@ export default function App() {
           }));
           if (event.stage === 'writer' && event.status === 'running') {
             setLivePhase('writing');
-            // Fresh writer pass — reset the accumulator. (Defensive: a manual
-            // restart should not show stale text from a previous run.)
             setLiveWriterText('');
           }
         },
@@ -528,8 +517,6 @@ export default function App() {
             setLiveItems(event.items.map(it => ({ ...it, _phase: 'fetched' })));
             setLivePhase('fetched');
           } else if (event.phase === 'curated') {
-            // Compute droppedIds = previous items − newly-kept items, mark them
-            // as `_dropping` for fade-out, then remove after the animation.
             const newIds = new Set(event.items.map(it => it.id));
             const newById = new Map(event.items.map(it => [it.id, it]));
             setLiveItems(prev => prev.map(it => {
@@ -544,7 +531,6 @@ export default function App() {
               }
               return { ...it, _dropping: true };
             }));
-            // Schedule removal of dropped items after the CSS fade-out.
             const timer = setTimeout(() => {
               setLiveItems(prev => prev.filter(it => !it._dropping));
               droppingTimersRef.current.delete(timer);
@@ -573,7 +559,6 @@ export default function App() {
             deepDives: event.deepDives,
             keyInsight: event.keyInsight,
           });
-          // Apply category / status / importance to each item from analyst output.
           const decoration = new Map<string, { cat: string; status: 'new' | 'active' | 'single'; importance: 'high' | 'medium' | 'low' }>();
           for (const cat of event.categories) {
             for (const ci of cat.items) {
@@ -594,46 +579,36 @@ export default function App() {
         },
 
         onToken: (event) => {
-          // Append each delta to the live markdown buffer driving the
-          // sidebar mini-typing card and (if open) the streaming drawer.
           setLiveWriterText(prev => prev + event.delta);
         },
       }, controller.signal);
 
-      if (finalReport) {
-        const normalized = normalizeReport(finalReport);
-        setReport(normalized);
-        // If the user clicked the mini-typing card and is watching the
-        // streaming drawer, seamlessly hand off to the formal drawer view.
-        // Use ref to get the latest value (avoids stale closure).
+      if (result) {
+        updateReport(result.date, result.report);
         if (streamingDrawerOpenRef.current) {
-          setDrawerReport(normalized);
           setStreamingDrawerOpen(false);
           setDrawerOpen(true);
         }
       }
-      setHistory(await fetchHistory().catch(() => []));
     } catch (error) {
       if (!(error instanceof DOMException && error.name === 'AbortError')) {
         console.error(error);
       }
     } finally {
       if (activeRunRef.current === controller) activeRunRef.current = null;
-      setLoading(false);
+      setGenerating(false);
       setLivePhase('done');
-      // Clear live state shortly after — final report takes over the news area.
       setTimeout(() => {
         setLiveItems([]);
         setLiveAnalysis(null);
       }, 400);
     }
-  }, []);
+  }, [updateReport]);
 
   const stop = useCallback(async () => {
     activeRunRef.current?.abort();
     activeRunRef.current = null;
-    setLoading(false);
-    // Mark any running stages as skipped
+    setGenerating(false);
     setPipelineStages(prev => {
       const next = { ...prev };
       for (const key of Object.keys(next)) {
@@ -648,38 +623,17 @@ export default function App() {
     await stopReport();
   }, []);
 
-  const openReport = useCallback(async (runId?: string) => {
-    if (!runId) return;
-    setDrawerLoading(true);
-    setDrawerReport(null);
+  const openDrawer = useCallback(() => {
     setDrawerOpen(true);
     setStreamingDrawerOpen(false);
-    try {
-      const data = await fetchReportDetail(runId);
-      setDrawerReport(normalizeReport(data));
-      requestAnimationFrame(() => drawerBodyRef.current?.scrollTo(0, 0));
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setDrawerLoading(false);
-    }
+    requestAnimationFrame(() => drawerBodyRef.current?.scrollTo(0, 0));
   }, []);
-
-  const openLatestReport = useCallback(() => {
-    if (report.status === 'success') {
-      setDrawerReport(report);
-      setDrawerOpen(true);
-      setStreamingDrawerOpen(false);
-      requestAnimationFrame(() => drawerBodyRef.current?.scrollTo(0, 0));
-    }
-  }, [report]);
 
   const closeDrawer = useCallback(() => {
     setDrawerOpen(false);
     setStreamingDrawerOpen(false);
   }, []);
 
-  // Close drawer on Escape key
   useEffect(() => {
     if (!drawerOpen) return;
     const handleKey = (e: KeyboardEvent) => {
@@ -689,7 +643,6 @@ export default function App() {
     return () => document.removeEventListener('keydown', handleKey);
   }, [drawerOpen, closeDrawer]);
 
-  // Lock body scroll when drawer is open (prevent scroll-through)
   useEffect(() => {
     if (drawerOpen) {
       document.body.style.overflow = 'hidden';
@@ -699,8 +652,6 @@ export default function App() {
     return () => { document.body.style.overflow = ''; };
   }, [drawerOpen]);
 
-  // Keep the streaming drawer scrolled to the bottom as new tokens arrive,
-  // so the user always sees the freshest text.
   useEffect(() => {
     if (!streamingDrawerOpen) return;
     const el = drawerBodyRef.current;
@@ -713,11 +664,28 @@ export default function App() {
   const newItems = useMemo(() => newsItems.filter(item => item.isNew), [newsItems]);
   const recurringItems = useMemo(() => newsItems.filter(item => !item.isNew), [newsItems]);
   const trendCount = safeReport.trends.length;
-  const sourceNames = useMemo(() => Array.from(new Set(newsItems.map(item => item.source))).join(' / ') || 'Hacker News / BleepingComputer / The Hacker News', [newsItems]);
+  const allSources = useMemo(() => Array.from(new Set(newsItems.map(item => item.source))), [newsItems]);
+  const sourceNames = allSources.join(' / ') || 'Hacker News / BleepingComputer / The Hacker News';
 
-  // After bootstrapping: do we have any content (latest report OR any history)?
-  const hasAnyContent = safeReport.status === 'success' || history.length > 0 || newsItems.length > 0;
-  const showOnboarding = !bootstrapping && !hasAnyContent && !loading;
+  const [activeSource, setActiveSource] = useState<string | null>(null);
+  const [activeTopic, setActiveTopic] = useState<string | null>(null);
+
+  const filteredNewItems = useMemo(() => {
+    let items = newItems;
+    if (activeSource) items = items.filter(i => i.source === activeSource);
+    if (activeTopic) items = items.filter(i => i.category === activeTopic);
+    return items;
+  }, [newItems, activeSource, activeTopic]);
+
+  const filteredRecurringItems = useMemo(() => {
+    let items = recurringItems;
+    if (activeSource) items = items.filter(i => i.source === activeSource);
+    if (activeTopic) items = items.filter(i => i.category === activeTopic);
+    return items;
+  }, [recurringItems, activeSource, activeTopic]);
+
+  const hasAnyContent = safeReport.status === 'success' || newsItems.length > 0;
+  const showOnboarding = !bootstrapping && !hasAnyContent && !generating;
 
   return (
     <main className={styles.shell}>
@@ -752,6 +720,24 @@ export default function App() {
         </div>
       )}
 
+      {!bootstrapping && availableDates.length > 1 && (
+        <div className={styles.dateBar}>
+          <span className={styles.dateBarLabel}>{t('selectDate')}</span>
+          <div className={styles.dateList}>
+            {availableDates.map(date => (
+              <button
+                key={date}
+                type="button"
+                className={`${styles.dateButton} ${currentDate === date ? styles.dateButtonActive : ''}`}
+                onClick={() => loadReportByDate(date)}
+              >
+                {date}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       <section className={styles.mainLayout}>
         {/* Main: News Feed */}
         <section className={styles.contentPanel}>
@@ -764,39 +750,64 @@ export default function App() {
 
           <div className={styles.filterRow}>
             <div className={styles.sourceList}>
-              {(sourceNames.split(' / ')).map(source => <span key={source}>{source}</span>)}
+              {allSources.map(source => (
+                <button
+                  key={source}
+                  type="button"
+                  className={`${styles.filterTag} ${activeSource === source ? styles.filterTagActive : ''}`}
+                  onClick={() => setActiveSource(prev => prev === source ? null : source)}
+                >
+                  {source}
+                </button>
+              ))}
             </div>
             <div className={styles.topicGrid}>
-              {getTopics().map(topic => <span key={topic}>{topic}</span>)}
+              {getTopics().map(topic => (
+                <button
+                  key={topic}
+                  type="button"
+                  className={`${styles.filterTag} ${styles.filterTagTopic} ${activeTopic === topic ? styles.filterTagActive : ''}`}
+                  onClick={() => setActiveTopic(prev => prev === topic ? null : topic)}
+                >
+                  {topic}
+                </button>
+              ))}
             </div>
+            {(activeSource || activeTopic) && (
+              <button
+                type="button"
+                className={styles.clearFilters}
+                onClick={() => { setActiveSource(null); setActiveTopic(null); }}
+              >
+                {t('clearFilters')}
+              </button>
+            )}
           </div>
 
           {bootstrapping ? (
             <SkeletonNewsList />
-          ) : loading && liveItems.length > 0 ? (
+          ) : generating && liveItems.length > 0 ? (
             <LiveFeed items={liveItems} phase={livePhase} analysis={liveAnalysis} />
-          ) : loading && !liveItems.length ? (
-            // Loading just started, no items yet — short skeleton so users see
-            // something move within the first 30s before Fetch completes.
+          ) : generating && !liveItems.length ? (
             <SkeletonNewsList />
           ) : showOnboarding ? (
-            <OnboardingHero loading={loading} />
+            <OnboardingHero loading={generating} />
           ) : (
             <div className={styles.newsList}>
-              {safeReport.newItemCount === 0 && safeReport.status === 'success' && (
+              {safeReport.newItemCount === 0 && safeReport.status === 'success' && !activeSource && !activeTopic && (
                 <div className={styles.noNewBanner}>
                   {t('noNewBanner')}
                 </div>
               )}
 
-              {newItems.length > 0 && (
+              {filteredNewItems.length > 0 && (
                 <>
                   <div className={styles.feedGroupHeader}>
                     <IconSparkle />
                     <span>{t('newItems')}</span>
-                    <span className={styles.feedGroupBadge}>{newItems.length}</span>
+                    <span className={styles.feedGroupBadge}>{filteredNewItems.length}</span>
                   </div>
-                  {newItems.map(item => (
+                  {filteredNewItems.map(item => (
                     <a
                       className={styles.newsCard}
                       href={item.url}
@@ -825,14 +836,14 @@ export default function App() {
                 </>
               )}
 
-              {recurringItems.length > 0 && (
+              {filteredRecurringItems.length > 0 && (
                 <>
                   <div className={`${styles.feedGroupHeader} ${styles.recurring}`}>
                     <IconHistory />
                     <span>{t('recurring')}</span>
-                    <span className={styles.feedGroupBadge}>{recurringItems.length}</span>
+                    <span className={styles.feedGroupBadge}>{filteredRecurringItems.length}</span>
                   </div>
-                  {recurringItems.map(item => (
+                  {filteredRecurringItems.map(item => (
                     <a
                       className={styles.newsCard}
                       href={item.url}
@@ -861,34 +872,31 @@ export default function App() {
                 </>
               )}
 
-              {!newsItems.length && (
-                <p className={styles.emptyText}>{t('emptyFeed')}</p>
+              {!filteredNewItems.length && !filteredRecurringItems.length && (
+                <p className={styles.emptyText}>
+                  {activeSource || activeTopic ? t('noResults') : t('emptyFeed')}
+                </p>
               )}
             </div>
           )}
         </section>
 
-        {/* Right Sidebar: Report History */}
+        {/* Right Sidebar: Today's Report */}
         <aside className={styles.reportSidebar}>
           <div className={styles.sidebarHeader}>
             <div>
               <p className={styles.panelLabel}>{t('reportsLabel')}</p>
               <h2 className={styles.sidebarTitle}>{t('reportsTitle')}</h2>
             </div>
-            <span className={styles.reportHint}>
-              {bootstrapping ? '—' : `${history.length} ${t('reportCount')}`}
-            </span>
           </div>
 
           {bootstrapping ? (
             <div className={styles.reportList}>
               <SkeletonReportItem />
               <SkeletonReportItem />
-              <SkeletonReportItem />
             </div>
           ) : (
             <>
-              {/* Writer-streaming preview takes priority while it's running */}
               {liveWriterText.length > 0 && livePhase === 'writing' && (
                 <MiniTypingCard
                   text={liveWriterText}
@@ -899,57 +907,39 @@ export default function App() {
                 />
               )}
 
-              {/* Latest report quick card */}
-              {safeReport.status === 'success' && (
-                <button type="button" className={styles.latestReportCard} onClick={openLatestReport}>
-                  <div className={styles.latestReportHeader}>
-                    <span className={styles.latestBadge}>{t('latest')}</span>
-                    <TriggerBadge trigger={safeReport.trigger} />
-                    <span>{formatTime(safeReport.generatedAt)}</span>
+              {currentDate && (
+                <button
+                  type="button"
+                  className={styles.todayReportCard}
+                  onClick={openDrawer}
+                >
+                  <div className={styles.todayReportHeader}>
+                    <span className={styles.latestBadge}>{currentDate}</span>
+                    <span className={styles.todayReportCount}>
+                      {safeReport.itemCount ?? newsItems.length} {t('items')}
+                    </span>
                   </div>
-                  <strong>{safeReport.summary || `${trendCount} ${t('topics')} · ${newsItems.length} ${t('items')}`}</strong>
+                  <strong>
+                    {safeReport.itemCount ?? newsItems.length} {t('items')}
+                    {safeReport.newItemCount != null && safeReport.newItemCount > 0
+                      ? ` · ${safeReport.newItemCount} ${t('reportNew')}`
+                      : ''}
+                  </strong>
+                  <span className={styles.todayReportSources}>
+                    {allSources.join(', ')}
+                  </span>
                   <span className={styles.viewReportLink}>
-                    {t('viewReport')} <IconArrowRight size={13} style={{ verticalAlign: '-2px', marginLeft: 2 }} />
+                    {t('viewFullReport')} <IconArrowRight size={12} />
                   </span>
                 </button>
               )}
 
-              {/* History list (exclude latest to avoid duplication) */}
-              <div className={styles.reportList}>
-                {history.filter(item => item.runId !== safeReport.runId).map(item => (
-                  <div className={styles.reportItemWrap} key={item.runId || item.generatedAt}>
-                    <button
-                      type="button"
-                      className={styles.reportItem}
-                      onClick={() => openReport(item.runId)}
-                    >
-                      <div className={styles.reportItemTop}>
-                        <strong>{formatTime(item.generatedAt)}</strong>
-                        <TriggerBadge trigger={item.trigger} />
-                        {item.status === 'failed' && <StatusPill status={item.status} />}
-                      </div>
-                      <p>{item.aiSummary || item.summary || item.error || t('noSummary')}</p>
-                      <div className={styles.reportItemMeta}>
-                        {item.itemCount != null && <span>{item.itemCount} {t('items')}</span>}
-                        {item.newItemCount != null && <span>{item.newItemCount} {t('reportNew')}</span>}
-                      </div>
-                    </button>
-                  </div>
-                ))}
-                {!history.filter(item => item.runId !== safeReport.runId).length && safeReport.status !== 'success' && (
-                  <div className={styles.sidebarEmpty}>
-                    <IconBookmark />
-                    <p className={styles.sidebarEmptyText}>{t('noHistory')}</p>
-                    <p className={styles.sidebarEmptyHint}>{t('noHistoryHint')}</p>
-                  </div>
-                )}
-                {!history.filter(item => item.runId !== safeReport.runId).length && safeReport.status === 'success' && (
-                  <div className={styles.sidebarEmpty}>
-                    <IconInbox />
-                    <p className={styles.sidebarEmptyHint}>{t('noMoreHistory')}</p>
-                  </div>
-                )}
-              </div>
+              {!currentDate && !loading && (
+                <div className={styles.sidebarEmpty}>
+                  <IconInbox />
+                  <p className={styles.sidebarEmptyHint}>{t('noMoreHistory')}</p>
+                </div>
+              )}
             </>
           )}
         </aside>
@@ -962,20 +952,39 @@ export default function App() {
       />
       <aside className={`${styles.drawer} ${drawerOpen ? styles.drawerOpen : ''}`}>
         <div className={styles.drawerHeader}>
-          <div>
-            <p className={styles.panelLabel}>{streamingDrawerOpen ? t('liveWriting') : t('fullReport')}</p>
-            <h2 className={styles.drawerTitle}>
-              {streamingDrawerOpen
-                ? t('writingTitle')
-                : drawerReport?.generatedAt ? formatTime(drawerReport.generatedAt) : t('reportTitle')}
-            </h2>
+          <div className={styles.drawerHeaderLeft}>
+            <button
+              type="button"
+              className={styles.drawerNavButton}
+              onClick={goToPrevDate}
+              disabled={!canGoPrev}
+              aria-label="Previous date"
+            >
+              <IconChevronLeft size={16} />
+            </button>
+            <div>
+              <p className={styles.panelLabel}>{streamingDrawerOpen ? t('liveWriting') : t('fullReport')}</p>
+              <h2 className={styles.drawerTitle}>
+                {streamingDrawerOpen
+                  ? t('writingTitle')
+                  : currentDate || t('reportTitle')}
+              </h2>
+            </div>
+            <button
+              type="button"
+              className={styles.drawerNavButton}
+              onClick={goToNextDate}
+              disabled={!canGoNext}
+              aria-label="Next date"
+            >
+              <IconChevronRight size={16} />
+            </button>
           </div>
           <button type="button" className={styles.drawerClose} onClick={closeDrawer} aria-label={t('close')}>
             <IconX size={16} />
           </button>
         </div>
 
-        {/* Streaming view — Writer's tokens accumulating live */}
         {streamingDrawerOpen && (
           <div className={styles.drawerBody} ref={drawerBodyRef}>
             <div className={styles.drawerMeta}>
@@ -991,26 +1000,92 @@ export default function App() {
           </div>
         )}
 
-        {/* Loading-detail view (when fetching a historical report) */}
-        {!streamingDrawerOpen && drawerLoading && !drawerReport && (
-          <div className={styles.drawerBody}>
-            <p className={styles.drawerLoadingText}>{t('drawerLoading')}</p>
-          </div>
-        )}
-
-        {/* Formal report view */}
-        {!streamingDrawerOpen && drawerReport && (
+        {!streamingDrawerOpen && (
           <div className={styles.drawerBody} ref={drawerBodyRef}>
             <div className={styles.drawerMeta}>
-              {drawerReport.itemCount != null && <span className={styles.reportMetaTag}>{drawerReport.itemCount} {t('reportItems')}</span>}
-              {drawerReport.newItemCount != null && <span className={styles.reportMetaTag}>{drawerReport.newItemCount} {t('reportNew')}</span>}
-              {drawerReport.durationMs != null && <span className={styles.reportMetaTag}>{(drawerReport.durationMs / 1000).toFixed(1)}s</span>}
+              {safeReport.itemCount != null && <span className={styles.reportMetaTag}>{safeReport.itemCount} {t('reportItems')}</span>}
+              {safeReport.newItemCount != null && <span className={styles.reportMetaTag}>{safeReport.newItemCount} {t('reportNew')}</span>}
+              {safeReport.durationMs != null && <span className={styles.reportMetaTag}>{(safeReport.durationMs / 1000).toFixed(1)}s</span>}
             </div>
-            <MarkdownReport markdown={drawerReport.reportMarkdown} />
+            {safeReport.reportMarkdown ? (
+              <MarkdownReport markdown={safeReport.reportMarkdown} />
+            ) : (
+              <div className={styles.drawerItemsList}>
+                {safeReport.trends.map(group => (
+                  <div key={group.category}>
+                    <div className={styles.feedGroupHeader}>
+                      <IconLayers />
+                      <span>{group.category}</span>
+                      <span className={styles.feedGroupBadge}>{group.count}</span>
+                    </div>
+                    {(group.itemIds || []).map((id: string) => {
+                      const item = safeReport.items.find(i => i.id === id);
+                      if (!item) return null;
+                      return (
+                        <a
+                          className={styles.newsCard}
+                          href={item.url}
+                          key={item.id}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <div className={styles.newsMain}>
+                            <div className={styles.newsMetaTop}>
+                              <span className={styles.sourceBadge}>{item.source}</span>
+                              <span>{item.publishedAt ? formatTime(item.publishedAt) : ''}</span>
+                              {item.isNew && <span className={styles.newBadge}>NEW</span>}
+                            </div>
+                            <strong>{item.title}</strong>
+                            {item.summary && <p>{item.summary.slice(0, 200)}</p>}
+                          </div>
+                          <div className={styles.newsSideMeta}>
+                            <span>{item.category || 'Security'}</span>
+                            <span>
+                              {t('sourceLabel')} <IconExternal size={11} style={{ verticalAlign: '-1px', marginLeft: 2 }} />
+                            </span>
+                          </div>
+                        </a>
+                      );
+                    })}
+                  </div>
+                ))}
+                {safeReport.trends.length === 0 && safeReport.items.length > 0 && (
+                  safeReport.items.map(item => (
+                    <a
+                      className={styles.newsCard}
+                      href={item.url}
+                      key={item.id}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <div className={styles.newsMain}>
+                        <div className={styles.newsMetaTop}>
+                          <span className={styles.sourceBadge}>{item.source}</span>
+                          <span>{item.publishedAt ? formatTime(item.publishedAt) : ''}</span>
+                        </div>
+                        <strong>{item.title}</strong>
+                        {item.summary && <p>{item.summary.slice(0, 200)}</p>}
+                      </div>
+                      <div className={styles.newsSideMeta}>
+                        <span>{item.category || 'Security'}</span>
+                      </div>
+                    </a>
+                  ))
+                )}
+              </div>
+            )}
           </div>
         )}
       </aside>
 
     </main>
+  );
+}
+
+export default function App() {
+  return (
+    <ReportProvider>
+      <AppContent />
+    </ReportProvider>
   );
 }

@@ -9,10 +9,10 @@ const ROOT = path.resolve(__dirname, '..');
 const DATA_DIR = path.join(ROOT, 'data');
 
 // ─ RSS Parser ─
-function parseRSS(xml, limit) {
+function parseRSS(xml) {
   const items = [];
   const blocks = [...(xml.match(/<item[\s>][\s\S]*?<\/item>/gi) || []), ...(xml.match(/<entry[\s>][\s\S]*?<\/entry>/gi) || [])];
-  for (const block of blocks.slice(0, limit * 2)) {
+  for (const block of blocks) {
     const title = block.match(/<title[^>]*>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/title>/i)?.[1]?.trim() || '';
     const link = block.match(/<link[^>]*>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/link>/i)?.[1]?.trim()
       || block.match(/<link[^>]+href=["']([^"']+)["']/i)?.[1]?.trim() || '';
@@ -27,7 +27,7 @@ function parseRSS(xml, limit) {
       });
     }
   }
-  return items.slice(0, limit);
+  return items;
 }
 
 // ── Security Keywords ──
@@ -55,11 +55,27 @@ const CATEGORIES = {
 
 // ── RSS Sources ──
 const RSS_SOURCES = [
-  { url: 'https://feeds.feedburner.com/TheHackersNews', source: 'The Hacker News', limit: 30 },
-  { url: 'https://thehackernews.com/feeds/posts/default', source: 'THN Atom', limit: 20 },
-  { url: 'https://www.cisa.gov/cybersecurity-advisories/all.xml', source: 'CISA', limit: 20 },
-  { url: 'https://www.bleepingcomputer.com/feed/', source: 'BleepingComputer', limit: 25 },
+  { url: 'https://feeds.feedburner.com/TheHackersNews', source: 'The Hacker News' },
+  { url: 'https://thehackernews.com/feeds/posts/default', source: 'THN Atom' },
+  { url: 'https://www.cisa.gov/cybersecurity-advisories/all.xml', source: 'CISA' },
+  { url: 'https://www.bleepingcomputer.com/feed/', source: 'BleepingComputer' },
 ];
+
+// Get today's date range in CST (UTC+8)
+function getTodayRangeCST() {
+  const now = new Date();
+  const cstNow = new Date(now.getTime() + 8 * 60 * 60 * 1000);
+  const cstDate = new Date(Date.UTC(cstNow.getUTCFullYear(), cstNow.getUTCMonth(), cstNow.getUTCDate()));
+  const start = cstDate.getTime() - 8 * 60 * 60 * 1000;
+  const end = start + 24 * 60 * 60 * 1000;
+  return { start, end };
+}
+
+function getTodayCST() {
+  const now = new Date();
+  const cstNow = new Date(now.getTime() + 8 * 60 * 60 * 1000);
+  return cstNow.toISOString().slice(0, 10);
+}
 
 function cleanText(v) {
   return String(v || '').replace(/&#x2F;/g, '/').replace(/&amp;/g, '&').replace(/&lt;/g, '<')
@@ -103,31 +119,42 @@ function filterItems(items) {
 
 async function collectRSS() {
   const all = [];
+  const { start, end } = getTodayRangeCST();
   const results = await Promise.allSettled(RSS_SOURCES.map(async rs => {
     const res = await fetch(rs.url, { headers: { 'User-Agent': 'FoxTerm-Security-Bot/1.0' } });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const xml = await res.text();
-    return parseRSS(xml, rs.limit).map(e => ({ ...e, source: rs.source }));
+    return parseRSS(xml).map(e => ({ ...e, source: rs.source }));
   }));
   for (const r of results) {
-    if (r.status === 'fulfilled') all.push(...r.value);
+    if (r.status === 'fulfilled') {
+      const today = r.value.filter(item => {
+        if (!item.pubDate) return true;
+        const d = new Date(item.pubDate).getTime();
+        return !isNaN(d) && d >= start && d < end;
+      });
+      all.push(...today);
+    }
   }
   return filterItems(all);
 }
 
-async function collectHN(limit = 50) {
+async function collectHN() {
   try {
+    const { start, end } = getTodayRangeCST();
     const ids = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json').then(r => r.json());
-    const items = await Promise.all(ids.slice(0, limit).map(async id => {
+    const items = await Promise.all(ids.slice(0, 200).map(async id => {
       const item = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`).then(r => r.json());
       if (item.type !== 'story') return null;
+      const pubTime = item.time * 1000;
+      if (pubTime < start || pubTime >= end) return null;
       return {
         id: `hn_${id}`,
         source: 'Hacker News',
         title: item.title || '',
         url: item.url || `https://news.ycombinator.com/item?id=${id}`,
         score: item.score || 0,
-        publishedAt: new Date(item.time * 1000).toISOString(),
+        publishedAt: new Date(pubTime).toISOString(),
         description: '',
       };
     }));
@@ -135,23 +162,73 @@ async function collectHN(limit = 50) {
   } catch { return []; }
 }
 
-async function collectGitHub(limit = 20) {
+async function collectGitHub() {
   try {
-    const data = await fetch(`https://api.github.com/advisories?per_page=${limit}&sort=updated&direction=desc`).then(r => r.json());
-    return filterItems(data.map((adv, i) => ({
-      id: `ghsa_${adv.ghsa_id || i}`,
-      source: 'GitHub Advisory',
-      title: adv.summary || adv.cve_id || 'Security Advisory',
-      link: adv.html_url || `https://github.com/advisories/${adv.ghsa_id}`,
-      score: 0,
-      publishedAt: adv.published_at || new Date().toISOString(),
-      description: adv.description || adv.summary || '',
-    })));
+    const { start, end } = getTodayRangeCST();
+    const data = await fetch('https://api.github.com/advisories?per_page=100&sort=updated&direction=desc').then(r => r.json());
+    return filterItems(data
+      .filter(adv => {
+        if (!adv.published_at) return true;
+        const d = new Date(adv.published_at).getTime();
+        return d >= start && d < end;
+      })
+      .map((adv, i) => ({
+        id: `ghsa_${adv.ghsa_id || i}`,
+        source: 'GitHub Advisory',
+        title: adv.summary || adv.cve_id || 'Security Advisory',
+        link: adv.html_url || `https://github.com/advisories/${adv.ghsa_id}`,
+        score: 0,
+        publishedAt: adv.published_at || new Date().toISOString(),
+        description: adv.description || adv.summary || '',
+      })));
   } catch { return []; }
 }
 
+// ── Index management ──
+function readIndex() {
+  const indexPath = path.join(DATA_DIR, 'index.json');
+  if (!fs.existsSync(indexPath)) return [];
+  try {
+    const data = JSON.parse(fs.readFileSync(indexPath, 'utf-8'));
+    return Array.isArray(data) ? data : [];
+  } catch { return []; }
+}
+
+function writeIndex(dates) {
+  const sorted = [...new Set(dates)].sort((a, b) => b.localeCompare(a));
+  fs.writeFileSync(path.join(DATA_DIR, 'index.json'), JSON.stringify(sorted, null, 2));
+  return sorted;
+}
+
+// Scan all date directories to build a dedup set of known item IDs
+function buildKnownIdsSet() {
+  const known = new Set();
+  if (!fs.existsSync(DATA_DIR)) return known;
+  for (const entry of fs.readdirSync(DATA_DIR)) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(entry)) continue;
+    const reportPath = path.join(DATA_DIR, entry, 'report.json');
+    if (!fs.existsSync(reportPath)) continue;
+    try {
+      const report = JSON.parse(fs.readFileSync(reportPath, 'utf-8'));
+      if (Array.isArray(report.items)) {
+        for (const item of report.items) {
+          if (item.id) known.add(item.id);
+        }
+      }
+    } catch {}
+  }
+  return known;
+}
+
+// Load existing report for today (if any) to merge new items into it
+function loadExistingReport(date) {
+  const reportPath = path.join(DATA_DIR, date, 'report.json');
+  if (!fs.existsSync(reportPath)) return null;
+  try { return JSON.parse(fs.readFileSync(reportPath, 'utf-8')); } catch { return null; }
+}
+
 function generateReportMarkdown(items) {
-  const title = '# FoxTerm Security Intel Daily';
+  const title = '# FoxTerm Security Intel';
   const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   const header = `${title}\n\n**${date}**\n\n---\n\n`;
 
@@ -167,61 +244,84 @@ function generateReportMarkdown(items) {
     body += `## ${cat} (${catItems.length})\n\n`;
     for (const item of catItems) {
       const summary = item.summary ? ` — ${item.summary.slice(0, 150)}` : '';
-      body += `- [${item.title}](${item.url})${summary}\n`;
+      if (item.url) {
+        body += `- [${item.title}](${item.url})${summary}\n`;
+      } else {
+        body += `- **${item.title}**${summary}\n`;
+      }
     }
     body += '\n';
   }
 
   const footer = `---\n\n*Total ${items.length} security intelligence items, auto-collected by FoxTerm*\n`;
-
   return header + body + footer;
 }
 
 // ── Main Pipeline ──
 async function main() {
   console.log('=== FoxTerm Security Intelligence Generator ===');
-  console.log('Mode: Template-based (English only)');
+  console.log(`Time: ${new Date().toISOString()}`);
   console.log('');
 
   if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
 
-  const libPath = path.join(DATA_DIR, 'library.json');
-  let library = [];
-  if (fs.existsSync(libPath)) {
-    try { library = JSON.parse(fs.readFileSync(libPath, 'utf-8')); } catch {}
-  }
-
-  console.log('[1/2] Collecting sources...');
-  const [rss, hn, gh] = await Promise.all([collectRSS(), collectHN(50), collectGitHub(20)]);
+  const today = getTodayCST();
+  console.log(`[1/3] Collecting sources for ${today} (CST)...`);
+  const [rss, hn, gh] = await Promise.all([collectRSS(), collectHN(), collectGitHub()]);
   const candidates = [...rss, ...hn, ...gh];
   console.log(`  RSS=${rss.length}, HN=${hn.length}, GH=${gh.length}, Total=${candidates.length}`);
 
-  if (!candidates.length) {
+  // Build dedup set from ALL existing date reports
+  const knownIds = buildKnownIdsSet();
+  console.log(`  Known items across all dates: ${knownIds.size}`);
+
+  // Load existing report for today to merge
+  const existingReport = loadExistingReport(today);
+  const existingItems = existingReport?.items || [];
+  const existingById = new Map(existingItems.map(i => [i.id, i]));
+  console.log(`  Existing items for ${today}: ${existingItems.length}`);
+
+  if (!candidates.length && !existingItems.length) {
     console.log('  No items collected.');
+    const dateDir = path.join(DATA_DIR, today);
+    if (!fs.existsSync(dateDir)) fs.mkdirSync(dateDir, { recursive: true });
     const empty = {
       runId: `run_${Date.now()}`, status: 'success', trigger: 'schedule',
       generatedAt: new Date().toISOString(), itemCount: 0, newItemCount: 0,
       summary: 'No security intelligence collected',
-      reportMarkdown: '# FoxTerm Security Intel Daily\n\nNo security intelligence collected.',
+      reportMarkdown: '# FoxTerm Security Intel\n\nNo security intelligence collected.',
       trends: [], items: [],
     };
-    fs.writeFileSync(path.join(DATA_DIR, 'latest.json'), JSON.stringify(empty, null, 2));
+    fs.writeFileSync(path.join(dateDir, 'report.json'), JSON.stringify(empty, null, 2));
+
+    // Update index
+    const dates = readIndex();
+    if (!dates.includes(today)) dates.push(today);
+    writeIndex(dates);
+    console.log(`Saved: data/${today}/report.json (empty)`);
     return;
   }
 
-  const existingIds = new Set(library.map(i => i.id));
-  const items = candidates.map(item => ({
-    ...item,
-    isNew: !existingIds.has(item.id),
-    seenCount: (library.find(e => e.id === item.id)?.seenCount || 0) + 1,
-  }));
+  // Merge: keep existing items, add new ones
+  let newCount = 0;
+  for (const item of candidates) {
+    if (!existingById.has(item.id)) {
+      existingById.set(item.id, { ...item, isNew: !knownIds.has(item.id) });
+      newCount++;
+    }
+  }
 
-  console.log('[2/2] Generating report...');
-  const markdown = generateReportMarkdown(items);
+  const allItems = Array.from(existingById.values())
+    .map(item => ({ ...item, summary: (item.summary || '').slice(0, 500) }));
+
+  console.log(`[2/3] Merged: ${allItems.length} total, ${newCount} new items`);
+
+  console.log('[3/3] Generating report...');
+  const markdown = generateReportMarkdown(allItems);
   console.log(`  Report: ${markdown.length} chars`);
 
   const grouped = {};
-  for (const item of items) {
+  for (const item of allItems) {
     const cat = item.category || 'Security Industry';
     if (!grouped[cat]) grouped[cat] = [];
     grouped[cat].push(item);
@@ -231,7 +331,7 @@ async function main() {
     category: cat,
     summary: catItems.map(i => i.title).join('; '),
     count: catItems.length,
-    items: catItems,
+    itemIds: catItems.map(i => i.id),
   }));
 
   const report = {
@@ -239,36 +339,26 @@ async function main() {
     status: 'success',
     trigger: 'schedule',
     generatedAt: new Date().toISOString(),
-    itemCount: items.length,
-    newItemCount: items.filter(i => i.isNew).length,
-    summary: `${items.length} security intelligence items`,
+    itemCount: allItems.length,
+    newItemCount: newCount,
+    summary: `${allItems.length} security intelligence items`,
     reportMarkdown: markdown,
     trends,
-    items,
+    items: allItems,
   };
 
-  fs.writeFileSync(path.join(DATA_DIR, 'latest.json'), JSON.stringify(report, null, 2));
-  console.log(`\nSaved: data/latest.json`);
+  // Save to date directory
+  const dateDir = path.join(DATA_DIR, today);
+  if (!fs.existsSync(dateDir)) fs.mkdirSync(dateDir, { recursive: true });
+  fs.writeFileSync(path.join(dateDir, 'report.json'), JSON.stringify(report, null, 2));
+  console.log(`\nSaved: data/${today}/report.json`);
 
-  for (const item of items) {
-    const existing = library.find(e => e.id === item.id);
-    if (existing) { existing.seenCount = (existing.seenCount || 1) + 1; existing.lastSeenAt = new Date().toISOString(); }
-    else { library.push({ ...item, firstSeenAt: new Date().toISOString(), lastSeenAt: new Date().toISOString() }); }
-  }
-  library = library.slice(-500);
-  fs.writeFileSync(libPath, JSON.stringify(library, null, 2));
+  // Update index.json
+  const dates = readIndex();
+  if (!dates.includes(today)) dates.push(today);
+  const sorted = writeIndex(dates);
+  console.log(`Updated: data/index.json (${sorted.length} dates)`);
 
-  const histPath = path.join(DATA_DIR, 'history.json');
-  let history = [];
-  if (fs.existsSync(histPath)) { try { history = JSON.parse(fs.readFileSync(histPath, 'utf-8')); } catch {} }
-  history.unshift({
-    runId: report.runId, status: report.status, trigger: report.trigger,
-    generatedAt: report.generatedAt, itemCount: report.itemCount, newItemCount: report.newItemCount,
-    summary: report.summary,
-  });
-  fs.writeFileSync(histPath, JSON.stringify(history.slice(0, 30), null, 2));
-
-  console.log(`Library: ${library.length} items, History: ${history.length} entries`);
   console.log('\n=== Done ===');
 }
 

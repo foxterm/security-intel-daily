@@ -1,0 +1,34 @@
+{
+  "runId": "run_2026-10-06",
+  "status": "success",
+  "trigger": "schedule",
+  "generatedAt": "2026-10-17T20:00:07.850Z",
+  "itemCount": 1,
+  "newItemCount": 1,
+  "summary": "1 security intelligence items",
+  "reportMarkdown": "# FoxTerm Security Intel\n\n**October 18, 2026**\n\n---\n\n## Vulnerability (1)\n\n- [Hitachi Energy REB500](https://www.cisa.gov/news-events/ics-advisories/icsa-26-279-05) — View CSAF Summary Hitachi Energy is aware of open-source software vulnerabilities that affect REB500 product versions listed in this document. These v\n\n---\n\n*Total 1 security intelligence items, auto-collected by FoxTerm*\n",
+  "trends": [
+    {
+      "category": "Vulnerability",
+      "summary": "Hitachi Energy REB500",
+      "count": 1,
+      "itemIds": [
+        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLWFkdmlzb3JpZXMvaWNzYS0yNi0yNzktMDU"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLWFkdmlzb3JpZXMvaWNzYS0yNi0yNzktMDU",
+      "source": "CISA",
+      "title": "Hitachi Energy REB500",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-279-05",
+      "score": 0,
+      "publishedAt": "2026-10-06T12:00:00.000Z",
+      "summary": "View CSAF Summary Hitachi Energy is aware of open-source software vulnerabilities that affect REB500 product versions listed in this document. These vulnerabilities can be exploited to carry out Denial of Service (DoS) attack on the product. Please refer to the Recommended Immediat",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    }
+  ]
+}

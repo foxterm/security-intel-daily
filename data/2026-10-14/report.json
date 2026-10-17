@@ -1,0 +1,47 @@
+{
+  "runId": "run_2026-10-14",
+  "status": "success",
+  "trigger": "schedule",
+  "generatedAt": "2026-10-17T20:00:07.850Z",
+  "itemCount": 2,
+  "newItemCount": 2,
+  "summary": "2 security intelligence items",
+  "reportMarkdown": "# FoxTerm Security Intel\n\n**October 18, 2026**\n\n---\n\n## Vulnerability (2)\n\n- [CISA Urges Immediate Ivanti Connect Secure Updates as Honeypots Log 105 Exploit Attempts](https://thehackernews.com/2026/10/cisa-urges-immediate-ivanti-connect.html) — The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday urged organizations to take steps to immediately update their Ivanti Conne\n- [CISA Adds Four Known Exploited Vulnerabilities to Catalog](https://www.cisa.gov/news-events/alerts/2026/10/14/cisa-adds-four-known-exploited-vulnerabilities-catalog) — CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.&nbsp; CVE-202\n\n---\n\n*Total 2 security intelligence items, auto-collected by FoxTerm*\n",
+  "trends": [
+    {
+      "category": "Vulnerability",
+      "summary": "CISA Urges Immediate Ivanti Connect Secure Updates as Honeypots Log 105 Exploit Attempts; CISA Adds Four Known Exploited Vulnerabilities to Catalog",
+      "count": 2,
+      "itemIds": [
+        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2Npc2EtdXJnZXMtaW1tZWRpYXRlLWl2YW50aS1jb25uZWN0Lmh0bWw",
+        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvYWxlcnRzLzIwMjYvMTAvMTQvY2lzYS1hZGRzLWZvdXIta25vd24tZXhwbG9pdGVkLXZ1bG5lcmFiaWxpdGllcy1jYXRhbG9n"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2Npc2EtdXJnZXMtaW1tZWRpYXRlLWl2YW50aS1jb25uZWN0Lmh0bWw",
+      "source": "The Hacker News",
+      "title": "CISA Urges Immediate Ivanti Connect Secure Updates as Honeypots Log 105 Exploit Attempts",
+      "url": "https://thehackernews.com/2026/10/cisa-urges-immediate-ivanti-connect.html",
+      "score": 0,
+      "publishedAt": "2026-10-14T12:30:42.000Z",
+      "summary": "The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday urged organizations to take steps to immediately update their Ivanti Connect Secure (ICS) appliances and deployments to the latest version following the disclosure of an actively exploited vulnerability. The security flaw, tracked as CVE-2026-104935 (CVSS score: 8.6), is a case of authentication bypass impacting ICS",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvYWxlcnRzLzIwMjYvMTAvMTQvY2lzYS1hZGRzLWZvdXIta25vd24tZXhwbG9pdGVkLXZ1bG5lcmFiaWxpdGllcy1jYXRhbG9n",
+      "source": "CISA",
+      "title": "CISA Adds Four Known Exploited Vulnerabilities to Catalog",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/10/14/cisa-adds-four-known-exploited-vulnerabilities-catalog",
+      "score": 0,
+      "publishedAt": "2026-10-14T12:00:00.000Z",
+      "summary": "CISA has added four new vulnerabilities to its Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation.&nbsp; CVE-2026-0322</u&gt",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    }
+  ]
+}

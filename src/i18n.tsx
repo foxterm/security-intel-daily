@@ -4,8 +4,8 @@ const translations = {
   // Header
   eyebrow: 'FoxTerm Security Intel',
   title: 'Server & Security Intel',
-  subtitle: 'Daily aggregation of public security sources into traceable intelligence reports.',
-  scheduleHint: 'Daily automated collection',
+  subtitle: 'Automated aggregation of public security sources into traceable intelligence reports.',
+  scheduleHint: 'Automated collection every 12 hours',
   generate: 'Generate',
   generating: 'Generating...',
   stop: 'Stop',
@@ -41,6 +41,9 @@ const translations = {
   noNewBanner: 'No new security trends found. Here are recent items still worth noting.',
   sourceLabel: 'Source',
   score: 'score',
+  clearFilters: 'Clear filters',
+  noResults: 'No items match the current filters.',
+  selectDate: 'Date',
 
   // Sidebar
   reportsLabel: 'Security Reports',
@@ -48,6 +51,7 @@ const translations = {
   reportCount: '',
   latest: 'Latest',
   viewReport: 'View full report',
+  viewFullReport: 'View full report',
   noSummary: 'No summary',
   noHistory: 'No report history',
   noHistoryHint: 'Reports will appear here after generation',
@@ -80,11 +84,11 @@ const translations = {
   reportTitle: 'Security Report',
 
   // Onboarding
-  onboardingTitle: 'FoxTerm Security Intel Daily',
-  onboardingDesc: 'Daily automated collection from Hacker News, The Hacker News, CISA, GitHub Advisory and more into traceable security intelligence reports.',
+  onboardingTitle: 'FoxTerm Security Intel',
+  onboardingDesc: 'Automated collection every 12 hours from Hacker News, The Hacker News, CISA, GitHub Advisory and more into traceable security intelligence reports.',
   onboardingFeature1: 'Multi-source',
   onboardingFeature2: 'Smart Analysis',
-  onboardingFeature3: 'Daily Updates',
+  onboardingFeature3: 'Twice Daily Updates',
   onboardingCta: 'Generate first report',
   onboardingGenerating: 'Generating...',
 

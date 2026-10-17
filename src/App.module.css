@@ -368,6 +368,68 @@
   letter-spacing: -0.02em;
 }
 
+/* Date bar */
+.dateBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 22px;
+  border-bottom: 1px solid #f1f5f9;
+  background: #f8fafc;
+}
+
+.dateBarLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dateList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.dateButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 4px 10px;
+  background: #fff;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.dateButton:hover {
+  border-color: #1d4ed8;
+  color: #1d4ed8;
+}
+
+.dateButtonActive {
+  border-color: #1d4ed8;
+  background: #1d4ed8;
+  color: #fff;
+}
+
+.dateBadge {
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.08);
+  font-weight: 600;
+}
+
+.dateButtonActive .dateBadge {
+  background: rgba(255, 255, 255, 0.25);
+}
+
 /* Filter row */
 .filterRow {
   display: grid;
@@ -385,7 +447,9 @@
 }
 
 .sourceList span,
-.topicGrid span {
+.topicGrid span,
+.sourceList button,
+.topicGrid button {
   display: inline-flex;
   align-items: center;
   border: 1px solid #dbeafe;
@@ -396,12 +460,52 @@
   font-size: 12px;
   font-weight: 600;
   letter-spacing: -0.005em;
+  cursor: pointer;
+  transition: opacity 0.15s, background 0.15s, border-color 0.15s;
 }
 
-.topicGrid span {
+.sourceList button:hover,
+.topicGrid button:hover {
+  opacity: 0.8;
+}
+
+.filterTagActive {
+  border-color: #1d4ed8 !important;
+  background: #1d4ed8 !important;
+  color: #fff !important;
+}
+
+.filterTagTopic.filterTagActive {
+  border-color: #e03e00 !important;
+  background: #e03e00 !important;
+  color: #fff !important;
+}
+
+.topicGrid span,
+.topicGrid button {
   border-color: #fed7aa;
   color: #e03e00;
   background: #fff7ed;
+}
+
+.clearFilters {
+  display: inline-flex;
+  align-items: center;
+  border: 1px dashed #cbd5e1;
+  border-radius: 999px;
+  padding: 5px 11px;
+  color: #64748b;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: auto;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.clearFilters:hover {
+  color: #e03e00;
+  border-color: #e03e00;
 }
 
 /* News list */
@@ -669,6 +773,97 @@
   letter-spacing: -0.005em;
 }
 
+/* Today's report card (sidebar) */
+.todayReportCard {
+  display: grid;
+  gap: 10px;
+  width: calc(100% - 24px);
+  margin: 12px auto 16px;
+  padding: 16px;
+  border: 1px solid #fed7aa;
+  border-radius: 16px;
+  color: inherit;
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.todayReportCard:hover {
+  border-color: #ff8000;
+  box-shadow: 0 4px 16px rgba(255, 94, 0, 0.12);
+}
+
+.todayReportHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.todayReportCount {
+  font-weight: 600;
+  color: #e03e00;
+}
+
+.todayReportSources {
+  color: #ff5e00;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.todayReportCard strong {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #0f172a;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* Drawer header with date navigation */
+.drawerHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+
+.drawerNavButton {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: #64748b;
+  background: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
+}
+
+.drawerNavButton:hover:not(:disabled) {
+  border-color: #94a3b8;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.drawerNavButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 /* Report list */
 .reportList {
   display: grid;
@@ -733,6 +928,18 @@
 .reportItem:hover {
   border-color: #ff8000;
   background: #f8fafc;
+}
+
+.reportItemActive {
+  border-color: #1d4ed8;
+  background: #eff6ff;
+}
+
+.reportItemBadge {
+  font-size: 11px;
+  font-weight: 500;
+  color: #64748b;
+  margin-left: auto;
 }
 
 .reportItemTop {

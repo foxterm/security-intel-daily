@@ -1,8 +1,8 @@
-name: Daily Security Report
+name: Security Intel Collector
 
 on:
   schedule:
-    - cron: '0 1 * * *'  # Daily at 01:00 UTC (09:00 CST)
+    - cron: '0 */12 * * *'  # Every 12 hours (twice a day)
   workflow_dispatch:       # Allow manual trigger
 
 permissions:
@@ -15,11 +15,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
       - name: Generate security report
         run: node scripts/generate.js
 
@@ -27,6 +22,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'chore: update security intelligence data'
-          file_pattern: 'data/*.json'
+          file_pattern: 'data/'
           commit_user_name: 'github-actions[bot]'
           commit_user_email: 'github-actions[bot]@users.noreply.github.com'

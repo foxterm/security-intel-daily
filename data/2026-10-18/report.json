@@ -1,0 +1,242 @@
+{
+  "runId": "run_1792268915734",
+  "status": "success",
+  "trigger": "schedule",
+  "generatedAt": "2026-10-17T20:28:35.734Z",
+  "itemCount": 16,
+  "newItemCount": 0,
+  "summary": "16 security intelligence items",
+  "reportMarkdown": "# FoxTerm Security Intel\n\n**October 18, 2026**\n\n---\n\n## Network Security (2)\n\n- **\"Tame\" boar and deer are instinctively adapting to the wolf in the Netherlands**\n- [lopdf has a stack overflow via deeply nested PDF objects](https://github.com/advisories/GHSA-6fj4-rcr3-r7rr) — `lopdf::Document::load_mem` (and the other `load*` entry points) parses nested PDF arrays and dictionaries with unbounded recursion. A small crafted P\n\n## Security Industry (1)\n\n- [Arcane: Delegated users:update permission allows admin account takeover via password reset (no privilege-hierarchy check)](https://github.com/advisories/GHSA-pw5q-rjx4-7f7p) — ## Summary A user holding the delegated `users:update` permission can reset the global administrator's password and take over the admin account. `Upda\n\n## Vulnerability (13)\n\n- [Arcane: Environment access token bypasses the admin-required authorization gate on `/api/debug/pprof`](https://github.com/advisories/GHSA-mp22-58ff-6fhr) — ## Summary Arcane v2.10.2 contains an authorization inconsistency in `AuthMiddleware.managerAuth`. When a request supplies a valid environment access \n- [LMCache: Remote code execution via unsafe deserialization in multiprocess mode transport](https://github.com/advisories/GHSA-w5f2-9q9c-ff4h) — ### Summary LMCache is vulnerable to Unauthenticated Remote Code Execution via Pickle Deserialization on the Multiprocess ZMQ Transport ### Details LM\n- [JavaCV: Integer Overflow in IPCameraFrameGrabber Causes Infinite-Loop DoS](https://github.com/advisories/GHSA-rxjv-24xq-76wc) — ### Summary `IPCameraFrameGrabber` parses the `Content-Length` value from the multipart MJPEG HTTP stream returned by the configured IP camera without\n- [Claude Agent SDK: Argument Injection via resume Option Allows Arbitrary Command Execution](https://github.com/advisories/GHSA-h4mw-j7qp-8mwm) — The Claude Agent SDK for Python passed the `resume` option to the Claude CLI without validation, allowing a value beginning with `-` to be interpreted\n- [ckan-mcp-server: DataStore Table UI resource does not validate postMessage origin (in) and posts to targetOrigin \"*\" (out)](https://github.com/advisories/GHSA-vqff-r82h-9crc) — ## Summary The MCP Apps UI resource (an interactive DataStore table rendered in the host's webview/iframe) communicates with its parent via `postMessa\n- [swoosh has email-derived URL path injection in Microsoft Graph endpoint](https://github.com/advisories/GHSA-754j-98wh-57rf) — ### Summary `Swoosh.Adapters.MsGraph` builds its Microsoft Graph API request URL by interpolating the sender's email address directly into the URL pat\n- [ClickMigrate has Path Traversal in \"revision -m\" argument](https://github.com/advisories/GHSA-vgf9-9mxx-hq54) — ### Impact A path traversal vulnerability in the `revision` command allowed a crafted migration name supplied via the `-m` argument to escape the inte\n- [gomarkdown/markdown IsSafeURL panics on short URLs](https://github.com/advisories/GHSA-cv23-7vc5-jfh7) — ## Summary IsSafeURL slices url[:nPath] before checking that len(url) >= nPath, so a URL shorter than a path prefix (0, 1 or 2 bytes) triggers a slice\n- [Cross-site Scripting (XSS) in serialize-javascript](https://github.com/advisories/GHSA-76p7-773f-r4q5) — A flaw was found in npm-serialize-javascript. The vulnerability occurs because the serialize-javascript module does not properly sanitize certain inpu\n- [TanStack Router: Unauthenticated reflected XSS in TanStack Start server-function responses](https://github.com/advisories/GHSA-qx66-fv34-fjm8) — ## Impact An unauthenticated attacker can craft a URL to a server function in an affected TanStack Start app. If someone opens the link, the app can r\n- [Pipecat: Public exposure of Pipecat’s development runner can allow unauthenticated bot session creation](https://github.com/advisories/GHSA-hqm2-cfx2-2vgh) — Pipecat’s built-in development runner exposes endpoints that create bot sessions and, for the Daily transport, paid Daily rooms. These development end\n- [Podman: The `podman run` command can be instructed to disable almost all sandboxing by image annotation](https://github.com/advisories/GHSA-2cvf-wqm6-wr9g) — ### Impact Podman v4.4.0 added a feature where container checkpoints (from the `podman container checkpoint` command) could be distributed via OCI reg\n- [JupyterLab: Command link trust prompt in JupyterLab can trust a document other than the one clicked](https://github.com/advisories/GHSA-jwrc-gm9j-263p) — ## Description A Markdown file or a notebook output can carry a button that runs a JupyterLab command. Since 4.5.7 the first click on such a button op\n\n---\n\n*Total 16 security intelligence items, auto-collected by FoxTerm*\n",
+  "trends": [
+    {
+      "category": "Network Security",
+      "summary": "\"Tame\" boar and deer are instinctively adapting to the wolf in the Netherlands; lopdf has a stack overflow via deeply nested PDF objects",
+      "count": 2,
+      "itemIds": [
+        "item_IlRhbWUiIGJvYXIgYW5kIGRlZXIgYXJlIGluc3RpbmN0aXZlbHkgYWRhcHRpbmcgdG8gdGhlIHdvbGYgaW4gdGhlIE5ldGhlcmxhbmRz",
+        "ghsa_GHSA_6fj4_rcr3_r7rr"
+      ]
+    },
+    {
+      "category": "Security Industry",
+      "summary": "Arcane: Delegated users:update permission allows admin account takeover via password reset (no privilege-hierarchy check)",
+      "count": 1,
+      "itemIds": [
+        "ghsa_GHSA_pw5q_rjx4_7f7p"
+      ]
+    },
+    {
+      "category": "Vulnerability",
+      "summary": "Arcane: Environment access token bypasses the admin-required authorization gate on `/api/debug/pprof`; LMCache: Remote code execution via unsafe deserialization in multiprocess mode transport; JavaCV: Integer Overflow in IPCameraFrameGrabber Causes Infinite-Loop DoS; Claude Agent SDK: Argument Injection via resume Option Allows Arbitrary Command Execution; ckan-mcp-server: DataStore Table UI resource does not validate postMessage origin (in) and posts to targetOrigin \"*\" (out); swoosh has email-derived URL path injection in Microsoft Graph endpoint; ClickMigrate has Path Traversal in \"revision -m\" argument; gomarkdown/markdown IsSafeURL panics on short URLs; Cross-site Scripting (XSS) in serialize-javascript; TanStack Router: Unauthenticated reflected XSS in TanStack Start server-function responses; Pipecat: Public exposure of Pipecat’s development runner can allow unauthenticated bot session creation; Podman: The `podman run` command can be instructed to disable almost all sandboxing by image annotation; JupyterLab: Command link trust prompt in JupyterLab can trust a document other than the one clicked",
+      "count": 13,
+      "itemIds": [
+        "ghsa_GHSA_mp22_58ff_6fhr",
+        "ghsa_GHSA_w5f2_9q9c_ff4h",
+        "ghsa_GHSA_rxjv_24xq_76wc",
+        "ghsa_GHSA_h4mw_j7qp_8mwm",
+        "ghsa_GHSA_vqff_r82h_9crc",
+        "ghsa_GHSA_754j_98wh_57rf",
+        "ghsa_GHSA_vgf9_9mxx_hq54",
+        "ghsa_GHSA_cv23_7vc5_jfh7",
+        "ghsa_GHSA_76p7_773f_r4q5",
+        "ghsa_GHSA_qx66_fv34_fjm8",
+        "ghsa_GHSA_hqm2_cfx2_2vgh",
+        "ghsa_GHSA_2cvf_wqm6_wr9g",
+        "ghsa_GHSA_jwrc_gm9j_263p"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item_IlRhbWUiIGJvYXIgYW5kIGRlZXIgYXJlIGluc3RpbmN0aXZlbHkgYWRhcHRpbmcgdG8gdGhlIHdvbGYgaW4gdGhlIE5ldGhlcmxhbmRz",
+      "source": "Hacker News",
+      "title": "\"Tame\" boar and deer are instinctively adapting to the wolf in the Netherlands",
+      "score": 48,
+      "publishedAt": "2026-10-17T19:13:16.127Z",
+      "summary": "",
+      "category": "Network Security",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "ghsa_GHSA_pw5q_rjx4_7f7p",
+      "source": "GitHub Advisory",
+      "title": "Arcane: Delegated users:update permission allows admin account takeover via password reset (no privilege-hierarchy check)",
+      "score": 0,
+      "publishedAt": "2026-10-17T19:13:16.162Z",
+      "summary": "## Summary A user holding the delegated `users:update` permission can reset the global administrator's password and take over the admin account. `UpdateUser` sets the target user's `PasswordHash` from the request body for ANY target with no comparison of caller-vs-target privilege. Because role assignment and role CRUD are deliberately gated by `RequireGlobalAdmin`, `users:update` is intended to sit BELOW admin (profile management); this finding defeats that separation. ## Root Cause `UpdateUser",
+      "category": "Security Industry",
+      "isNew": true,
+      "seenCount": 1,
+      "url": "https://github.com/advisories/GHSA-pw5q-rjx4-7f7p"
+    },
+    {
+      "id": "ghsa_GHSA_mp22_58ff_6fhr",
+      "source": "GitHub Advisory",
+      "title": "Arcane: Environment access token bypasses the admin-required authorization gate on `/api/debug/pprof`",
+      "score": 0,
+      "publishedAt": "2026-10-17T19:13:16.162Z",
+      "summary": "## Summary Arcane v2.10.2 contains an authorization inconsistency in `AuthMiddleware.managerAuth`. When a request supplies a valid environment access token through the `X-Arcane-Agent-Token` header, `managerAuth` resolves the associated environment, installs an environment-scoped permission set, and immediately calls `next(c)`. This occurs before the middleware evaluates the `AdminRequired` option and verifies that the caller is a global administrator. As a result, an environment-scoped access t",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1,
+      "url": "https://github.com/advisories/GHSA-mp22-58ff-6fhr"
+    },
+    {
+      "id": "ghsa_GHSA_w5f2_9q9c_ff4h",
+      "source": "GitHub Advisory",
+      "title": "LMCache: Remote code execution via unsafe deserialization in multiprocess mode transport",
+      "score": 0,
+      "publishedAt": "2026-10-17T19:13:16.162Z",
+      "summary": "### Summary LMCache is vulnerable to Unauthenticated Remote Code Execution via Pickle Deserialization on the Multiprocess ZMQ Transport ### Details LMCache multiprocess mode, also called distributed mode, opens an unauthenticated ZeroMQ ROUTER so worker processes can register and share KV cache blocks. The intended clients are sibling LMCache processes. There is no CURVE, ZAP, password, or message authentication on that socket. LMCache used only inside a vLLM process does not open this port. The",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1,
+      "url": "https://github.com/advisories/GHSA-w5f2-9q9c-ff4h"
+    },
+    {
+      "id": "ghsa_GHSA_6fj4_rcr3_r7rr",
+      "source": "GitHub Advisory",
+      "title": "lopdf has a stack overflow via deeply nested PDF objects",
+      "score": 0,
+      "publishedAt": "2026-10-17T19:13:16.163Z",
+      "summary": "`lopdf::Document::load_mem` (and the other `load*` entry points) parses nested PDF arrays and dictionaries with unbounded recursion. A small crafted PDF whose Catalog contains a deeply nested array (`/X [[[ … ]]]`, on the order of 10,000 levels) exhausts the call stack and aborts the process with `SIGABRT`. Because this is a stack-overflow abort rather than a `panic!`, it cannot be caught with `catch_unwind`: any service that parses untrusted PDF input with lopdf can be crashed by a ~21 KB file,",
+      "category": "Network Security",
+      "isNew": true,
+      "seenCount": 1,
+      "url": "https://github.com/advisories/GHSA-6fj4-rcr3-r7rr"
+    },
+    {
+      "id": "ghsa_GHSA_rxjv_24xq_76wc",
+      "source": "GitHub Advisory",
+      "title": "JavaCV: Integer Overflow in IPCameraFrameGrabber Causes Infinite-Loop DoS",
+      "score": 0,
+      "publishedAt": "2026-10-17T19:13:16.163Z",
+      "summary": "### Summary `IPCameraFrameGrabber` parses the `Content-Length` value from the multipart MJPEG HTTP stream returned by the configured IP camera without any bounds checking. A malicious or compromised camera endpoint - or any network attacker able to tamper with the plaintext HTTP response (these streams are conventionally accessed over `http://`, as documented in the class itself) - can supply a `Content-Length` value in the range `1073741825`-`2147483647`. This drives the internal buffer-growth ",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1,
+      "url": "https://github.com/advisories/GHSA-rxjv-24xq-76wc"
+    },
+    {
+      "id": "ghsa_GHSA_h4mw_j7qp_8mwm",
+      "source": "GitHub Advisory",
+      "title": "Claude Agent SDK: Argument Injection via resume Option Allows Arbitrary Command Execution",
+      "score": 0,
+      "publishedAt": "2026-10-17T19:13:16.163Z",
+      "summary": "The Claude Agent SDK for Python passed the `resume` option to the Claude CLI without validation, allowing a value beginning with `-` to be interpreted as a separate CLI flag. An attacker who controlled the `resume` value could inject an `--mcp-config` flag defining a stdio MCP server, resulting in arbitrary command execution at CLI startup that bypassed the SDK's permission controls. Exploitation required an application to pass untrusted input as the session ID to resume. Users are advised to up",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1,
+      "url": "https://github.com/advisories/GHSA-h4mw-j7qp-8mwm"
+    },
+    {
+      "id": "ghsa_GHSA_vqff_r82h_9crc",
+      "source": "GitHub Advisory",
+      "title": "ckan-mcp-server: DataStore Table UI resource does not validate postMessage origin (in) and posts to targetOrigin \"*\" (out)",
+      "score": 0,
+      "publishedAt": "2026-10-17T19:13:16.163Z",
+      "summary": "## Summary The MCP Apps UI resource (an interactive DataStore table rendered in the host's webview/iframe) communicates with its parent via `postMessage`. Its inbound `message` listener performs no `event.origin` validation, and its outbound messages are sent with target origin `'*'`. Any window/frame able to reach the document can inject data into the table and interfere with the MCP UI handshake, and the UI's own JSON-RPC messages are broadcast without an origin restriction. ## Affected code `",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1,
+      "url": "https://github.com/advisories/GHSA-vqff-r82h-9crc"
+    },
+    {
+      "id": "ghsa_GHSA_754j_98wh_57rf",
+      "source": "GitHub Advisory",
+      "title": "swoosh has email-derived URL path injection in Microsoft Graph endpoint",
+      "score": 0,
+      "publishedAt": "2026-10-17T19:13:16.164Z",
+      "summary": "### Summary `Swoosh.Adapters.MsGraph` builds its Microsoft Graph API request URL by interpolating the sender's email address directly into the URL path (`/users/{from}/sendMail`) without percent-encoding or validation. In applications that derive the `from` address from untrusted or user-influenced input (a relay, a contact form, or a \"send as\" feature), an attacker can inject URL-special characters into the local part of the address to escape the intended path segment and rewrite the request's ",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1,
+      "url": "https://github.com/advisories/GHSA-754j-98wh-57rf"
+    },
+    {
+      "id": "ghsa_GHSA_vgf9_9mxx_hq54",
+      "source": "GitHub Advisory",
+      "title": "ClickMigrate has Path Traversal in \"revision -m\" argument",
+      "score": 0,
+      "publishedAt": "2026-10-17T19:13:16.164Z",
+      "summary": "### Impact A path traversal vulnerability in the `revision` command allowed a crafted migration name supplied via the `-m` argument to escape the intended migrations directory. Under specific conditions, an attacker could cause the tool to create a `.sql` file in an arbitrary location writable by the user executing the command. This issue is only exploitable if an attacker can influence the migration name passed to the `revision` command, such as through an insecure automation or CI/CD pipeline ",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1,
+      "url": "https://github.com/advisories/GHSA-vgf9-9mxx-hq54"
+    },
+    {
+      "id": "ghsa_GHSA_cv23_7vc5_jfh7",
+      "source": "GitHub Advisory",
+      "title": "gomarkdown/markdown IsSafeURL panics on short URLs",
+      "score": 0,
+      "publishedAt": "2026-10-17T19:13:16.164Z",
+      "summary": "## Summary IsSafeURL slices url[:nPath] before checking that len(url) >= nPath, so a URL shorter than a path prefix (0, 1 or 2 bytes) triggers a slice-bounds panic, and this is reached end to end when the html.Safelink hardening flag is enabled and the input contains an empty or very short link destination, giving an unrecoverable crash DoS. Confirmed at HEAD (e08cff8; present since 2022). ## The defect parser/parser.go, IsSafeURL: ```go func IsSafeURL(url []byte) bool { nLink := len(url) for _,",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1,
+      "url": "https://github.com/advisories/GHSA-cv23-7vc5-jfh7"
+    },
+    {
+      "id": "ghsa_GHSA_76p7_773f_r4q5",
+      "source": "GitHub Advisory",
+      "title": "Cross-site Scripting (XSS) in serialize-javascript",
+      "score": 0,
+      "publishedAt": "2026-10-17T19:13:16.164Z",
+      "summary": "A flaw was found in npm-serialize-javascript. The vulnerability occurs because the serialize-javascript module does not properly sanitize certain inputs, such as regex or other JavaScript object types, allowing an attacker to inject malicious code. This code could be executed when deserialized by a web browser, causing Cross-site scripting (XSS) attacks. This issue is critical in environments where serialized data is sent to web clients, potentially compromising the security of the website or we",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1,
+      "url": "https://github.com/advisories/GHSA-76p7-773f-r4q5"
+    },
+    {
+      "id": "ghsa_GHSA_qx66_fv34_fjm8",
+      "source": "GitHub Advisory",
+      "title": "TanStack Router: Unauthenticated reflected XSS in TanStack Start server-function responses",
+      "score": 0,
+      "publishedAt": "2026-10-17T19:13:16.164Z",
+      "summary": "## Impact An unauthenticated attacker can craft a URL to a server function in an affected TanStack Start app. If someone opens the link, the app can return attacker-controlled HTML from its own origin and run the attacker's JavaScript there. The script can access same-origin data available to that visitor and make requests with their authority. ## Cause The server-function transport can pass request payload fields into internal middleware state instead of limiting them to public input fields. A ",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1,
+      "url": "https://github.com/advisories/GHSA-qx66-fv34-fjm8"
+    },
+    {
+      "id": "ghsa_GHSA_hqm2_cfx2_2vgh",
+      "source": "GitHub Advisory",
+      "title": "Pipecat: Public exposure of Pipecat’s development runner can allow unauthenticated bot session creation",
+      "score": 0,
+      "publishedAt": "2026-10-17T19:13:16.164Z",
+      "summary": "Pipecat’s built-in development runner exposes endpoints that create bot sessions and, for the Daily transport, paid Daily rooms. These development endpoints intentionally do not authenticate callers. The runner binds to localhost by default and is designed exclusively for local development. It is not built or supported as a production server. Exploitation therefore requires an operator to deliberately make the development runner reachable from an untrusted network, such as by setting --host 0.0.",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1,
+      "url": "https://github.com/advisories/GHSA-hqm2-cfx2-2vgh"
+    },
+    {
+      "id": "ghsa_GHSA_2cvf_wqm6_wr9g",
+      "source": "GitHub Advisory",
+      "title": "Podman: The `podman run` command can be instructed to disable almost all sandboxing by image annotation",
+      "score": 0,
+      "publishedAt": "2026-10-17T19:13:16.164Z",
+      "summary": "### Impact Podman v4.4.0 added a feature where container checkpoints (from the `podman container checkpoint` command) could be distributed via OCI registry, and pulled from that registry and run via the `podman run` command. This allowed easy transfer of checkpoints between systems. However, checkpoints allow complete control of how the container is created - including full control of the container sandbox. When `podman run` detects a checkpoint, it will silently ignore all user input regarding ",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1,
+      "url": "https://github.com/advisories/GHSA-2cvf-wqm6-wr9g"
+    },
+    {
+      "id": "ghsa_GHSA_jwrc_gm9j_263p",
+      "source": "GitHub Advisory",
+      "title": "JupyterLab: Command link trust prompt in JupyterLab can trust a document other than the one clicked",
+      "score": 0,
+      "publishedAt": "2026-10-17T19:13:16.164Z",
+      "summary": "## Description A Markdown file or a notebook output can carry a button that runs a JupyterLab command. Since 4.5.7 the first click on such a button opens a prompt naming the command, with Cancel, Run Once and Trust. Choosing Trust runs the command and marks the document trusted, so its later buttons run without a prompt. Which document gets marked is decided when the user answers, not when they click. Both trust commands read whichever document is current at that moment: `markdownviewer:trust` u",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1,
+      "url": "https://github.com/advisories/GHSA-jwrc-gm9j-263p"
+    }
+  ]
+}

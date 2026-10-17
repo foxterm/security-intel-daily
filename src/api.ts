@@ -1,49 +1,40 @@
-import type { HistoryEntry, PipelineEvent, StreamEvent, TrendReport } from './types';
+import type { PipelineEvent, StreamEvent, TrendReport } from './types';
 
 export const API = {
-  latest: './data/latest.json',
-  history: './data/history.json',
+  dataRoot: './data',
 } as const;
 
 async function parseJson<T>(res: Response): Promise<T> {
-  if (!res.ok) {
-    throw new Error(`HTTP ${res.status}`);
-  }
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return await res.json() as T;
 }
 
-export async function fetchLatest(): Promise<TrendReport> {
+export async function fetchAvailableDates(): Promise<string[]> {
   try {
-    const res = await fetch(API.latest, { cache: 'no-store' });
-    return await parseJson<TrendReport>(res);
-  } catch {
-    return {
-      runId: '',
-      status: 'empty',
-      generatedAt: '',
-      itemCount: 0,
-      summary: '',
-      reportMarkdown: '',
-      trends: [],
-      items: [],
-    };
-  }
-}
-
-export async function fetchHistory(): Promise<HistoryEntry[]> {
+    const res = await fetch(`${API.dataRoot}/index.json`, { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data)) return data.sort((a: string, b: string) => b.localeCompare(a));
+    }
+  } catch {}
   try {
-    const res = await fetch(API.history, { cache: 'no-store' });
-    const data = await parseJson<HistoryEntry[]>(res);
-    return Array.isArray(data) ? data : [];
+    const res = await fetch(API.dataRoot + '/', { cache: 'no-store' });
+    const html = await res.text();
+    const matches = html.match(/href="(\d{4}-\d{2}-\d{2})\/?"/g) || [];
+    const dates = matches.map(m => m.match(/(\d{4}-\d{2}-\d{2})/)?.[1]).filter(Boolean) as string[];
+    return dates.sort((a, b) => b.localeCompare(a));
   } catch {
     return [];
   }
 }
 
-export async function fetchReportDetail(runId: string): Promise<TrendReport> {
-  // In static mode, we only have the latest report - return it regardless of runId
-  const latest = await fetchLatest();
-  return latest;
+export async function fetchReportByDate(date: string): Promise<TrendReport | null> {
+  try {
+    const res = await fetch(`${API.dataRoot}/${date}/report.json`, { cache: 'no-store' });
+    return await parseJson<TrendReport>(res);
+  } catch {
+    return null;
+  }
 }
 
 export interface SSECallbacks {
@@ -53,41 +44,37 @@ export interface SSECallbacks {
   onToken?: (event: Extract<StreamEvent, { type: 'token' }>) => void;
 }
 
-/**
- * In static mode, "running" a report just reloads the latest data.
- * The actual generation happens via GitHub Actions.
- */
 export async function runReportSSE(
   callbacks: SSECallbacks,
   _signal?: AbortSignal,
-): Promise<TrendReport | null> {
+): Promise<{ date: string; report: TrendReport } | null> {
   callbacks.onStage?.({ stage: 'fetch', status: 'running' });
-
   await new Promise(resolve => setTimeout(resolve, 300));
   callbacks.onStage?.({ stage: 'fetch', status: 'done', duration: 0.3 });
 
-  const report = await fetchLatest();
+  const dates = await fetchAvailableDates();
+  let report: TrendReport | null = null;
+  let date: string | null = null;
+  if (dates.length > 0) {
+    date = dates[0];
+    report = await fetchReportByDate(dates[0]);
+  }
 
   callbacks.onStage?.({ stage: 'curator', status: 'done', duration: 0 });
   callbacks.onStage?.({ stage: 'summarizer', status: 'done', duration: 0 });
   callbacks.onStage?.({ stage: 'analyst', status: 'done', duration: 0 });
   callbacks.onStage?.({ stage: 'writer', status: 'done', duration: 0 });
 
-  if (report.items?.length) {
+  if (report?.items?.length) {
     callbacks.onItems?.({ type: 'items', phase: 'fetched', items: report.items });
     callbacks.onItems?.({ type: 'items', phase: 'curated', items: report.items });
     callbacks.onItems?.({ type: 'items', phase: 'summarized', items: report.items });
   }
 
-  callbacks.onStage?.({ stage: 'complete', status: 'done', report });
-  return report;
+  callbacks.onStage?.({ stage: 'complete', status: 'done', report: report ?? { status: 'empty', reportMarkdown: '', trends: [], items: [] } });
+  return report && date ? { date, report } : null;
 }
 
 export async function stopReport(): Promise<boolean> {
   return true;
-}
-
-export async function deleteReport(_runId: string): Promise<boolean> {
-  // Cannot delete in static mode
-  return false;
 }

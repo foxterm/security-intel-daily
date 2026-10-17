@@ -1,0 +1,80 @@
+{
+  "runId": "run_2026-10-08",
+  "status": "success",
+  "trigger": "schedule",
+  "generatedAt": "2026-10-17T20:00:07.850Z",
+  "itemCount": 4,
+  "newItemCount": 4,
+  "summary": "4 security intelligence items",
+  "reportMarkdown": "# FoxTerm Security Intel\n\n**October 18, 2026**\n\n---\n\n## Vulnerability (3)\n\n- [Red Lion Controls N-Tron 700 Series (Update A)](https://www.cisa.gov/news-events/ics-advisories/icsa-26-281-01) — View CSAF Summary Successful exploitation of these vulnerabilities could allow a malicious user to access the device and gain administrative access. T\n- [Grid Protection Alliance openPDC and openHistorian](https://www.cisa.gov/news-events/ics-advisories/icsa-26-281-02) — View CSAF Summary The following versions of Grid Protection Alliance openPDC and openHistorian are affected: openPDC openPDC (\n- [Satel Netco Design](https://www.cisa.gov/news-events/ics-advisories/icsa-26-281-03) — View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to execute arbitrary scripts in a user&#039;s browser, cons\n\n## Security Industry (1)\n\n- [Chinese Government-linked Cyber Threat Actors Combine Automated and Hands-on Hacking Tools to Steal Sensitive Data](https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-281a) — Advisory at a Glance&nbsp; Title&nbsp; <div class=\"TableCellContent\n\n---\n\n*Total 4 security intelligence items, auto-collected by FoxTerm*\n",
+  "trends": [
+    {
+      "category": "Vulnerability",
+      "summary": "Red Lion Controls N-Tron 700 Series (Update A); Grid Protection Alliance openPDC and openHistorian; Satel Netco Design",
+      "count": 3,
+      "itemIds": [
+        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLWFkdmlzb3JpZXMvaWNzYS0yNi0yODEtMDE",
+        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLWFkdmlzb3JpZXMvaWNzYS0yNi0yODEtMDI",
+        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLWFkdmlzb3JpZXMvaWNzYS0yNi0yODEtMDM"
+      ]
+    },
+    {
+      "category": "Security Industry",
+      "summary": "Chinese Government-linked Cyber Threat Actors Combine Automated and Hands-on Hacking Tools to Steal Sensitive Data",
+      "count": 1,
+      "itemIds": [
+        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvY3liZXJzZWN1cml0eS1hZHZpc29yaWVzL2FhMjYtMjgxYQ"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLWFkdmlzb3JpZXMvaWNzYS0yNi0yODEtMDE",
+      "source": "CISA",
+      "title": "Red Lion Controls N-Tron 700 Series (Update A)",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-281-01",
+      "score": 0,
+      "publishedAt": "2026-10-08T12:00:00.000Z",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow a malicious user to access the device and gain administrative access. This access would allow the user to view, edit, and upload configuration files. Further, a malicious user can cause the switch to reb",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvY3liZXJzZWN1cml0eS1hZHZpc29yaWVzL2FhMjYtMjgxYQ",
+      "source": "CISA",
+      "title": "Chinese Government-linked Cyber Threat Actors Combine Automated and Hands-on Hacking Tools to Steal Sensitive Data",
+      "url": "https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-281a",
+      "score": 0,
+      "publishedAt": "2026-10-08T12:00:00.000Z",
+      "summary": "Advisory at a Glance&nbsp; Title&nbsp; <div class=\"TableCellContent",
+      "category": "Security Industry",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLWFkdmlzb3JpZXMvaWNzYS0yNi0yODEtMDI",
+      "source": "CISA",
+      "title": "Grid Protection Alliance openPDC and openHistorian",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-281-02",
+      "score": 0,
+      "publishedAt": "2026-10-08T12:00:00.000Z",
+      "summary": "View CSAF Summary The following versions of Grid Protection Alliance openPDC and openHistorian are affected: openPDC openPDC (",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLWFkdmlzb3JpZXMvaWNzYS0yNi0yODEtMDM",
+      "source": "CISA",
+      "title": "Satel Netco Design",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-281-03",
+      "score": 0,
+      "publishedAt": "2026-10-08T12:00:00.000Z",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to execute arbitrary scripts in a user&#039;s browser, consume excessive system resources, enumerate files, create or modify files, and potentially execute arbitrary code. </",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    }
+  ]
+}

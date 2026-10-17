@@ -22,7 +22,8 @@ export interface TrendGroup {
   category: string;
   summary: string;
   count: number;
-  items: TrendItem[];
+  itemIds?: string[];
+  items?: TrendItem[];
 }
 
 export interface TrendReport {

@@ -1,0 +1,276 @@
+{
+  "runId": "run_2026-10-15",
+  "status": "success",
+  "trigger": "schedule",
+  "generatedAt": "2026-10-17T20:00:07.850Z",
+  "itemCount": 18,
+  "newItemCount": 18,
+  "summary": "18 security intelligence items",
+  "reportMarkdown": "# FoxTerm Security Intel\n\n**October 18, 2026**\n\n---\n\n## Vulnerability (14)\n\n- [NGINX Fixes 5 Flaws, Including Possible RCE and a TLS Bug That May Skip Client-Cert Checks](https://thehackernews.com/2026/10/nginx-fixes-5-flaws-including-possible.html) — NGINX released&nbsp;versions 1.30.6 and 1.31.7&nbsp;on October 14 to fix five vulnerabilities, one of them present in every release since May 2005. Th\n- [Next.js Ships Out-of-Band Patch for Two Critical RCE Flaws in Caching and SVG Processing](https://thehackernews.com/2026/10/nextjs-ships-out-of-band-patch-for-two.html) — Next.js released an&nbsp;out-of-band security update&nbsp;on October 14 that fixes two critical flaws allowing unauthenticated remote code execution, \n- [Drupal Patches Critical Field UI Flaw With Unauthenticated RCE Path via Contributed Modules](https://thehackernews.com/2026/10/drupal-patches-critical-core-rce-flaw.html) — Drupal core has a critical flaw in its Field UI module that could let an attacker run code on the site's server, and fixes were shipped on October 14 \n- [Palo Alto Networks Patches PAN-OS Authenticated RCE Flaw Amid Active Exploitation](https://thehackernews.com/2026/10/palo-alto-networks-patches-pan-os.html) — Palo Alto Networks on Wednesday issued security updates for a high-severity flaw in PAN-OS software that has come under active exploitation. The vulne\n- [Langflow's Critical Authenticated RCE Flaw Targeted in 1,423 Honeypot Exploit Attempts](https://thehackernews.com/2026/10/langflows-critical-authenticated-rce.html) — Threat actors are exploiting a critical security flaw in Langflow, according to an alert from Previdian. Langflow is an open-source platform that allo\n- [AhsayCBS Flaws Exploited to Deploy Web Shells Get New Fixes After Incomplete Patches](https://thehackernews.com/2026/10/ahsaycbs-flaws-exploited-to-deploy-web.html) — Singapore-based Ahsay Backup has released security updates to address two security flaws in AhsayCBS that have been exploited by bad actors to drop we\n- [Cisco Warns of Active Attacks Exploiting New Critical Secure Email Gateway Vulnerability](https://thehackernews.com/2026/10/cisco-warns-of-active-attacks.html) — Attackers are exploiting a critical flaw in Cisco Secure Email Gateway that lets a sender with no login write files to the appliance's operating syste\n- [Hackers Backdoor Nextcloud Servers Through Critical Flaw in Collabora’s Built-in CODE App](https://thehackernews.com/2026/10/hackers-backdoor-nextcloud-servers.html) — Attackers exploited a flaw in an optional Nextcloud app,&nbsp;Collabora Online - Built-in CODE Server, to plant web shells on Nextcloud servers. Three\n- [Thermo Fisher Torrent Suite Software](https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-288-01) — View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to read arbitrary files on the Torrent Server. The following v\n- [J4Care dcm4che](https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-288-02) — View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to delete stored medical images, disclose patient informati\n- [Guangzhou Juan IoT Technology EseeCloud](https://www.cisa.gov/news-events/ics-advisories/icsa-26-288-02) — View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to gain control over affected IP cameras. The following ver\n- [Eclipse Foundation Eclipse Milo](https://www.cisa.gov/news-events/ics-advisories/icsa-26-288-01) — View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to delete protected data, recover user credentials and impe\n- [CISA Adds One Known Exploited Vulnerability to Catalog](https://www.cisa.gov/news-events/alerts/2026/10/15/cisa-adds-one-known-exploited-vulnerability-catalog) — CISA has added one new vulnerability to its&nbsp; Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-2\n- [CISA Malcolm](https://www.cisa.gov/news-events/ics-advisories/icsa-26-280-01) — View CSAF Summary The following versions of CISA Malcolm are affected: Malcolm Malcolm <=v26.08.0 (CVE-2026-107333,\n\n## Malware (2)\n\n- [Fake AI Attacks Spread Across US Companies: How MSSPs Can Stop Incidents Early](https://thehackernews.com/2026/10/fake-ai-attacks-spread-across-us.html) — Attackers are impersonating popular AI products to distribute malware, steal browser sessions, and compromise business accounts. ANY.RUN linked 1,258 \n- [Microsoft Disrupts 3 Phishing Kits Linked to Over 1 Billion Scam Messages](https://thehackernews.com/2026/10/microsoft-disrupts-3-phishing-kits.html) — Microsoft and Health-ISAC, along with the Japan Cybercrime Control Center (JC3) and a coalition of private sector companies, such as Resecurity, Cloud\n\n## Data Breach (1)\n\n- [GhostAction Compromises About 1,900 GitHub Accounts, Targets Over 30,000 Repositories](https://thehackernews.com/2026/10/ghostaction-compromises-about-1900.html) — The credential-theft campaign known as GhostAction has ramped up, targeting more than 30,000 repositories across 3,000 users and organizations. The sp\n\n## Network Security (1)\n\n- [U.S. Shuts Down Over 40 Laptop Farms, Charges 14 in North Korean IT Worker Fraud](https://thehackernews.com/2026/10/us-shuts-down-over-40-laptop-farms.html) — The U.S. Department of Justice (DoJ) on Tuesday charged 14 people and seized about 187 computers and KVM devices as part of its ongoing efforts to dis\n\n---\n\n*Total 18 security intelligence items, auto-collected by FoxTerm*\n",
+  "trends": [
+    {
+      "category": "Vulnerability",
+      "summary": "NGINX Fixes 5 Flaws, Including Possible RCE and a TLS Bug That May Skip Client-Cert Checks; Next.js Ships Out-of-Band Patch for Two Critical RCE Flaws in Caching and SVG Processing; Drupal Patches Critical Field UI Flaw With Unauthenticated RCE Path via Contributed Modules; Palo Alto Networks Patches PAN-OS Authenticated RCE Flaw Amid Active Exploitation; Langflow's Critical Authenticated RCE Flaw Targeted in 1,423 Honeypot Exploit Attempts; AhsayCBS Flaws Exploited to Deploy Web Shells Get New Fixes After Incomplete Patches; Cisco Warns of Active Attacks Exploiting New Critical Secure Email Gateway Vulnerability; Hackers Backdoor Nextcloud Servers Through Critical Flaw in Collabora’s Built-in CODE App; Thermo Fisher Torrent Suite Software; J4Care dcm4che; Guangzhou Juan IoT Technology EseeCloud; Eclipse Foundation Eclipse Milo; CISA Adds One Known Exploited Vulnerability to Catalog; CISA Malcolm",
+      "count": 14,
+      "itemIds": [
+        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL25naW54LWZpeGVzLTUtZmxhd3MtaW5jbHVkaW5nLXBvc3NpYmxlLmh0bWw",
+        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL25leHRqcy1zaGlwcy1vdXQtb2YtYmFuZC1wYXRjaC1mb3ItdHdvLmh0bWw",
+        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2RydXBhbC1wYXRjaGVzLWNyaXRpY2FsLWNvcmUtcmNlLWZsYXcuaHRtbA",
+        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL3BhbG8tYWx0by1uZXR3b3Jrcy1wYXRjaGVzLXBhbi1vcy5odG1s",
+        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2xhbmdmbG93cy1jcml0aWNhbC1hdXRoZW50aWNhdGVkLXJjZS5odG1s",
+        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2Foc2F5Y2JzLWZsYXdzLWV4cGxvaXRlZC10by1kZXBsb3ktd2ViLmh0bWw",
+        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2Npc2NvLXdhcm5zLW9mLWFjdGl2ZS1hdHRhY2tzLmh0bWw",
+        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2hhY2tlcnMtYmFja2Rvb3ItbmV4dGNsb3VkLXNlcnZlcnMuaHRtbA",
+        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLW1lZGljYWwtYWR2aXNvcmllcy9pY3NtYS0yNi0yODgtMDE",
+        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLW1lZGljYWwtYWR2aXNvcmllcy9pY3NtYS0yNi0yODgtMDI",
+        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLWFkdmlzb3JpZXMvaWNzYS0yNi0yODgtMDI",
+        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLWFkdmlzb3JpZXMvaWNzYS0yNi0yODgtMDE",
+        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvYWxlcnRzLzIwMjYvMTAvMTUvY2lzYS1hZGRzLW9uZS1rbm93bi1leHBsb2l0ZWQtdnVsbmVyYWJpbGl0eS1jYXRhbG9n",
+        "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLWFkdmlzb3JpZXMvaWNzYS0yNi0yODAtMDE"
+      ]
+    },
+    {
+      "category": "Malware",
+      "summary": "Fake AI Attacks Spread Across US Companies: How MSSPs Can Stop Incidents Early; Microsoft Disrupts 3 Phishing Kits Linked to Over 1 Billion Scam Messages",
+      "count": 2,
+      "itemIds": [
+        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2Zha2UtYWktYXR0YWNrcy1zcHJlYWQtYWNyb3NzLXVzLmh0bWw",
+        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL21pY3Jvc29mdC1kaXNydXB0cy0zLXBoaXNoaW5nLWtpdHMuaHRtbA"
+      ]
+    },
+    {
+      "category": "Data Breach",
+      "summary": "GhostAction Compromises About 1,900 GitHub Accounts, Targets Over 30,000 Repositories",
+      "count": 1,
+      "itemIds": [
+        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2dob3N0YWN0aW9uLWNvbXByb21pc2VzLWFib3V0LTE5MDAuaHRtbA"
+      ]
+    },
+    {
+      "category": "Network Security",
+      "summary": "U.S. Shuts Down Over 40 Laptop Farms, Charges 14 in North Korean IT Worker Fraud",
+      "count": 1,
+      "itemIds": [
+        "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL3VzLXNodXRzLWRvd24tb3Zlci00MC1sYXB0b3AtZmFybXMuaHRtbA"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL25naW54LWZpeGVzLTUtZmxhd3MtaW5jbHVkaW5nLXBvc3NpYmxlLmh0bWw",
+      "source": "The Hacker News",
+      "title": "NGINX Fixes 5 Flaws, Including Possible RCE and a TLS Bug That May Skip Client-Cert Checks",
+      "url": "https://thehackernews.com/2026/10/nginx-fixes-5-flaws-including-possible.html",
+      "score": 0,
+      "publishedAt": "2026-10-15T12:58:05.000Z",
+      "summary": "NGINX released&nbsp;versions 1.30.6 and 1.31.7&nbsp;on October 14 to fix five vulnerabilities, one of them present in every release since May 2005. There are three memory bugs that F5, the company behind NGINX, says could crash a worker process or possibly let an attacker run code, and each requires a specific configuration to exploit. A fourth lets an attacker forge a TLS session that could",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL25leHRqcy1zaGlwcy1vdXQtb2YtYmFuZC1wYXRjaC1mb3ItdHdvLmh0bWw",
+      "source": "The Hacker News",
+      "title": "Next.js Ships Out-of-Band Patch for Two Critical RCE Flaws in Caching and SVG Processing",
+      "url": "https://thehackernews.com/2026/10/nextjs-ships-out-of-band-patch-for-two.html",
+      "score": 0,
+      "publishedAt": "2026-10-15T12:28:13.000Z",
+      "summary": "Next.js released an&nbsp;out-of-band security update&nbsp;on October 14 that fixes two critical flaws allowing unauthenticated remote code execution, along with a high-severity denial-of-service flaw. One code-execution flaw is in React Server Components, and the other in librsvg, the open-source library Next.js uses through the&nbsp;sharp&nbsp;package to handle SVG images. The fixes are in",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2RydXBhbC1wYXRjaGVzLWNyaXRpY2FsLWNvcmUtcmNlLWZsYXcuaHRtbA",
+      "source": "The Hacker News",
+      "title": "Drupal Patches Critical Field UI Flaw With Unauthenticated RCE Path via Contributed Modules",
+      "url": "https://thehackernews.com/2026/10/drupal-patches-critical-core-rce-flaw.html",
+      "score": 0,
+      "publishedAt": "2026-10-15T12:07:20.000Z",
+      "summary": "Drupal core has a critical flaw in its Field UI module that could let an attacker run code on the site's server, and fixes were shipped on October 14 in Drupal 11.4.10, 11.3.19, and 10.6.19. An attacker cannot reach the flaw through core alone, the Drupal Security Team said in&nbsp;its advisory. Several exploit paths exist through contributed modules, and at least one known path needs no login.",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2Zha2UtYWktYXR0YWNrcy1zcHJlYWQtYWNyb3NzLXVzLmh0bWw",
+      "source": "The Hacker News",
+      "title": "Fake AI Attacks Spread Across US Companies: How MSSPs Can Stop Incidents Early",
+      "url": "https://thehackernews.com/2026/10/fake-ai-attacks-spread-across-us.html",
+      "score": 0,
+      "publishedAt": "2026-10-15T11:46:59.000Z",
+      "summary": "Attackers are impersonating popular AI products to distribute malware, steal browser sessions, and compromise business accounts. ANY.RUN linked 1,258 public sandbox analyses to fake AI campaigns between April and October of 2026.&nbsp; The campaigns also increase operational pressure on MSSPs serving US businesses, which accounted for 16% of country-attributed targets.&nbsp; Similar attacks",
+      "category": "Malware",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL3BhbG8tYWx0by1uZXR3b3Jrcy1wYXRjaGVzLXBhbi1vcy5odG1s",
+      "source": "The Hacker News",
+      "title": "Palo Alto Networks Patches PAN-OS Authenticated RCE Flaw Amid Active Exploitation",
+      "url": "https://thehackernews.com/2026/10/palo-alto-networks-patches-pan-os.html",
+      "score": 0,
+      "publishedAt": "2026-10-15T11:46:49.000Z",
+      "summary": "Palo Alto Networks on Wednesday issued security updates for a high-severity flaw in PAN-OS software that has come under active exploitation. The vulnerability, tracked as CVE-2026-0322 (CVSS score: 8.6), is a case of remote code execution in the management interface. \"A remote code execution (RCE) vulnerability in the management interface of Palo Alto Networks PAN-OS software enables an",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2dob3N0YWN0aW9uLWNvbXByb21pc2VzLWFib3V0LTE5MDAuaHRtbA",
+      "source": "The Hacker News",
+      "title": "GhostAction Compromises About 1,900 GitHub Accounts, Targets Over 30,000 Repositories",
+      "url": "https://thehackernews.com/2026/10/ghostaction-compromises-about-1900.html",
+      "score": 0,
+      "publishedAt": "2026-10-15T08:45:10.000Z",
+      "summary": "The credential-theft campaign known as GhostAction has ramped up, targeting more than 30,000 repositories across 3,000 users and organizations. The spike, according to GitGuardian, was observed on October 8 and 9, 2026. \"This resulted from compromising the GitHub accounts of about 1,900 users. It attempted to extract 3,174 secrets from public repositories' CI,\" security researchers Gaetan",
+      "category": "Data Breach",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2xhbmdmbG93cy1jcml0aWNhbC1hdXRoZW50aWNhdGVkLXJjZS5odG1s",
+      "source": "The Hacker News",
+      "title": "Langflow's Critical Authenticated RCE Flaw Targeted in 1,423 Honeypot Exploit Attempts",
+      "url": "https://thehackernews.com/2026/10/langflows-critical-authenticated-rce.html",
+      "score": 0,
+      "publishedAt": "2026-10-15T07:07:05.000Z",
+      "summary": "Threat actors are exploiting a critical security flaw in Langflow, according to an alert from Previdian. Langflow is an open-source platform that allows developers to build artificial intelligence (AI) applications and agentic workflows. In February 2025, DataStax, the parent company of Langflow, was acquired by IBM. The vulnerability in question is CVE-2026-105740 (CVSS score: 9.9), a case of",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2Foc2F5Y2JzLWZsYXdzLWV4cGxvaXRlZC10by1kZXBsb3ktd2ViLmh0bWw",
+      "source": "The Hacker News",
+      "title": "AhsayCBS Flaws Exploited to Deploy Web Shells Get New Fixes After Incomplete Patches",
+      "url": "https://thehackernews.com/2026/10/ahsaycbs-flaws-exploited-to-deploy-web.html",
+      "score": 0,
+      "publishedAt": "2026-10-15T06:43:08.000Z",
+      "summary": "Singapore-based Ahsay Backup has released security updates to address two security flaws in AhsayCBS that have been exploited by bad actors to drop web shells and XMRig cryptocurrency miners. The vulnerabilities in question are CVE-2026-105133 and CVE-2026-105134, which could be chained to sidestep authentication and execute arbitrary commands on affected systems. In a report published earlier",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2Npc2NvLXdhcm5zLW9mLWFjdGl2ZS1hdHRhY2tzLmh0bWw",
+      "source": "The Hacker News",
+      "title": "Cisco Warns of Active Attacks Exploiting New Critical Secure Email Gateway Vulnerability",
+      "url": "https://thehackernews.com/2026/10/cisco-warns-of-active-attacks.html",
+      "score": 0,
+      "publishedAt": "2026-10-14T18:38:56.000Z",
+      "summary": "Attackers are exploiting a critical flaw in Cisco Secure Email Gateway that lets a sender with no login write files to the appliance's operating system, Cisco&nbsp;said in an advisory&nbsp;on Wednesday. The attacker sends an email with a crafted attachment through the gateway and, if it succeeds, could then run commands as root. The appliance filters an organization's email for spam, malware,",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL2hhY2tlcnMtYmFja2Rvb3ItbmV4dGNsb3VkLXNlcnZlcnMuaHRtbA",
+      "source": "The Hacker News",
+      "title": "Hackers Backdoor Nextcloud Servers Through Critical Flaw in Collabora’s Built-in CODE App",
+      "url": "https://thehackernews.com/2026/10/hackers-backdoor-nextcloud-servers.html",
+      "score": 0,
+      "publishedAt": "2026-10-14T17:38:31.000Z",
+      "summary": "Attackers exploited a flaw in an optional Nextcloud app,&nbsp;Collabora Online - Built-in CODE Server, to plant web shells on Nextcloud servers. Three administrators&nbsp;reported the issue on GitHub, with the first logged attack on September 10. A web shell is a small file that executes any command an attacker sends via a web request, with the rights of the web server account. The flaw",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL21pY3Jvc29mdC1kaXNydXB0cy0zLXBoaXNoaW5nLWtpdHMuaHRtbA",
+      "source": "The Hacker News",
+      "title": "Microsoft Disrupts 3 Phishing Kits Linked to Over 1 Billion Scam Messages",
+      "url": "https://thehackernews.com/2026/10/microsoft-disrupts-3-phishing-kits.html",
+      "score": 0,
+      "publishedAt": "2026-10-14T17:09:15.000Z",
+      "summary": "Microsoft and Health-ISAC, along with the Japan Cybercrime Control Center (JC3) and a coalition of private sector companies, such as Resecurity, Cloudflare, Oracle, Proofpoint, and TRM Labs, announced the disruption of three phishing kits, CoGUI (aka NX or FA), Haozi (aka Phoenix), and Iron Man System. \"Since January 2026, the threat actors behind these kits have been responsible for",
+      "category": "Malware",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly90aGVoYWNrZXJuZXdzLmNvbS8yMDI2LzEwL3VzLXNodXRzLWRvd24tb3Zlci00MC1sYXB0b3AtZmFybXMuaHRtbA",
+      "source": "The Hacker News",
+      "title": "U.S. Shuts Down Over 40 Laptop Farms, Charges 14 in North Korean IT Worker Fraud",
+      "url": "https://thehackernews.com/2026/10/us-shuts-down-over-40-laptop-farms.html",
+      "score": 0,
+      "publishedAt": "2026-10-14T16:34:31.000Z",
+      "summary": "The U.S. Department of Justice (DoJ) on Tuesday charged 14 people and seized about 187 computers and KVM devices as part of its ongoing efforts to disrupt North Korea's fraudulent remote IT worker (ITW) scheme. The indictment charges a mix of U.S. citizens and Chinese nationals for their roles in an IT worker conspiracy affecting more than 70 U.S. companies, charging them with wire fraud",
+      "category": "Network Security",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLW1lZGljYWwtYWR2aXNvcmllcy9pY3NtYS0yNi0yODgtMDE",
+      "source": "CISA",
+      "title": "Thermo Fisher Torrent Suite Software",
+      "url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-288-01",
+      "score": 0,
+      "publishedAt": "2026-10-15T12:00:00.000Z",
+      "summary": "View CSAF Summary Successful exploitation of this vulnerability could allow an attacker to read arbitrary files on the Torrent Server. The following versions of Thermo Fisher Torrent Suite Software are affected: Torr",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLW1lZGljYWwtYWR2aXNvcmllcy9pY3NtYS0yNi0yODgtMDI",
+      "source": "CISA",
+      "title": "J4Care dcm4che",
+      "url": "https://www.cisa.gov/news-events/ics-medical-advisories/icsma-26-288-02",
+      "score": 0,
+      "publishedAt": "2026-10-15T12:00:00.000Z",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to delete stored medical images, disclose patient information, inject forged studies, reassign patient records, overwrite files, and cause a denial-of-service condition. </p",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLWFkdmlzb3JpZXMvaWNzYS0yNi0yODgtMDI",
+      "source": "CISA",
+      "title": "Guangzhou Juan IoT Technology EseeCloud",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-288-02",
+      "score": 0,
+      "publishedAt": "2026-10-15T12:00:00.000Z",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to gain control over affected IP cameras. The following versions of Guangzhou Juan IoT Technology EseeCloud are affected: Esee",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLWFkdmlzb3JpZXMvaWNzYS0yNi0yODgtMDE",
+      "source": "CISA",
+      "title": "Eclipse Foundation Eclipse Milo",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-288-01",
+      "score": 0,
+      "publishedAt": "2026-10-15T12:00:00.000Z",
+      "summary": "View CSAF Summary Successful exploitation of these vulnerabilities could allow an attacker to delete protected data, recover user credentials and impersonate legitimate users, or cause the server to stop responding to all clients. The following ver",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvYWxlcnRzLzIwMjYvMTAvMTUvY2lzYS1hZGRzLW9uZS1rbm93bi1leHBsb2l0ZWQtdnVsbmVyYWJpbGl0eS1jYXRhbG9n",
+      "source": "CISA",
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/10/15/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "score": 0,
+      "publishedAt": "2026-10-15T12:00:00.000Z",
+      "summary": "CISA has added one new vulnerability to its&nbsp; Known Exploited Vulnerabilities (KEV) Catalog , based on evidence of active exploitation. CVE-2026-21589 Atlassian Multiple Products Files or Directories Access",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    },
+    {
+      "id": "item_aHR0cHM6Ly93d3cuY2lzYS5nb3YvbmV3cy1ldmVudHMvaWNzLWFkdmlzb3JpZXMvaWNzYS0yNi0yODAtMDE",
+      "source": "CISA",
+      "title": "CISA Malcolm",
+      "url": "https://www.cisa.gov/news-events/ics-advisories/icsa-26-280-01",
+      "score": 0,
+      "publishedAt": "2026-10-15T12:00:00.000Z",
+      "summary": "View CSAF Summary The following versions of CISA Malcolm are affected: Malcolm Malcolm <=v26.08.0 (CVE-2026-107333,",
+      "category": "Vulnerability",
+      "isNew": true,
+      "seenCount": 1
+    }
+  ]
+}
