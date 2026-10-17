@@ -846,6 +846,7 @@
   background: var(--color-report-gradient);
   font: inherit;
   text-align: left;
+  text-decoration: none;
   cursor: pointer;
   transition: border-color 180ms ease, box-shadow 180ms ease;
 }

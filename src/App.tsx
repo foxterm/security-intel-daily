@@ -1005,10 +1005,9 @@ function AppContent() {
               )}
 
               {currentDate && (
-                <button
-                  type="button"
+                <a
+                  href={`/reports/${currentDate}.html`}
                   className={styles.todayReportCard}
-                  onClick={openDrawer}
                 >
                   <div className={styles.todayReportHeader}>
                     <span className={styles.latestBadge}>{currentDate}</span>
@@ -1028,7 +1027,7 @@ function AppContent() {
                   <span className={styles.viewReportLink}>
                     {t('viewFullReport')} <IconArrowRight size={12} />
                   </span>
-                </button>
+                </a>
               )}
 
               {!currentDate && !loading && (

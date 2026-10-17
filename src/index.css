@@ -48,7 +48,7 @@
   --color-report-gradient: linear-gradient(135deg, #fff7ed, #ffedd5);
   --color-onboard-bg: radial-gradient(circle at 50% 0%, rgba(255, 128, 0, 0.08), transparent 60%), #ffffff;
   --color-onboard-icon-bg: linear-gradient(135deg, #fff7ed, #ffedd5);
-  --color-topbar-bg: rgba(255, 255, 255, 0.92);
+  --color-topbar-bg: rgba(255, 255, 255, 0.8);
   --color-btn-bg: #ffffff;
   --color-btn-hover: #f8fafc;
   --color-new-badge: #ef4444;
@@ -107,7 +107,7 @@
   --color-report-gradient: linear-gradient(135deg, #2a1f14, #352518);
   --color-onboard-bg: radial-gradient(circle at 50% 0%, rgba(255, 128, 0, 0.06), transparent 60%), #1a1d27;
   --color-onboard-icon-bg: linear-gradient(135deg, #2a1f14, #352518);
-  --color-topbar-bg: rgba(26, 29, 39, 0.92);
+  --color-topbar-bg: rgba(26, 29, 39, 0.8);
   --color-btn-bg: #1a1d27;
   --color-btn-hover: #252836;
   --color-new-badge: #f87171;

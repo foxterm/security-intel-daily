@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "generate": "node scripts/generate.js",
-    "build": "vite build",
+    "build": "vite build && node scripts/build-reports.js",
     "preview": "vite preview"
   },
   "dependencies": {
