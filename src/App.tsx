@@ -1158,6 +1158,11 @@ function AppContent() {
         )}
       </aside>
 
+      <footer className={styles.siteFooter}>
+        <span>{(() => { const y = new Date().getFullYear(), s = 2026; return `\u00A9 ${y > s ? `${s} \u2013 ${y}` : s}`; })()}</span>
+        {' '}<a href="https://foxterm.app" target="_blank" rel="noreferrer">FoxTerm</a>. Security intelligence powered by automated aggregation.
+      </footer>
+
     </main>
   );
 }

@@ -1598,3 +1598,15 @@
   background: var(--color-btn-hover);
   color: var(--color-text);
 }
+
+.siteFooter {
+  text-align: center;
+  padding: 32px 0 0;
+  color: var(--color-text-faint);
+  font-size: 12px;
+}
+
+.siteFooter a {
+  color: #ff5e00;
+  text-decoration: none;
+}

@@ -304,8 +304,10 @@ function buildReportHtml(date, report) {
     </div>
 
     <footer>
-      <a href="${SITE_URL}">FoxTerm Security Intel</a> &middot; Automated collection every 12 hours
+      <a href="${SITE_URL}">FoxTerm Security Intel</a> &middot; Automated collection every 12 hours<br>
+      <span id="copy"></span> <a href="https://foxterm.app" target="_blank" rel="noreferrer">FoxTerm</a>. Security intelligence powered by automated aggregation.
     </footer>
+    <script>(function(){var y=new Date().getFullYear(),s=2026;document.getElementById('copy').textContent='\\u00A9 '+(y>s?s+' \\u2013 '+y:s);})();</script>
   </div>
 </body>
 </html>`;
@@ -377,7 +379,11 @@ function buildIndexHtml(dates) {
     </div>
     <div class="grid">${dateCards}
     </div>
-    <footer><a href="${SITE_URL}">Back to FoxTerm Security Intel</a></footer>
+    <footer>
+      <a href="${SITE_URL}">Back to FoxTerm Security Intel</a><br>
+      <span id="copy"></span> <a href="https://foxterm.app" target="_blank" rel="noreferrer">FoxTerm</a>. Security intelligence powered by automated aggregation.
+    </footer>
+    <script>(function(){var y=new Date().getFullYear(),s=2026;document.getElementById('copy').textContent='\\u00A9 '+(y>s?s+' \\u2013 '+y:s);})();</script>
   </div>
 </body>
 </html>`;
