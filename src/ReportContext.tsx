@@ -1,11 +1,11 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { fetchAvailableDates, fetchReportByDate } from './api';
 import { EMPTY_REPORT, normalizeReport } from './reportModel';
-import type { TrendReport } from './types';
+import type { DateEntry, TrendReport } from './types';
 
 interface ReportContextValue {
   report: TrendReport;
-  availableDates: string[];
+  availableDates: DateEntry[];
   currentDate: string | null;
   loading: boolean;
   bootstrapping: boolean;
@@ -18,7 +18,7 @@ const ReportContext = createContext<ReportContextValue | null>(null);
 
 export function ReportProvider({ children }: { children: ReactNode }) {
   const [report, setReport] = useState<TrendReport>(EMPTY_REPORT);
-  const [availableDates, setAvailableDates] = useState<string[]>([]);
+  const [availableDates, setAvailableDates] = useState<DateEntry[]>([]);
   const [currentDate, setCurrentDate] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [bootstrapping, setBootstrapping] = useState(true);
@@ -28,10 +28,10 @@ export function ReportProvider({ children }: { children: ReactNode }) {
     const dates = await fetchAvailableDates().catch(() => []);
     setAvailableDates(dates);
     if (dates.length > 0) {
-      const data = await fetchReportByDate(dates[0]);
+      const data = await fetchReportByDate(dates[0].date);
       if (data) {
         setReport(normalizeReport(data));
-        setCurrentDate(dates[0]);
+        setCurrentDate(dates[0].date);
       }
     }
   }, []);
@@ -50,7 +50,13 @@ export function ReportProvider({ children }: { children: ReactNode }) {
   const updateReport = useCallback((date: string, newReport: TrendReport) => {
     setReport(normalizeReport(newReport));
     setCurrentDate(date);
-    setAvailableDates(prev => prev.includes(date) ? prev : [date, ...prev].sort((a, b) => b.localeCompare(a)));
+    setAvailableDates(prev => {
+      const existing = prev.find(e => e.date === date);
+      if (existing) {
+        return prev.map(e => e.date === date ? { ...e, count: newReport.items.length } : e);
+      }
+      return [...prev, { date, count: newReport.items.length }].sort((a, b) => b.date.localeCompare(a.date));
+    });
   }, []);
 
   useEffect(() => {

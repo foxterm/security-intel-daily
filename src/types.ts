@@ -98,3 +98,8 @@ export type StreamEvent =
   | { type: 'token'; delta: string }
   | { type: 'complete'; report: TrendReport }
   | { type: 'error'; detail: string };
+
+export interface DateEntry {
+  date: string;
+  count: number;
+}

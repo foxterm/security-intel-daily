@@ -467,18 +467,18 @@ function AppContent() {
   const activeRunRef = useRef<AbortController | null>(null);
   const droppingTimersRef = useRef<Set<ReturnType<typeof setTimeout>>>(new Set());
 
-  const currentIndex = currentDate ? availableDates.indexOf(currentDate) : -1;
+  const currentIndex = currentDate ? availableDates.findIndex(e => e.date === currentDate) : -1;
   const canGoPrev = currentIndex >= 0 && currentIndex < availableDates.length - 1;
   const canGoNext = currentIndex > 0;
 
   const goToPrevDate = useCallback(() => {
     if (!canGoPrev) return;
-    loadReportByDate(availableDates[currentIndex + 1]);
+    loadReportByDate(availableDates[currentIndex + 1].date);
   }, [canGoPrev, availableDates, currentIndex, loadReportByDate]);
 
   const goToNextDate = useCallback(() => {
     if (!canGoNext) return;
-    loadReportByDate(availableDates[currentIndex - 1]);
+    loadReportByDate(availableDates[currentIndex - 1].date);
   }, [canGoNext, availableDates, currentIndex, loadReportByDate]);
 
   const run = useCallback(async () => {
@@ -741,14 +741,15 @@ function AppContent() {
         <div className={styles.dateBar}>
           <span className={styles.dateBarLabel}>{t('selectDate')}</span>
           <div className={styles.dateList}>
-            {availableDates.map(date => (
+            {availableDates.map(entry => (
               <button
-                key={date}
+                key={entry.date}
                 type="button"
-                className={`${styles.dateButton} ${currentDate === date ? styles.dateButtonActive : ''}`}
-                onClick={() => loadReportByDate(date)}
+                className={`${styles.dateButton} ${currentDate === entry.date ? styles.dateButtonActive : ''}`}
+                onClick={() => loadReportByDate(entry.date)}
               >
-                {date}
+                {entry.date}
+                {entry.count > 0 && <span className={styles.dateBadge}>{entry.count}</span>}
               </button>
             ))}
           </div>
@@ -811,7 +812,7 @@ function AppContent() {
             <OnboardingHero loading={generating} />
           ) : (
             <div className={styles.newsList}>
-              {safeReport.newItemCount === 0 && safeReport.status === 'success' && !activeSource && !activeTopic && (
+              {newsItems.length === 0 && safeReport.status === 'success' && !activeSource && !activeTopic && (
                 <div className={styles.noNewBanner}>
                   {t('noNewBanner')}
                 </div>

@@ -190,12 +190,15 @@ function readIndex() {
   if (!fs.existsSync(indexPath)) return [];
   try {
     const data = JSON.parse(fs.readFileSync(indexPath, 'utf-8'));
-    return Array.isArray(data) ? data : [];
+    if (!Array.isArray(data)) return [];
+    // Handle both old format (strings) and new format (objects)
+    return data.map(item => typeof item === 'string' ? { date: item, count: 0 } : item);
   } catch { return []; }
 }
 
-function writeIndex(dates) {
-  const sorted = [...new Set(dates)].sort((a, b) => b.localeCompare(a));
+function writeIndex(entries) {
+  const sorted = [...new Map(entries.map(e => [e.date, e])).values()]
+    .sort((a, b) => b.date.localeCompare(a.date));
   fs.writeFileSync(path.join(DATA_DIR, 'index.json'), JSON.stringify(sorted, null, 2));
   return sorted;
 }
@@ -295,9 +298,10 @@ async function main() {
     fs.writeFileSync(path.join(dateDir, 'report.json'), JSON.stringify(empty, null, 2));
 
     // Update index
-    const dates = readIndex();
-    if (!dates.includes(today)) dates.push(today);
-    writeIndex(dates);
+    const entries = readIndex();
+    const existing = entries.find(e => e.date === today);
+    if (!existing) entries.push({ date: today, count: 0 });
+    writeIndex(entries);
     console.log(`Saved: data/${today}/report.json (empty)`);
     return;
   }
@@ -354,9 +358,14 @@ async function main() {
   console.log(`\nSaved: data/${today}/report.json`);
 
   // Update index.json
-  const dates = readIndex();
-  if (!dates.includes(today)) dates.push(today);
-  const sorted = writeIndex(dates);
+  const entries = readIndex();
+  const existing = entries.find(e => e.date === today);
+  if (existing) {
+    existing.count = report.items.length;
+  } else {
+    entries.push({ date: today, count: report.items.length });
+  }
+  const sorted = writeIndex(entries);
   console.log(`Updated: data/index.json (${sorted.length} dates)`);
 
   console.log('\n=== Done ===');

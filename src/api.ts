@@ -1,4 +1,4 @@
-import type { PipelineEvent, StreamEvent, TrendReport } from './types';
+import type { DateEntry, PipelineEvent, StreamEvent, TrendReport } from './types';
 
 export const API = {
   dataRoot: './data',
@@ -9,12 +9,17 @@ async function parseJson<T>(res: Response): Promise<T> {
   return await res.json() as T;
 }
 
-export async function fetchAvailableDates(): Promise<string[]> {
+export async function fetchAvailableDates(): Promise<DateEntry[]> {
   try {
     const res = await fetch(`${API.dataRoot}/index.json`, { cache: 'no-store' });
     if (res.ok) {
       const data = await res.json();
-      if (Array.isArray(data)) return data.sort((a: string, b: string) => b.localeCompare(a));
+      if (Array.isArray(data)) {
+        // Handle both old format (strings) and new format (objects)
+        return data
+          .map((item: any) => typeof item === 'string' ? { date: item, count: 0 } : item)
+          .sort((a: DateEntry, b: DateEntry) => b.date.localeCompare(a.date));
+      }
     }
   } catch {}
   try {
@@ -22,7 +27,7 @@ export async function fetchAvailableDates(): Promise<string[]> {
     const html = await res.text();
     const matches = html.match(/href="(\d{4}-\d{2}-\d{2})\/?"/g) || [];
     const dates = matches.map(m => m.match(/(\d{4}-\d{2}-\d{2})/)?.[1]).filter(Boolean) as string[];
-    return dates.sort((a, b) => b.localeCompare(a));
+    return dates.map(date => ({ date, count: 0 })).sort((a, b) => b.date.localeCompare(a.date));
   } catch {
     return [];
   }
@@ -56,8 +61,8 @@ export async function runReportSSE(
   let report: TrendReport | null = null;
   let date: string | null = null;
   if (dates.length > 0) {
-    date = dates[0];
-    report = await fetchReportByDate(dates[0]);
+    date = dates[0].date;
+    report = await fetchReportByDate(dates[0].date);
   }
 
   callbacks.onStage?.({ stage: 'curator', status: 'done', duration: 0 });
