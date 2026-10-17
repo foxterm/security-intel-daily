@@ -292,17 +292,17 @@ function LiveFeed({
               <span>{group.name}</span>
               <span className={styles.feedGroupBadge}>{group.items.length}</span>
             </div>
-            {group.items.map(item => <LiveItemCard key={item.id} item={item} showScore={true} />)}
+            {group.items.map(item => <LiveItemCard key={item.id} item={item} />)}
           </div>
         ))
       ) : (
-        items.map(item => <LiveItemCard key={item.id} item={item} showScore={false} />)
+        items.map(item => <LiveItemCard key={item.id} item={item} />)
       )}
     </div>
   );
 }
 
-function LiveItemCard({ item, showScore }: { item: LiveItem; showScore: boolean }) {
+function LiveItemCard({ item }: { item: LiveItem }) {
   const { t } = useI18n();
   const phaseClass =
     item._phase === 'summarized' ? styles.liveItemSummarized
@@ -331,7 +331,6 @@ function LiveItemCard({ item, showScore }: { item: LiveItem; showScore: boolean 
       </div>
       <div className={styles.newsSideMeta}>
         <span>{item._categoryAssigned || item.category || 'Security'}</span>
-        {showScore && item.score != null && <span>score {item.score}</span>}
       </div>
     </div>
   );
@@ -706,25 +705,39 @@ function AppContent() {
 
   const [activeSource, setActiveSource] = useState<string | null>(null);
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     setActiveSource(null);
     setActiveTopic(null);
+    setSearchQuery('');
   }, [currentDate]);
 
+  const matchesSearch = useMemo(() => {
+    if (!searchQuery.trim()) return () => true;
+    const q = searchQuery.toLowerCase();
+    return (item: TrendItem) =>
+      item.title.toLowerCase().includes(q) ||
+      (item.summary || '').toLowerCase().includes(q) ||
+      (item.aiSummary || '').toLowerCase().includes(q) ||
+      (item.aiSummaryEn || '').toLowerCase().includes(q) ||
+      (item.category || '').toLowerCase().includes(q) ||
+      (item.source || '').toLowerCase().includes(q);
+  }, [searchQuery]);
+
   const filteredNewItems = useMemo(() => {
-    let items = newItems;
+    let items = newItems.filter(matchesSearch);
     if (activeSource) items = items.filter(i => i.source === activeSource);
     if (activeTopic) items = items.filter(i => i.category === activeTopic);
     return items;
-  }, [newItems, activeSource, activeTopic]);
+  }, [newItems, activeSource, activeTopic, matchesSearch]);
 
   const filteredRecurringItems = useMemo(() => {
-    let items = recurringItems;
+    let items = recurringItems.filter(matchesSearch);
     if (activeSource) items = items.filter(i => i.source === activeSource);
     if (activeTopic) items = items.filter(i => i.category === activeTopic);
     return items;
-  }, [recurringItems, activeSource, activeTopic]);
+  }, [recurringItems, activeSource, activeTopic, matchesSearch]);
 
   const hasAnyContent = safeReport.status === 'success' || newsItems.length > 0;
   const showOnboarding = !bootstrapping && !hasAnyContent && !generating;
@@ -791,6 +804,21 @@ function AppContent() {
             </div>
           </div>
 
+          <div className={styles.searchRow}>
+            <input
+              type="text"
+              className={styles.searchInput}
+              placeholder="Search titles, summaries, sources..."
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+            />
+            {searchQuery && (
+              <button type="button" className={styles.searchClear} onClick={() => setSearchQuery('')}>
+                <IconX size={14} />
+              </button>
+            )}
+          </div>
+
           <div className={styles.filterRow}>
             <div className={styles.sourceList}>
               {allSources.map(source => (
@@ -818,11 +846,11 @@ function AppContent() {
                 </button>
               ))}
             </div>
-            {(activeSource || activeTopic) && (
+            {(activeSource || activeTopic || searchQuery) && (
               <button
                 type="button"
                 className={styles.clearFilters}
-                onClick={() => { setActiveSource(null); setActiveTopic(null); }}
+                onClick={() => { setActiveSource(null); setActiveTopic(null); setSearchQuery(''); }}
               >
                 {t('clearFilters')}
               </button>
@@ -871,7 +899,6 @@ function AppContent() {
                       </div>
                       <div className={styles.newsSideMeta}>
                         <span>{item.category || 'Security'}</span>
-                        <span>score {item.score ?? 0}</span>
                         <span>
                           {t('sourceLabel')} <IconExternal size={11} style={{ verticalAlign: '-1px', marginLeft: 2 }} />
                         </span>
@@ -906,7 +933,6 @@ function AppContent() {
                       </div>
                       <div className={styles.newsSideMeta}>
                         <span>{item.category || 'Security'}</span>
-                        <span>score {item.score ?? 0}</span>
                         <span>
                           {t('sourceLabel')} <IconExternal size={11} style={{ verticalAlign: '-1px', marginLeft: 2 }} />
                         </span>
