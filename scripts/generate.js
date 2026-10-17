@@ -61,13 +61,11 @@ const RSS_SOURCES = [
   { url: 'https://www.bleepingcomputer.com/feed/', source: 'BleepingComputer' },
 ];
 
-// Get today's date range in CST (UTC+8)
-function getTodayRangeCST() {
-  const now = new Date();
-  const cstNow = new Date(now.getTime() + 8 * 60 * 60 * 1000);
-  const cstDate = new Date(Date.UTC(cstNow.getUTCFullYear(), cstNow.getUTCMonth(), cstNow.getUTCDate()));
-  const start = cstDate.getTime() - 8 * 60 * 60 * 1000;
-  const end = start + 24 * 60 * 60 * 1000;
+// Get last 24 hours range
+function getLast24HoursRange() {
+  const now = Date.now();
+  const start = now - 24 * 60 * 60 * 1000;
+  const end = now;
   return { start, end };
 }
 
@@ -119,7 +117,7 @@ function filterItems(items) {
 
 async function collectRSS() {
   const all = [];
-  const { start, end } = getTodayRangeCST();
+  const { start, end } = getLast24HoursRange();
   const results = await Promise.allSettled(RSS_SOURCES.map(async rs => {
     const res = await fetch(rs.url, { headers: { 'User-Agent': 'FoxTerm-Security-Bot/1.0' } });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -141,7 +139,7 @@ async function collectRSS() {
 
 async function collectHN() {
   try {
-    const { start, end } = getTodayRangeCST();
+    const { start, end } = getLast24HoursRange();
     const ids = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json').then(r => r.json());
     const items = await Promise.all(ids.slice(0, 200).map(async id => {
       const item = await fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`).then(r => r.json());
@@ -164,7 +162,7 @@ async function collectHN() {
 
 async function collectGitHub() {
   try {
-    const { start, end } = getTodayRangeCST();
+    const { start, end } = getLast24HoursRange();
     const data = await fetch('https://api.github.com/advisories?per_page=100&sort=updated&direction=desc').then(r => r.json());
     return filterItems(data
       .filter(adv => {
@@ -269,7 +267,7 @@ async function main() {
   if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
 
   const today = getTodayCST();
-  console.log(`[1/3] Collecting sources for ${today} (CST)...`);
+  console.log(`[1/3] Collecting sources for last 24 hours (archive: ${today})...`);
   const [rss, hn, gh] = await Promise.all([collectRSS(), collectHN(), collectGitHub()]);
   const candidates = [...rss, ...hn, ...gh];
   console.log(`  RSS=${rss.length}, HN=${hn.length}, GH=${gh.length}, Total=${candidates.length}`);
