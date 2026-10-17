@@ -453,10 +453,8 @@
   gap: 8px;
 }
 
-.sourceList span,
-.topicGrid span,
-.sourceList button,
-.topicGrid button {
+.sourceList > button,
+.topicGrid > button {
   display: inline-flex;
   align-items: center;
   border: 1px solid #dbeafe;
@@ -471,8 +469,8 @@
   transition: opacity 0.15s, background 0.15s, border-color 0.15s;
 }
 
-.sourceList button:hover,
-.topicGrid button:hover {
+.sourceList > button:hover,
+.topicGrid > button:hover {
   opacity: 0.8;
 }
 
@@ -488,11 +486,18 @@
   color: #fff !important;
 }
 
-.topicGrid span,
-.topicGrid button {
+.topicGrid > button {
   border-color: #fed7aa;
   color: #e03e00;
   background: #fff7ed;
+}
+
+.filterCount {
+  margin-left: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.6;
+  font-variant-numeric: tabular-nums;
 }
 
 .clearFilters {
