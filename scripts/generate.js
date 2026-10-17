@@ -199,7 +199,7 @@ function readIndex() {
 function writeIndex(entries) {
   const sorted = [...new Map(entries.map(e => [e.date, e])).values()]
     .sort((a, b) => b.date.localeCompare(a.date));
-  fs.writeFileSync(path.join(DATA_DIR, 'index.json'), JSON.stringify(sorted, null, 2));
+  fs.writeFileSync(path.join(DATA_DIR, 'index.json'), JSON.stringify(sorted));
   return sorted;
 }
 
@@ -295,7 +295,7 @@ async function main() {
       reportMarkdown: '# FoxTerm Security Intel\n\nNo security intelligence collected.',
       trends: [], items: [],
     };
-    fs.writeFileSync(path.join(dateDir, 'report.json'), JSON.stringify(empty, null, 2));
+    fs.writeFileSync(path.join(dateDir, 'report.json'), JSON.stringify(empty));
 
     // Update index
     const entries = readIndex();
@@ -358,7 +358,7 @@ async function main() {
   // Save to date directory
   const dateDir = path.join(DATA_DIR, today);
   if (!fs.existsSync(dateDir)) fs.mkdirSync(dateDir, { recursive: true });
-  fs.writeFileSync(path.join(dateDir, 'report.json'), JSON.stringify(report, null, 2));
+  fs.writeFileSync(path.join(dateDir, 'report.json'), JSON.stringify(report));
   console.log(`\nSaved: data/${today}/report.json`);
 
   // Update index.json
