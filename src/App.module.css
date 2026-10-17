@@ -1,7 +1,7 @@
 .shell {
   width: min(1180px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 22px 0 56px;
+  padding: 0 0 56px;
 }
 
 .topbar {
@@ -12,12 +12,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  margin: 0 -16px 18px;
-  padding: 18px 16px;
-  padding-right: 90px;
+  margin: 0 calc(-50vw + 50%) 18px;
+  padding: 18px calc((100vw - min(1180px, 100% - 32px)) / 2 + 16px);
+  padding-right: calc((100vw - min(1180px, 100% - 32px)) / 2 + 90px);
   border-bottom: 1px solid #e5e7eb;
-  /* background: rgba(248, 250, 252, 0.9); */
   backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .brandBlock h1,
@@ -1936,7 +1936,6 @@
 @media (max-width: 640px) {
   .shell {
     width: min(100% - 20px, 1180px);
-    padding-top: 12px;
   }
 
   .statsBar {
