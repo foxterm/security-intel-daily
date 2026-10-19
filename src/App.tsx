@@ -1009,7 +1009,7 @@ function AppContent() {
         </a>
         <a
           className={styles.topCornerIcon}
-          href="https://github.com/foxterm"
+          href="https://github.com/foxterm/security-intel-daily"
           target="_blank"
           rel="noreferrer"
           title="GitHub"
