@@ -105,7 +105,7 @@ function filterItems(items) {
       id: `item_${idSuffix}`,
       source: item.source,
       title: cleanText(item.title),
-      url: item.link,
+      url: item.link || item.url,
       score: item.score || 0,
       publishedAt: item.pubDate ? new Date(item.pubDate).toISOString() : new Date().toISOString(),
       summary: cleanText(item.description),
